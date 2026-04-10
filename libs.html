@@ -1,0 +1,334 @@
+<!--
+  ============================================================
+  PL Web Solutions — Gedeelde Bibliotheek Imports
+  ============================================================
+  Gebruik: kopieer de relevante blokken naar de <head> en
+  onderaan de <body> van elk nieuw project.
+
+  Inhoud:
+    [HEAD]  → Fonts, Swiper CSS, reset hints
+    [BODY]  → GSAP core + plugins, Swiper JS, init snippet
+  ============================================================
+-->
+
+
+<!-- ============================================================
+     BLOK 1 — KOPIEER DIT IN <head>
+     ============================================================ -->
+
+<!--
+<head>
+  ...
+-->
+
+  <!-- Google Fonts: Cormorant Garamond (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Swiper.js CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+
+<!--
+  ...
+</head>
+-->
+
+
+<!-- ============================================================
+     BLOK 2 — KOPIEER DIT ONDERAAN <body>, VÓÓR EIGEN SCRIPTS
+     ============================================================ -->
+
+<!--
+<body>
+  ...
+-->
+
+  <!-- ── GSAP Core ─────────────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+  <!-- ── GSAP Plugins ──────────────────────────────────────── -->
+
+  <!-- ScrollTrigger: koppelt animaties aan scrollpositie -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- MotionPathPlugin: animeert elementen langs een SVG-pad -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
+
+  <!-- TextPlugin: animeert tekst karakter voor karakter -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+
+  <!-- ── Swiper.js ─────────────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- ── Three.js ──────────────────────────────────────────── -->
+  <!-- Core renderer, scène, camera, geometrie, materialen      -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.min.js"></script>
+
+  <!-- ── Lottie Web ────────────────────────────────────────── -->
+  <!-- Speelt Adobe After Effects / Lottie JSON animaties af    -->
+  <!-- Methoden: loadAnimation, play, pause, stop, destroy      -->
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+
+  <!-- ── GSAP Plugin Registratie (altijd vereist) ──────────── -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, TextPlugin);
+
+    /* ── ScrollTrigger defaults ───────────────────────────── */
+    ScrollTrigger.defaults({
+      toggleActions: 'play none none none',
+    });
+
+    /* ── Detectie hulpvariabelen ──────────────────────────── */
+    const isMobile  = window.innerWidth < 768;
+    const isTablet  = window.innerWidth < 1024;
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    /* ── Utility: fade-in + slide-up (meest gebruikte animatie) */
+    /**
+     * fadeUp(targets, options)
+     *
+     * @param {string|Element|NodeList} targets  - CSS selector of element(s)
+     * @param {object}  options
+     * @param {string}  options.trigger           - ScrollTrigger trigger element (default: targets)
+     * @param {string}  options.start             - ScrollTrigger start (default: 'top 82%')
+     * @param {number}  options.y                 - Startpositie Y offset (default: 50)
+     * @param {number}  options.duration          - Animatieduur in seconden (default: 0.9)
+     * @param {number}  options.stagger           - Stagger tussen elementen (default: 0)
+     * @param {number}  options.delay             - Vertraging (default: 0)
+     * @param {string}  options.ease              - GSAP ease string (default: 'power3.out')
+     *
+     * Gebruik:
+     *   fadeUp('.hero-title');
+     *   fadeUp('.card', { stagger: 0.15, y: 80 });
+     */
+    function fadeUp(targets, options = {}) {
+      if (prefersReducedMotion) return;
+      const {
+        trigger  = targets,
+        start    = 'top 82%',
+        y        = 50,
+        duration = 0.9,
+        stagger  = 0,
+        delay    = 0,
+        ease     = 'power3.out',
+      } = options;
+
+      gsap.from(targets, {
+        scrollTrigger: { trigger, start },
+        y,
+        opacity: 0,
+        duration,
+        stagger,
+        delay,
+        ease,
+      });
+    }
+
+    /* ── Utility: clip-path reveal (voor afbeeldingen & blokken) */
+    /**
+     * revealClip(targets, options)
+     *
+     * @param {string}  targets
+     * @param {object}  options
+     * @param {string}  options.direction  - 'bottom' (default) | 'top' | 'left' | 'right'
+     * @param {number}  options.duration   - (default: 1.2)
+     * @param {string}  options.start      - ScrollTrigger start (default: 'top 85%')
+     *
+     * Gebruik:
+     *   revealClip('.image-wrap');
+     *   revealClip('.image-wrap', { direction: 'left', duration: 1.5 });
+     */
+    function revealClip(targets, options = {}) {
+      if (prefersReducedMotion) return;
+      const {
+        direction = 'bottom',
+        duration  = 1.2,
+        start     = 'top 85%',
+        stagger   = 0,
+      } = options;
+
+      const clips = {
+        bottom: ['inset(100% 0 0 0)', 'inset(0% 0 0 0)'],
+        top:    ['inset(0 0 100% 0)', 'inset(0 0 0% 0)'],
+        left:   ['inset(0 100% 0 0)', 'inset(0 0% 0 0)'],
+        right:  ['inset(0 0 0 100%)', 'inset(0 0 0 0%)'],
+      };
+
+      gsap.fromTo(targets,
+        { clipPath: clips[direction][0] },
+        {
+          scrollTrigger: { trigger: targets, start },
+          clipPath: clips[direction][1],
+          duration,
+          stagger,
+          ease: 'power4.out',
+        }
+      );
+    }
+
+    /* ── Utility: parallax scrub ──────────────────────────── */
+    /**
+     * parallax(target, options)
+     *
+     * Skips automatisch op mobile als skipMobile: true (default).
+     *
+     * @param {string}  target
+     * @param {object}  options
+     * @param {string}  options.trigger      - ScrollTrigger trigger (default: target)
+     * @param {number}  options.yPercent     - Hoeveel % te verplaatsen (default: 30)
+     * @param {boolean} options.skipMobile   - Sla over op mobile (default: true)
+     *
+     * Gebruik:
+     *   parallax('.hero-bg');
+     *   parallax('.section-image', { yPercent: 20 });
+     */
+    function parallax(target, options = {}) {
+      const {
+        trigger    = target,
+        yPercent   = 30,
+        skipMobile = true,
+      } = options;
+
+      if (skipMobile && isMobile) return;
+
+      gsap.to(target, {
+        scrollTrigger: { trigger, scrub: true },
+        yPercent,
+        ease: 'none',
+      });
+    }
+
+    /* ── Utility: TextPlugin typewriter ──────────────────── */
+    /**
+     * typewrite(target, text, options)
+     *
+     * @param {string}  target    - CSS selector van het element
+     * @param {string}  text      - Tekst om in te typen
+     * @param {object}  options
+     * @param {number}  options.duration   - (default: 2)
+     * @param {number}  options.delay      - (default: 0)
+     * @param {boolean} options.useScroll  - Koppel aan ScrollTrigger (default: true)
+     *
+     * Gebruik:
+     *   typewrite('.hero-subtitle', 'Jouw tekst hier');
+     */
+    function typewrite(target, text, options = {}) {
+      if (prefersReducedMotion) {
+        document.querySelector(target).textContent = text;
+        return;
+      }
+      const {
+        duration  = 2,
+        delay     = 0,
+        useScroll = true,
+      } = options;
+
+      const tween = gsap.to(target, {
+        text: { value: text, delimiter: '' },
+        duration,
+        delay,
+        ease: 'none',
+        paused: useScroll,
+      });
+
+      if (useScroll) {
+        ScrollTrigger.create({
+          trigger: target,
+          start: 'top 80%',
+          onEnter: () => tween.play(),
+        });
+      }
+    }
+
+    /* ── Utility: MotionPath langs SVG #path ─────────────── */
+    /**
+     * motionPath(target, pathSelector, options)
+     *
+     * @param {string}  target          - Bewegend element
+     * @param {string}  pathSelector    - SVG <path> selector (bv. '#motion-path')
+     * @param {object}  options
+     * @param {number}  options.duration   - (default: 4)
+     * @param {boolean} options.repeat     - Herhaal oneindig (default: true)
+     * @param {boolean} options.autoRotate - Draai mee met pad (default: true)
+     *
+     * Gebruik:
+     *   motionPath('.cursor-dot', '#my-svg-path');
+     */
+    function motionPath(target, pathSelector, options = {}) {
+      const {
+        duration   = 4,
+        repeat     = true,
+        autoRotate = true,
+      } = options;
+
+      gsap.to(target, {
+        motionPath: {
+          path: pathSelector,
+          align: pathSelector,
+          autoRotate,
+          alignOrigin: [0.5, 0.5],
+        },
+        duration,
+        repeat: repeat ? -1 : 0,
+        ease: 'none',
+      });
+    }
+  </script>
+
+<!--
+  ...
+  <script src="jouw-eigen-script.js"></script>
+</body>
+-->
+
+
+<!-- ============================================================
+     GEBRUIKSVOORBEELDEN
+     ============================================================
+
+  In jouw eigen script, na bovenstaande imports:
+
+  // 1. Fade-up animaties
+  fadeUp('.hero-title');
+  fadeUp('.card', { stagger: 0.15, y: 80, duration: 1 });
+
+  // 2. Image reveal
+  revealClip('.project-image');
+  revealClip('.banner', { direction: 'left' });
+
+  // 3. Parallax
+  parallax('.hero-bg');
+  parallax('.section-visual', { yPercent: 20 });
+
+  // 4. Typewriter tekst
+  typewrite('.tagline', 'Premium Webdesign Voor Jouw Bedrijf.');
+
+  // 5. Motion Path
+  // Vereist een <svg> met <path id="motion-path"> in HTML
+  motionPath('.floating-icon', '#motion-path');
+
+  // 6. Swiper slider
+  new Swiper('.swiper', {
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    breakpoints: {
+      768:  { slidesPerView: 2 },
+      1200: { slidesPerView: 3 },
+    },
+    grabCursor: true,
+  });
+
+  ============================================================ -->
