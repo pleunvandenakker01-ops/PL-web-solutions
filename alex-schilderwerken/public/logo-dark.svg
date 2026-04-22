@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 84" fill="none">
+  <!-- Paint stroke wash behind letters -->
+  <ellipse cx="68" cy="44" rx="76" ry="9" transform="rotate(-12 68 44)" fill="#1B3A6B" opacity="0.2"/>
+  <path d="M 4,78 C 36,70 96,68 132,76" stroke="#1B3A6B" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- Letter A -->
+  <path d="M 8,76 L 32,8 L 56,76" stroke="#1B3A6B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 20,44 L 44,44" stroke="#1B3A6B" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Letter S -->
+  <path d="M 120,20 C 118,10 109,4 97,4 C 84,4 76,12 76,22 C 76,32 85,38 98,42 C 112,46 128,54 128,66 C 128,76 118,82 105,82 C 92,82 82,76 80,66"
+        stroke="#1B3A6B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

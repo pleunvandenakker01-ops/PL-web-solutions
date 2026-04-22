@@ -1,0 +1,14 @@
+<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="h" x1="13" y1="2" x2="27" y2="37" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F0F4FF" stop-opacity="0.72"/>
+      <stop offset="100%" stop-color="#F0F4FF" stop-opacity="0.97"/>
+    </linearGradient>
+  </defs>
+  <!-- Brush handle: calligraphic diagonal, slightly tapered -->
+  <path d="M 13,2 L 16,3 L 28,36 L 25,37 Z" fill="url(#h)"/>
+  <!-- Paint bloom: organic leftward spread where brush meets canvas -->
+  <path d="M 24,34 C 21,28 5,31 3,37 C 2,40 11,40 20,39 C 25,38 25,36 24,34 Z" fill="#3D6FD4"/>
+  <!-- Feathered tip of paint at edge -->
+  <path d="M 24,34 C 23,32 20,33 19,35 C 18,37 21,38 23,37 Z" fill="#3D6FD4" opacity="0.45"/>
+</svg>
