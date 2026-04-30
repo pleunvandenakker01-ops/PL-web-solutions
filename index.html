@@ -6,10 +6,14 @@
   <title>PL Web Solutions — Premium Webdesign Bureau</title>
   <meta name="description" content="PL Web Solutions bouwt premium websites, verzorgt SEO en onderhoud voor lokale bedrijven. Indrukwekkend, snel en resultaatgericht." />
 
-  <!-- Google Fonts -->
+  <!-- Preconnect: fonts + CDN -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+  <!-- Google Fonts — async laden (niet render-blocking) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
 
   <!-- SEO canonical + OG -->
   <link rel="canonical" href="https://plwebsolutions.nl/" />
@@ -19,8 +23,9 @@
   <meta property="og:url" content="https://plwebsolutions.nl/" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- Swiper CSS — async laden (niet render-blocking) -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /></noscript>
 
 
   <style>
@@ -285,6 +290,9 @@
     background: rgba(0,0,0,.88);
     backdrop-filter: blur(16px) saturate(1.4);
     border-bottom-color: var(--gold-25);
+    box-shadow:
+      0 8px 60px rgba(201,168,76,.07),
+      0 1px 0 rgba(201,168,76,.12) inset;
   }
 
   .nav-logo {
@@ -396,10 +404,14 @@
       linear-gradient(160deg, #110d01 0%, #060503 42%, #030303 100%);
   }
 
-  /* Canvas (particles) — boven de achtergrond, onder de tekst */
+  /* Canvas (particles/shader) — vult volledige hero sectie */
+  @media (max-width: 767px) { #hero-particles { display: none !important; } }
   #hero-particles {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
     z-index: 1;
     pointer-events: none;
   }
@@ -427,6 +439,7 @@
     align-items: center;
   }
 
+  .hero-eyebrow::before, .hero-eyebrow::after { display: none; }
   .hero-eyebrow {
     margin-bottom: 2.2rem;
     opacity: 0;
@@ -466,36 +479,6 @@
   .hchar {
     display: inline-block;
     will-change: transform, opacity;
-  }
-
-  /* Scroll indicator */
-  .hero-scroll-hint {
-    position: absolute;
-    bottom: 2.5rem; left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: .6rem;
-    opacity: 0;
-  }
-  .hero-scroll-hint span {
-    font-size: .6rem;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    color: var(--grey-d);
-    writing-mode: vertical-rl;
-  }
-  .scroll-line {
-    width: 1px; height: 55px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-    animation: scrollDown 2.2s ease-in-out infinite;
-  }
-  @keyframes scrollDown {
-    0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
-    40%  { transform: scaleY(1); opacity: 1; }
-    100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
   }
 
   /* Stats bar */
@@ -674,6 +657,7 @@
     gap: 1.2rem;
     max-width: 1440px;
     margin: 0 auto 2rem;
+    align-items: flex-start;
   }
 
   .pc {
@@ -811,6 +795,94 @@
   }
   .pc .btn { width: 100%; justify-content: center; }
 
+  /* Shimmer sweep — 21st.dev-stijl interactief hover effect */
+  .pc-shimmer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgba(201,168,76,.055) 48%,
+      rgba(240,192,96,.04) 52%,
+      transparent 70%
+    );
+    transform: translateX(-120%) skewX(-8deg);
+    transition: transform .0s;
+    z-index: 0;
+  }
+  .pc:hover .pc-shimmer {
+    transform: translateX(220%) skewX(-8deg);
+    transition: transform .75s ease;
+  }
+  .pc:hover {
+    box-shadow:
+      0 20px 80px rgba(201,168,76,.09),
+      0 0 0 1px rgba(201,168,76,.14);
+  }
+  .pc.feat:hover {
+    box-shadow:
+      0 24px 100px rgba(201,168,76,.14),
+      0 0 0 1px rgba(201,168,76,.3);
+  }
+  .pc.elite:hover {
+    box-shadow:
+      0 24px 100px rgba(201,168,76,.18),
+      0 0 60px rgba(201,168,76,.08),
+      0 0 0 1px rgba(201,168,76,.35);
+  }
+
+  /* Cursor pointer op interactieve kaarten */
+  .pc, .pf-slide, .rev-card, .ww-step { cursor: default; }
+  .pc .btn, .pf-slide .btn { cursor: pointer; }
+
+  /* Review cards — premium inner glow hover */
+  .rev-card:hover {
+    border-color: rgba(201,168,76,.2) !important;
+    box-shadow: 0 0 0 1px rgba(201,168,76,.12), 0 20px 60px rgba(201,168,76,.06);
+  }
+
+  /* Werkwijze steps — ww-num ring glow */
+  .ww-step:hover .ww-num {
+    box-shadow:
+      0 0 0 6px rgba(201,168,76,.07),
+      0 0 0 14px rgba(201,168,76,.03);
+  }
+
+  /* Contact icons — subtiele goud-pulse op hover */
+  .ct-icon {
+    transition: background .3s, border-color .3s, box-shadow .3s;
+  }
+  .ct-icon:hover {
+    background: var(--gold-10) !important;
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 20px rgba(201,168,76,.15);
+  }
+
+  /* Footer brand — subtiele goud underline */
+  .ft-brand {
+    position: relative;
+    display: inline-block;
+  }
+  .ft-brand::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width .4s ease;
+  }
+  .ft-brand:hover::after { width: 100%; }
+
+  /* SVG icon base — vervangt emoji */
+  .ww-icon-svg {
+    width: 1.6rem; height: 1.6rem;
+    margin-bottom: 1rem;
+    display: block;
+    color: var(--gold);
+    opacity: .75;
+  }
+
   /* Onderhoud strip */
   .onderhoud {
     max-width: 1200px;
@@ -880,19 +952,105 @@
     margin-right: auto;
   }
 
-  /* swiper */
-  .pf-swiper {
-    padding: 0 5vw 4rem !important;
-    overflow: visible !important;
-  }
-
+  /* ── Portfolio kaart ──────────────────────────── */
   .pf-slide {
     background: var(--black-c);
     border: 1px solid rgba(255,255,255,.07);
     overflow: hidden;
-    transition: border-color .4s, transform .4s;
+    transition: border-color .4s;
+    transform-origin: center center;
+    will-change: transform, opacity;
   }
-  .pf-slide:hover { border-color: var(--gold-25); transform: translateY(-6px); }
+  .pf-slide:hover { border-color: var(--gold-25); }
+
+  /* ── 3D Carrousel ─────────────────────────────── */
+  .pf-3d-scene {
+    position: relative;
+    height: 520px;
+    overflow: visible;
+    margin-bottom: 2.5rem;
+  }
+  .pf-3d-stage {
+    position: absolute;
+    inset: 0;
+  }
+  .pf-3d-item {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 500px;
+    margin-left: -250px;
+    will-change: transform, opacity;
+    transform-origin: center center;
+    cursor: pointer;
+  }
+  /* Vaste hoogte voor het mock-venster in 3D context */
+  .pf-3d-item .pf-mock { height: 300px; }
+
+  /* ── Navigatie footer ─────────────────────────── */
+  .pf-3d-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  /* Navigatie pijlen (nu in flex-footer, niet absoluut) */
+  .pf-nav {
+    position: static;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,.35);
+    background: rgba(0,0,0,.65);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background .25s, border-color .25s, color .25s, box-shadow .25s;
+  }
+  .pf-nav:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #000;
+    box-shadow: 0 0 24px rgba(201,168,76,.35);
+  }
+  .pf-nav:active { transform: scale(.93); }
+
+  /* ── Stipjes ──────────────────────────────────── */
+  .pf-3d-dots {
+    display: flex;
+    gap: .65rem;
+    align-items: center;
+  }
+  .pf-3d-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--grey-dd);
+    cursor: pointer;
+    transition: background .3s, transform .3s;
+  }
+  .pf-3d-dot.active {
+    background: var(--gold);
+    transform: scale(1.5);
+  }
+
+  /* ── Responsive ───────────────────────────────── */
+  @media (max-width: 900px) {
+    .pf-3d-scene { height: 420px; }
+    .pf-3d-item  { width: 380px; margin-left: -190px; }
+    .pf-3d-item .pf-mock { height: 230px; }
+  }
+  @media (max-width: 600px) {
+    .pf-3d-scene { height: 360px; }
+    .pf-3d-item  { width: 300px; margin-left: -150px; }
+    .pf-3d-item .pf-mock { height: 180px; }
+    .pf-nav { width: 40px; height: 40px; }
+  }
 
   .pf-mock {
     aspect-ratio: 16/10;
@@ -1009,6 +1167,87 @@
   }
   .pf-desc { font-size: .78rem; color: var(--grey-d); }
 
+  /* Live preview iframe */
+  .pf-mock-live { overflow: hidden; }
+  .pf-iframe-outer {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #050300;
+    min-height: 0; /* nodig voor flex-shrink in sommige browsers */
+  }
+  .pf-iframe-scaler {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1440px;
+    transform-origin: top left;
+    pointer-events: none;
+  }
+  .pf-iframe-scaler iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .pf-iframe-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    cursor: pointer;
+  }
+  .pf-bekijk-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    margin-top: 1.1rem;
+    padding: .52rem 1.3rem;
+    background: transparent;
+    border: 1px solid var(--gold-25);
+    color: var(--gold);
+    font-family: var(--fb);
+    font-size: .68rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background .25s, border-color .25s, color .25s;
+    cursor: pointer;
+  }
+  .pf-bekijk-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #000;
+  }
+  .pf-bekijk-btn svg { transition: transform .25s; }
+  .pf-bekijk-btn:hover svg { transform: translate(2px, -2px); }
+
+  /* Placeholder kaarten */
+  .pf-placeholder {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0c0a04, #080600);
+    border-top: 1px solid rgba(201,168,76,.06);
+    min-height: 0;
+  }
+  .pf-placeholder-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .9rem;
+    opacity: .45;
+  }
+  .pf-placeholder-icon { color: var(--gold); }
+  .pf-placeholder-txt {
+    font-family: var(--fb);
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
   /* ═══════════════════════════════════════════════
      WERKWIJZE
   ═══════════════════════════════════════════════ */
@@ -1027,9 +1266,470 @@
 
   .ww-head {
     max-width: 600px;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
   }
   .ww-head .eyebrow { margin-bottom: 1.2rem; }
+
+  /* ═══════════════════════════════════════════════
+     MACBOOK LAPTOP ANIMATIE — Werkwijze (Silver)
+  ═══════════════════════════════════════════════ */
+
+  @keyframes mac-glow-pulse {
+    0%, 100% { box-shadow: 0 0 35px rgba(201,168,76,.07), 0 0 70px rgba(0,0,0,.5); }
+       50%   { box-shadow: 0 0 55px rgba(201,168,76,.15), 0 0 100px rgba(0,0,0,.35); }
+  }
+  @keyframes tb-shimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* ── Wrapper ───────────────────────────────── */
+  .ww-mac-wrap {
+    width: min(85vw, 1060px);
+    margin: 0 auto 5rem;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  /* ── Lid (zilver aluminium) ─────────────────── */
+  .ww-mac-lid {
+    transform-origin: 50% 100%;
+    backface-visibility: hidden;
+    position: relative;
+  }
+  .ww-mac-lid-outer {
+    background: linear-gradient(180deg,
+      #3A3A3C 0%, #2C2C2E 45%, #242426 100%);
+    border: 1px solid #1A1A1C;
+    border-bottom: none;
+    border-radius: 14px 14px 0 0;
+    padding: 10px 10px 0;
+    box-shadow:
+      0 -1px 0 #4A4A4C,
+      inset 0 1px 0 rgba(255,255,255,.08),
+      0 -14px 40px rgba(0,0,0,.4);
+    position: relative;
+  }
+  /* Camera */
+  .ww-mac-camera {
+    position: absolute;
+    top: 6px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #1A1A1C;
+    border: 1px solid #2a2a2c;
+  }
+  .ww-mac-camera::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 2.5px; height: 2.5px;
+    border-radius: 50%;
+    background: rgba(34,100,180,.5);
+  }
+  /* Schermrand (dunne zwarte bezel) */
+  .ww-mac-bezel {
+    background: #0C0C0E;
+    border-radius: 7px 7px 0 0;
+    padding: 20px 9px 0;
+    overflow: hidden;
+  }
+  /* Scherm */
+  .ww-mac-display {
+    background: #050505;
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: mac-glow-pulse 4s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+  .ww-mac-display.glow-active { animation-play-state: running; }
+  .ww-screen-reflection {
+    position: absolute; inset: 0; z-index: 10;
+    background: linear-gradient(130deg,
+      rgba(255,255,255,.03) 0%, transparent 55%, rgba(0,0,0,.04) 100%);
+    pointer-events: none;
+    border-radius: 3px;
+  }
+
+  /* ── Status bar ─────────────────────────────── */
+  .ww-mac-statusbar {
+    height: clamp(16px, 2vw, 22px);
+    background: rgba(10,10,12,.96);
+    display: flex;
+    align-items: center;
+    padding: 0 clamp(8px, 1.2%, 14px);
+    gap: clamp(8px, 1.5%, 18px);
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    position: relative;
+    z-index: 5;
+  }
+  .ww-mac-logo {
+    font-family: var(--fh);
+    font-size: clamp(.55rem, .9vw, .78rem);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: .06em;
+    flex-shrink: 0;
+  }
+  .ww-mac-status-items {
+    display: flex;
+    gap: clamp(8px, 1.2%, 16px);
+    flex: 1;
+  }
+  .ww-mac-status-items span {
+    font-size: clamp(.4rem, .7vw, .56rem);
+    color: rgba(255,255,255,.65);
+    letter-spacing: .02em;
+    white-space: nowrap;
+  }
+  .ww-mac-clock {
+    font-size: clamp(.4rem, .65vw, .52rem);
+    color: rgba(255,255,255,.6);
+    white-space: nowrap;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  /* ── Scherminhoud: 4 stappen ────────────────── */
+  .ww-mac-screen-content {
+    flex: 1;
+    background: linear-gradient(155deg, #070608, #050505, #070608);
+    padding: clamp(10px, 1.8%, 22px) clamp(10px, 2%, 24px) clamp(8px, 1.4%, 18px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1%, 14px);
+    position: relative;
+    overflow: hidden;
+  }
+  .ww-mac-screen-content::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 55%; height: 40%;
+    background: radial-gradient(ellipse, rgba(201,168,76,.055) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  /* Scherm-header balk */
+  .ww-mac-scr-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    padding-bottom: clamp(5px, .9%, 11px);
+    border-bottom: 1px solid rgba(201,168,76,.14);
+  }
+  .ww-mac-scr-eyebrow {
+    font-size: clamp(.38rem, .85vw, .6rem);
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .ww-mac-scr-title {
+    font-family: var(--fh);
+    font-size: clamp(.6rem, 1.4vw, 1rem);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  /* 4-koloms stap-grid */
+  .ww-mac-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    flex: 2;
+    min-height: 0;
+    position: relative;
+  }
+  /* Verbindingslijn ONDER de stap-nummers (loopt van ring tot ring) */
+  .ww-mac-steps-grid::before {
+    content: '';
+    position: absolute;
+    top: clamp(28px, 4.5vw, 55px);
+    left: clamp(14px, 2.25vw, 27px);
+    right: clamp(14px, 2.25vw, 27px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-25) 10%, var(--gold-25) 90%, transparent);
+    z-index: 0;
+  }
+  .ww-mac-step-card {
+    padding: 0 clamp(8px, 1.5%, 18px) 0 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+  }
+  .ww-mac-step-card:last-child { padding-right: 0; }
+  /* Nummer-ring (zelfde als .ww-num) */
+  .ww-ms-num-wrap { margin-bottom: clamp(.6rem, 1.2vw, 1.4rem); }
+  .ww-ms-num-ring {
+    width: clamp(28px, 4.5vw, 55px);
+    height: clamp(28px, 4.5vw, 55px);
+    border: 1px solid rgba(201,168,76,.3);
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background .4s, border-color .4s;
+  }
+  .ww-mac-step-card.card-lit .ww-ms-num-ring {
+    background: rgba(201,168,76,.08);
+    border-color: var(--gold);
+  }
+  .ww-ms-num {
+    font-family: var(--fh);
+    font-size: clamp(.7rem, 1.45vw, 1.4rem);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: .02em;
+    line-height: 1;
+  }
+  /* Icoon */
+  .ww-ms-icon {
+    width: clamp(16px, 2.2vw, 28px);
+    height: clamp(16px, 2.2vw, 28px);
+    color: var(--gold);
+    margin-bottom: clamp(.5rem, .9vw, 1rem);
+    flex-shrink: 0;
+  }
+  /* Titel */
+  .ww-ms-title {
+    font-family: var(--fh);
+    font-size: clamp(.85rem, 1.4vw, 1.25rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--white);
+    margin-bottom: clamp(.25rem, .5vw, .55rem);
+    line-height: 1.2;
+    min-height: 1em;
+  }
+  /* Beschrijving */
+  .ww-ms-body {
+    font-size: clamp(.6rem, .95vw, .875rem);
+    color: var(--grey-d);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  /* ── Terminal onderaan scherm ──────────────── */
+  .ww-mac-terminal {
+    flex: 1;
+    min-height: 0;
+    background: #040405;
+    border: 1px solid rgba(201,168,76,.15);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity .4s;
+  }
+  .ww-mac-terminal.term-visible { opacity: 1; }
+  .ww-term-header {
+    background: #0E0E10;
+    padding: clamp(3px, .35vw, 5px) clamp(6px, .8vw, 10px);
+    display: flex;
+    align-items: center;
+    gap: clamp(5px, .6vw, 8px);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    flex-shrink: 0;
+  }
+  .ww-term-dots { display: flex; gap: clamp(3px, .35vw, 5px); flex-shrink: 0; }
+  .ww-term-dot {
+    width: clamp(5px, .65vw, 8px);
+    height: clamp(5px, .65vw, 8px);
+    border-radius: 50%;
+  }
+  .ww-td-r { background: #FF5F57; }
+  .ww-td-y { background: #FEBC2E; }
+  .ww-td-g { background: #28C840; }
+  .ww-term-title {
+    flex: 1;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: clamp(.35rem, .55vw, .48rem);
+    color: rgba(255,255,255,.3);
+    letter-spacing: .08em;
+  }
+  .ww-term-body {
+    flex: 1;
+    padding: clamp(5px, .7vw, 9px) clamp(8px, 1vw, 13px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(3px, .4vw, 5px);
+    overflow: hidden;
+  }
+  .ww-term-line {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(.5rem, .78vw, .68rem);
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 0;
+    color: rgba(255,255,255,.45);
+  }
+  .ww-term-line.ww-tl-cmd  { color: rgba(201,168,76,.85); }
+  .ww-term-line.ww-tl-ok   { color: #4ADE80; }
+  .ww-term-line.ww-tl-done { color: var(--gold); font-weight: 700; }
+
+  /* ── Scharnier (antraciet) ──────────────────── */
+  .ww-mac-hinge {
+    height: 5px;
+    background: linear-gradient(180deg, #222224, #1C1C1E);
+    border-left: 1px solid #141416;
+    border-right: 1px solid #141416;
+    position: relative;
+  }
+  .ww-mac-hinge::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg,
+      transparent 0%, rgba(255,255,255,.08) 50%, transparent 100%);
+  }
+
+  /* ── Base (antraciet/space gray) ────────────── */
+  .ww-mac-base {
+    background: linear-gradient(180deg,
+      #2C2C2E 0%, #242426 40%, #1C1C1E 100%);
+    border: 1px solid #1A1A1C;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 7px 20px 12px;
+    box-shadow:
+      0 22px 60px rgba(0,0,0,.65),
+      0 8px 22px rgba(0,0,0,.4),
+      inset 0 -1px 0 rgba(0,0,0,.3);
+  }
+  /* Touch bar */
+  .ww-mac-touchbar {
+    height: clamp(6px, .9vw, 9px);
+    background: #1A1A1C;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    gap: 4px;
+    overflow: hidden;
+  }
+  .ww-tb-esc { width: 18px; height: 4px; background: #2A2A2C; border-radius: 2px; flex-shrink: 0; }
+  .ww-tb-strip {
+    flex: 1; height: 4px;
+    background: #222224;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .ww-tb-strip::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg,
+      transparent 0%, rgba(201,168,76,.25) 45%,
+      rgba(201,168,76,.4) 55%, transparent 100%);
+    transform: translateX(-100%);
+    animation: tb-shimmer 3.5s ease-in-out infinite 2.5s;
+  }
+  .ww-tb-touch { width: 16px; height: 5px; background: #2a2a2c; border-radius: 2px; flex-shrink: 0; }
+  /* Keyboard: donkere toetsen op zilveren basis */
+  .ww-mac-keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 7px;
+  }
+  .ww-mac-kb-row {
+    height: clamp(7px, 1.3vw, 14px);
+    border-radius: 2px;
+    background: repeating-linear-gradient(
+      90deg,
+      #1C1C1E 0px, #1C1C1E calc(6.2% - 2px),
+      #2C2C2E calc(6.2% - 2px), #2C2C2E 6.2%
+    );
+  }
+  .ww-mac-kb-row.ww-kb-fn {
+    height: clamp(5px, .85vw, 9px);
+    background: repeating-linear-gradient(
+      90deg,
+      #1A1A1C 0px, #1A1A1C calc(3.5% - 1.5px),
+      #2C2C2E calc(3.5% - 1.5px), #2C2C2E 3.5%
+    );
+  }
+  .ww-mac-kb-row.ww-kb-bottom {
+    display: flex; gap: 2px;
+    background: none;
+    height: clamp(7px, 1.3vw, 14px);
+  }
+  .ww-kb-bottom-key { height: 100%; background: #1C1C1E; border-radius: 2px; }
+  .ww-kb-bottom-key.ww-kb-space { flex: 3; }
+  .ww-kb-bottom-key.ww-kb-sm { flex: 1; }
+  /* Trackpad: antraciet glas */
+  .ww-mac-trackpad {
+    width: 30%;
+    height: clamp(16px, 2.6vw, 28px);
+    background: linear-gradient(135deg, #333335, #262628);
+    border: 1px solid #141416;
+    border-radius: 5px;
+    margin: 0 auto;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,.04);
+  }
+
+  /* ── Responsive ─────────────────────────────── */
+  @media (max-width: 768px) {
+    .ww-mac-wrap { width: min(96vw, 720px); }
+  }
+  @media (max-width: 640px) {
+    /* Terminal verbergen — te weinig ruimte op mobiel */
+    .ww-mac-terminal { display: none !important; }
+
+    /* Laptop schaalt mee met het scherm */
+    .ww-mac-wrap { width: 96vw !important; }
+    /* Hoogte niet meer vastgepind aan 16/10 — laat groeien voor 2×2 grid */
+    .ww-mac-display { aspect-ratio: unset !important; }
+    .ww-mac-screen-content { overflow: visible !important; }
+    /* Schermtitel-balk verbergen voor ruimte */
+    .ww-mac-scr-header { display: none !important; }
+
+    /* 2×2 stappenraster */
+    .ww-mac-steps-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.4rem !important;
+    }
+    .ww-mac-steps-grid::before { display: none; }
+
+    .ww-mac-step-card { padding: 0.5rem 0.4rem !important; }
+    .ww-ms-num-wrap { margin-bottom: 0.3rem !important; }
+    .ww-ms-num-ring {
+      width: clamp(20px, 6vw, 28px) !important;
+      height: clamp(20px, 6vw, 28px) !important;
+    }
+    .ww-ms-num { font-size: clamp(.5rem, 2.5vw, .8rem) !important; }
+    .ww-ms-icon {
+      width: clamp(12px, 3.5vw, 18px) !important;
+      height: clamp(12px, 3.5vw, 18px) !important;
+      margin-bottom: 0.2rem !important;
+    }
+    .ww-ms-title {
+      font-size: clamp(.7rem, 3vw, .95rem) !important;
+      margin-bottom: 0.15rem !important;
+    }
+    .ww-ms-body {
+      font-size: clamp(.55rem, 2.2vw, .72rem) !important;
+      line-height: 1.4 !important;
+    }
+  }
 
   .ww-steps {
     display: grid;
@@ -1134,8 +1834,21 @@
     background: var(--black-c);
     border: 1px solid rgba(255,255,255,.07);
     padding: 2.8rem 2.5rem;
-    height: auto !important;
+    height: 100%;
     transition: border-color .4s;
+  }
+  #rev-swiper .swiper-wrapper {
+    align-items: stretch;
+  }
+  #rev-swiper .swiper-slide {
+    display: flex;
+    align-items: stretch;
+    height: auto !important;   /* overschrijft de JS-gestelde hoogte per slide */
+    box-sizing: border-box;
+  }
+  #rev-swiper .rev-card {
+    height: 100%;
+    box-sizing: border-box;
   }
   .rev-card:hover { border-color: var(--gold-25); }
 
@@ -1210,7 +1923,7 @@
     grid-template-columns: 5fr 6fr;
     gap: 8rem;
     max-width: 1200px;
-    align-items: start;
+    align-items: flex-start;
   }
 
   .ct-info .eyebrow  { margin-bottom: 1.4rem; }
@@ -1232,6 +1945,7 @@
     justify-content: center;
     font-size: 1.05rem;
     flex-shrink: 0;
+    color: var(--gold);
     transition: background .3s, border-color .3s;
   }
   .ct-icon:hover { background: var(--gold-10); border-color: var(--gold); }
@@ -1422,6 +2136,8 @@
     .stat-cell:nth-child(2) { border-right: none; }
 
     .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .pricing-grid > .pc,
+    .cb-grid > .pc { margin-top: 0 !important; }
     .ww-steps { grid-template-columns: 1fr; gap: 2.8rem; }
     .form-row { grid-template-columns: 1fr; }
     .onderhoud { flex-direction: column; align-items: flex-start; }
@@ -1432,9 +2148,234 @@
     .ft-grid { grid-template-columns: 1fr; }
     .stats-inner { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ═══════════════════════════════════════════════
+     CHATBOT PRICING SECTIE
+  ═══════════════════════════════════════════════ */
+  #chatbot-pricing {
+    padding: 11rem 5vw;
+    background: var(--black-s);   /* #080808 — zichtbaar donker maar niet puur zwart */
+    position: relative;
+    overflow: hidden;
+  }
+  #chatbot-pricing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;                   /* blijft achter de content */
+    background:
+      radial-gradient(ellipse 55% 45% at 15% 30%, rgba(201,168,76,.04) 0%, transparent 70%),
+      radial-gradient(ellipse 45% 50% at 85% 75%, rgba(201,168,76,.03) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  /* Zorg dat alle content boven de ::before pseudo-layer ligt */
+  #chatbot-pricing > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Billing toggle */
+  .cb-toggle-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4.5rem;
+  }
+  .cb-toggle-label {
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--grey-d);
+    transition: color .3s;
+  }
+  .cb-toggle-label.active { color: var(--white); }
+
+  .cb-discount {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-size: .55rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: .2rem .55rem;
+    margin-left: .5rem;
+    vertical-align: middle;
+  }
+
+  .cb-toggle {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: var(--black-e);
+    border: 1px solid var(--grey-dd);
+    border-radius: 99px;
+    cursor: pointer;
+    padding: 0;
+    transition: border-color .3s, background .3s;
+    flex-shrink: 0;
+  }
+  .cb-toggle[aria-pressed="true"] {
+    border-color: var(--gold-25);
+    background: rgba(201,168,76,.08);
+  }
+  .cb-toggle-knob {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--grey-d);
+    transition: transform .3s var(--ease), background .3s;
+  }
+  .cb-toggle[aria-pressed="true"] .cb-toggle-knob {
+    transform: translateX(20px);
+    background: var(--gold);
+  }
+
+  /* 3-column card grid */
+  .cb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    max-width: 1100px;
+    margin: 0 auto 1.8rem;
+    align-items: start;
+  }
+
+  /* Trap-effect: kaarten lopen van links naar rechts omlaag via oplopende margin-top */
+  .pricing-grid > .pc:nth-child(1) { margin-top: 0px;  padding-bottom: 1.8rem; }
+  .pricing-grid > .pc:nth-child(2) { margin-top: 20px; padding-bottom: 2.8rem; }
+  .pricing-grid > .pc:nth-child(3) { margin-top: 40px; padding-bottom: 3.8rem; }
+  .pricing-grid > .pc:nth-child(4) { margin-top: 60px; padding-bottom: 4.8rem; }
+
+  /* Chatbot pakketten (3 kaarten) */
+  .cb-grid > .pc:nth-child(1) { margin-top: 0px;  padding-bottom: 2.0rem; }
+  .cb-grid > .pc:nth-child(2) { margin-top: 20px; padding-bottom: 2.7rem; }
+  .cb-grid > .pc:nth-child(3) { margin-top: 40px; padding-bottom: 3.4rem; }
+
+  /* Check / cross feature items */
+  .cb-features {
+    list-style: none;
+    margin-bottom: 2.8rem;
+  }
+  .cb-features li {
+    font-size: .83rem;
+    padding: .6rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    line-height: 1.5;
+  }
+  .cb-features li.included { color: var(--grey); }
+  .cb-features li.excluded { color: var(--grey-d); }
+
+  .cb-check,
+  .cb-cross {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    margin-top: .1rem;
+  }
+  .cb-check { color: var(--gold); }
+  .cb-cross  { color: var(--grey-dd); }
+
+  /* Jaarlijks-prijs animatie */
+  .cb-price-yearly { display: none; }
+  .yearly-mode .cb-price-monthly { display: none; }
+  .yearly-mode .cb-price-yearly  { display: block; }
+
+  /* Voetnoot */
+  .cb-footnote {
+    text-align: center;
+    font-size: .7rem;
+    color: var(--grey-d);
+    letter-spacing: .06em;
+    max-width: 700px;
+    margin: 4rem auto 0;
+  }
+  .cb-footnote::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--grey-dd), transparent);
+    margin-bottom: 1.2rem;
+  }
+
+  /* Responsive chatbot grid */
+  @media (max-width: 900px) {
+    .cb-grid { grid-template-columns: 1fr 1fr; max-width: 700px; }
+  }
+  @media (max-width: 600px) {
+    .cb-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+  }
+
+  /* ── Critical Swiper layout — voorkomt CLS bij async laden van swiper CSS ── */
+  .swiper { overflow: hidden; }
+  .swiper-wrapper { display: flex; width: 100%; }
+  .swiper-slide { flex-shrink: 0; width: 100%; position: relative; }
   </style>
 </head>
 <body>
+
+<!-- ═══════════════ COOKIE CONSENT ═══════════════ -->
+<div id="cookie-banner" role="dialog" aria-label="Cookiemelding" style="
+  display:none;
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:99998;
+  background:rgba(8,8,8,.97);
+  border-top:1px solid rgba(201,168,76,.2);
+  padding:1.4rem 5vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+  flex-wrap:wrap;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+">
+  <p style="margin:0;font-family:'Inter',sans-serif;font-size:.78rem;color:#aaa;line-height:1.65;max-width:720px;">
+    Wij gebruiken functionele en analytische cookies om de website goed te laten werken en het gebruik te verbeteren.
+    Door verder te gaan of op "Accepteren" te klikken, ga je akkoord met ons
+    <a href="privacybeleid.html" style="color:#C9A84C;text-decoration:underline;">privacybeleid</a>.
+  </p>
+  <div style="display:flex;gap:.8rem;flex-shrink:0;">
+    <button id="cookie-accept" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:600;
+      letter-spacing:.15em;text-transform:uppercase;cursor:pointer;
+      background:#C9A84C;color:#000;border:none;padding:.7rem 1.6rem;
+      transition:background .25s;
+    " onmouseover="this.style.background='#F0C060'" onmouseout="this.style.background='#C9A84C'">
+      Accepteren
+    </button>
+    <button id="cookie-decline" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;
+      letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+      background:transparent;color:#888;border:1px solid rgba(255,255,255,.15);
+      padding:.7rem 1.4rem;transition:color .25s,border-color .25s;
+    " onmouseover="this.style.color='#ccc';this.style.borderColor='rgba(255,255,255,.35)'"
+       onmouseout="this.style.color='#888';this.style.borderColor='rgba(255,255,255,.15)'">
+      Alleen functioneel
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  const banner = document.getElementById('cookie-banner');
+  if (!localStorage.getItem('pl-cookie-consent')) banner.style.display = 'flex';
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'all');
+    banner.style.display = 'none';
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'functional');
+    banner.style.display = 'none';
+  });
+})();
+</script>
 
 <!-- ═══════════════ PRELOADER ═══════════════ -->
 <div id="preloader">
@@ -1486,7 +2427,7 @@
   <div class="hero-overlay"></div>
 
   <div class="hero-inner">
-    <div class="hero-eyebrow eyebrow">Premium Webdesign Bureau — Nederland</div>
+    <div class="hero-eyebrow eyebrow">Premium Webdesign Bureau Nederland</div>
 
     <h1 class="hero-headline">
       <span class="hero-line"><span class="word">Wij Maken</span></span>
@@ -1499,10 +2440,6 @@
     </div>
   </div>
 
-  <div class="hero-scroll-hint">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
 </section>
 
 <!-- Stats bar -->
@@ -1546,13 +2483,13 @@
         Wij Maken<br>Digitale<br><span class="g">Meesterwerken</span>
       </h2>
       <p class="body-text oo-body">
-        PL Web Solutions is een premium webdesign bureau dat zich volledig toelegt op
-        lokale ondernemers die willen groeien. Wij geloven dat jouw website jouw
-        beste verkoper moet zijn — 24/7, feilloos en onweerstaanbaar mooi.
+        Wij zijn Pleun (24) en Lars (26) en wij kennen elkaar al meer dan twaalf jaar — van schoolbanken tot gedeelde dromen tot het oprichten van ons eigen bureau. PL Web Solutions ontstond vanuit een simpele overtuiging: lokale ondernemers verdienen een website die écht werkt, gebouwd door mensen die begrijpen wat er op het spel staat. Geen afvinklijstje, maar een verhaal dat klopt.
       </p>
       <p class="body-text oo-body">
-        Van restaurant tot advocatenkantoor, van kapper tot fitnessstudio: wij bouwen
-        op maat, denken strategisch mee en leveren resultaat dat je kunt meten.
+        Wat ons drijft? Het moment waarop een klant belt om te vertellen dat de reserveringen verdrievoudigd zijn, of dat de telefoon niet meer stopt. Wij zijn gepassioneerd over creatieve, op maat gemaakte projecten — en nog meer over de mensen erachter. Van restaurant tot fitnessstudio, van kapper tot advocaat: we denken strategisch mee en bouwen iets waar jij trots op kunt zijn.
+      </p>
+      <p class="body-text oo-body">
+        Wat ons echt onderscheidt: jij belt gewoon met ons zelf, niet met een anonieme accountmanager. Korte lijnen, eerlijk advies, snelle beslissingen. We stoppen pas als jij 100% tevreden bent. Niet omdat het zo in de kleine lettertjes staat — maar omdat we het simpelweg niet anders kunnen.
       </p>
       <div class="oo-cta btn-group">
         <a href="#contact" class="btn btn-primary"><span>Start Jouw Project</span></a>
@@ -1588,6 +2525,7 @@
   <div class="pricing-grid">
     <!-- Starter -->
     <div class="pc">
+      <div class="pc-shimmer"></div>
       <div class="pc-tier">Starter</div>
       <div class="pc-price"><sup>€</sup>349</div>
       <div class="pc-period">Eenmalige investering</div>
@@ -1604,6 +2542,7 @@
 
     <!-- Business (featured) -->
     <div class="pc feat">
+      <div class="pc-shimmer"></div>
       <div class="pc-badge">Meest Gekozen</div>
       <div class="pc-tier">Business</div>
       <div class="pc-price"><sup>€</sup>749</div>
@@ -1618,11 +2557,12 @@
         <li>Core Web Vitals geoptimaliseerd</li>
         <li>Oplevering binnen 7 werkdagen</li>
       </ul>
-      <a href="#contact" class="btn btn-primary"><span>Kies Business</span></a>
+      <a href="#contact" class="btn btn-ghost">Kies Business</a>
     </div>
 
     <!-- Premium -->
     <div class="pc">
+      <div class="pc-shimmer"></div>
       <div class="pc-tier">Premium</div>
       <div class="pc-price"><sup>€</sup>1.750</div>
       <div class="pc-period">Eenmalige investering</div>
@@ -1635,12 +2575,14 @@
         <li>Professionele copywriting</li>
         <li>Meertalige ondersteuning</li>
         <li>6 maanden gratis support</li>
+        <li>Oplevering binnen 14 werkdagen</li>
       </ul>
       <a href="#contact" class="btn btn-ghost">Kies Premium</a>
     </div>
 
     <!-- Elite -->
     <div class="pc elite">
+      <div class="pc-shimmer"></div>
       <div class="pc-badge">Elite</div>
       <div class="pc-tier">Elite</div>
       <div class="pc-price"><sup>€</sup>3.500</div>
@@ -1678,6 +2620,182 @@
   </div>
 </section>
 
+<!-- ═══════════════ CHATBOT PRICING ═══════════════ -->
+<section id="chatbot-pricing">
+  <div class="diensten-head">
+    <div class="eyebrow">AI Chatbot Pakketten</div>
+    <h2 class="section-title">Chatbot Op Maat,<br><span class="g shimmer-gold">Elke Schaal</span></h2>
+    <p class="body-text">Activeer een slimme chatbot op jouw website. Transparante maandelijkse abonnementen, maandelijks opzegbaar.</p>
+  </div>
+
+  <!-- Billing toggle -->
+  <div class="cb-toggle-wrap">
+    <span class="cb-toggle-label active" id="cb-monthly-label">Maandelijks</span>
+    <button
+      class="cb-toggle"
+      id="cb-billing-toggle"
+      role="switch"
+      aria-pressed="false"
+      aria-label="Schakel tussen maandelijks en jaarlijks betalen"
+    >
+      <span class="cb-toggle-knob"></span>
+    </button>
+    <span class="cb-toggle-label" id="cb-yearly-label">
+      Jaarlijks<span class="cb-discount">2 maanden gratis</span>
+    </span>
+  </div>
+
+  <!-- 3 pricing cards -->
+  <div class="cb-grid" id="cb-grid">
+
+    <!-- Starter -->
+    <div class="pc cb-card">
+      <div class="pc-shimmer"></div>
+      <div class="pc-tier">Starter</div>
+
+      <div class="pc-price cb-price-monthly"><sup>€</sup>49</div>
+      <div class="cb-price-yearly">
+        <div class="pc-price"><sup>€</sup>41</div>
+      </div>
+      <div class="pc-period cb-price-monthly">/maand excl. btw</div>
+      <div class="pc-period cb-price-yearly">/maand bij jaarlijkse betaling excl. btw</div>
+
+      <div class="pc-divider"></div>
+
+      <ul class="cb-features">
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Chatbot op website
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          500 gesprekken/maand
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Basis statistieken
+        </li>
+        <li class="excluded">
+          <svg class="cb-cross" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>
+          WhatsApp koppeling
+        </li>
+        <li class="excluded">
+          <svg class="cb-cross" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>
+          E-mail koppeling
+        </li>
+        <li class="excluded">
+          <svg class="cb-cross" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>
+          Eigen branding &amp; kleuren
+        </li>
+      </ul>
+
+      <a href="#contact" class="btn btn-ghost">Aan de slag</a>
+    </div>
+
+    <!-- Business (featured) -->
+    <div class="pc feat cb-card">
+      <div class="pc-shimmer"></div>
+      <div class="pc-badge">Meest Gekozen</div>
+      <div class="pc-tier">Business</div>
+
+      <div class="pc-price cb-price-monthly"><sup>€</sup>119</div>
+      <div class="cb-price-yearly">
+        <div class="pc-price"><sup>€</sup>99</div>
+      </div>
+      <div class="pc-period cb-price-monthly">/maand excl. btw</div>
+      <div class="pc-period cb-price-yearly">/maand bij jaarlijkse betaling excl. btw</div>
+
+      <div class="pc-divider"></div>
+
+      <ul class="cb-features">
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Chatbot op website
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          2.500 gesprekken/maand
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          WhatsApp koppeling
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          E-mail koppeling
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Eigen branding &amp; kleuren
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Uitgebreide rapportage
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          E-mail support
+        </li>
+      </ul>
+
+      <a href="#contact" class="btn btn-ghost">Aan de slag</a>
+    </div>
+
+    <!-- Premium -->
+    <div class="pc cb-card">
+      <div class="pc-shimmer"></div>
+      <div class="pc-tier">Premium</div>
+
+      <div class="pc-price cb-price-monthly"><sup>€</sup>199</div>
+      <div class="cb-price-yearly">
+        <div class="pc-price"><sup>€</sup>166</div>
+      </div>
+      <div class="pc-period cb-price-monthly">/maand excl. btw</div>
+      <div class="pc-period cb-price-yearly">/maand bij jaarlijkse betaling excl. btw</div>
+
+      <div class="pc-divider"></div>
+
+      <ul class="cb-features">
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Chatbot op website
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Onbeperkt gesprekken
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          WhatsApp koppeling
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          E-mail koppeling
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Volledig maatwerk branding
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Geavanceerde analytics
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Prioriteit support + SLA
+        </li>
+      </ul>
+
+      <a href="#contact" class="btn btn-ghost">Aan de slag</a>
+    </div>
+
+  </div>
+
+  <p class="cb-footnote">
+    Alle prijzen zijn excl. btw &nbsp;·&nbsp; Jaarlijks betalen = 2 maanden gratis &nbsp;·&nbsp; Maandelijks opzegbaar
+  </p>
+</section>
+
 <!-- ═══════════════ PORTFOLIO ═══════════════ -->
 <section id="portfolio">
   <div class="pf-head">
@@ -1688,163 +2806,150 @@
     <a href="#contact" class="btn btn-ghost">Jouw Website</a>
   </div>
 
-  <div class="swiper pf-swiper" id="pf-swiper">
-    <div class="swiper-wrapper">
+  <!-- 3D Carrousel Stage -->
+  <div class="pf-3d-scene" id="pf-3d-scene">
+    <div class="pf-3d-stage" id="pf-3d-stage">
 
-      <!-- Slide 1 -->
-      <div class="swiper-slide">
+      <!-- Kaart 0: Restaurant Bella Vista -->
+      <div class="pf-3d-item" data-index="0">
         <div class="pf-slide">
-          <div class="pf-mock" style="display:flex;flex-direction:column;">
-            <div class="mock-chrome">
-              <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
-              <div class="mc-url"></div>
-            </div>
-            <div class="ms-restaurant mock-screen" style="display:flex;flex-direction:column;flex:1;">
-              <div class="mst">Fine Dining</div>
-              <div class="msh">Restaurant<br>Bellavista</div>
-              <div class="msb">Authentieke Italiaanse keuken · Amsterdam</div>
-              <div class="msbt">RESERVEER NU</div>
-              <div class="msi">
-                <div class="msc"></div>
-                <div class="msc"></div>
-                <div class="msc"></div>
+          <div class="pf-mock pf-mock-live" style="display:flex;flex-direction:column;">
+            <div class="mock-chrome" style="justify-content:space-between;padding:0 .9rem;">
+              <div style="display:flex;align-items:center;gap:.35rem;">
+                <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
               </div>
+              <div style="font-size:.48rem;color:#888;letter-spacing:.03em;font-family:var(--fb);">bellavista-amsterdam.nl</div>
+              <div style="font-size:.33rem;color:var(--gold);letter-spacing:.14em;font-weight:600;">● LIVE</div>
+            </div>
+            <div class="pf-iframe-outer">
+              <div class="pf-iframe-scaler">
+                <iframe data-src="../bella-vista/index.html" scrolling="no" frameborder="0" title="Restaurant Bella Vista — live website preview" tabindex="-1"></iframe>
+              </div>
+              <a href="../bella-vista/index.html" target="_blank" class="pf-iframe-overlay" aria-label="Bekijk Restaurant Bella Vista website" tabindex="-1"></a>
             </div>
           </div>
           <div class="pf-info">
-            <div class="pf-tag">Horeca</div>
-            <div class="pf-name">Restaurant Bellavista</div>
-            <div class="pf-desc">Online reserveringen · Menukaart · Galerij</div>
+            <div class="pf-tag">Fine Dining</div>
+            <div class="pf-name">Restaurant Bella Vista</div>
+            <div class="pf-desc">Fine Dining — Amsterdam</div>
+            <a href="../bella-vista/index.html" target="_blank" class="pf-bekijk-btn">
+              <span>Bekijk Website</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Slide 2 -->
-      <div class="swiper-slide">
+      <!-- Kaart 1: Premium Barber — Luxe Cuts -->
+      <div class="pf-3d-item" data-index="1">
         <div class="pf-slide">
-          <div class="pf-mock" style="display:flex;flex-direction:column;">
-            <div class="mock-chrome">
-              <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
-              <div class="mc-url"></div>
+          <div class="pf-mock pf-mock-live" style="display:flex;flex-direction:column;">
+            <div class="mock-chrome" style="justify-content:space-between;padding:0 .9rem;">
+              <div style="display:flex;align-items:center;gap:.35rem;">
+                <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
+              </div>
+              <div style="font-size:.48rem;color:#888;letter-spacing:.03em;font-family:var(--fb);">grainandgrind-amsterdam.nl</div>
+              <div style="font-size:.33rem;color:var(--gold);letter-spacing:.14em;font-weight:600;">● LIVE</div>
             </div>
-            <div class="ms-kapper mock-screen" style="display:flex;flex-direction:column;flex:1;">
-              <div class="msnav">
-                <div class="msnav-logo">LUXE CUTS</div>
-                <div class="msnav-dots">
-                  <div class="msnav-dot"></div><div class="msnav-dot"></div><div class="msnav-dot"></div>
-                </div>
+            <div class="pf-iframe-outer">
+              <div class="pf-iframe-scaler">
+                <iframe data-src="https://graceful-gingersnap-3c9c37.netlify.app/" scrolling="no" frameborder="0" title="Grain &amp; Grind — live website preview" tabindex="-1"></iframe>
               </div>
-              <div class="msbody">
-                <div class="mst">Premium Barbershop</div>
-                <div class="msh">De Perfecte<br>Snit</div>
-                <div class="msgrid">
-                  <div class="mscard"><div class="mscard-n">Classic Cut</div><div class="mscard-p">€25</div></div>
-                  <div class="mscard"><div class="mscard-n">Beard Trim</div><div class="mscard-p">€15</div></div>
-                  <div class="mscard"><div class="mscard-n">Full Package</div><div class="mscard-p">€35</div></div>
-                  <div class="mscard"><div class="mscard-n">Kids Cut</div><div class="mscard-p">€18</div></div>
-                </div>
-              </div>
+              <a href="https://graceful-gingersnap-3c9c37.netlify.app/" target="_blank" class="pf-iframe-overlay" aria-label="Bekijk Grain &amp; Grind website" tabindex="-1"></a>
             </div>
           </div>
           <div class="pf-info">
-            <div class="pf-tag">Kapper</div>
-            <div class="pf-name">Luxe Cuts Barbershop</div>
-            <div class="pf-desc">Afspraken · Prijslijst · Galerij</div>
+            <div class="pf-tag">Koffiezaak</div>
+            <div class="pf-name">De Gouden Boon</div>
+            <div class="pf-desc">Specialty coffee — Amsterdam</div>
+            <a href="https://graceful-gingersnap-3c9c37.netlify.app/" target="_blank" class="pf-bekijk-btn">
+              <span>Bekijk Website</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Slide 3 -->
-      <div class="swiper-slide">
+
+      <!-- Kaart 2: Voyage Luxe -->
+      <div class="pf-3d-item" data-index="2">
         <div class="pf-slide">
-          <div class="pf-mock" style="display:flex;flex-direction:column;">
-            <div class="mock-chrome">
-              <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
-              <div class="mc-url"></div>
+          <div class="pf-mock pf-mock-live" style="display:flex;flex-direction:column;">
+            <div class="mock-chrome" style="justify-content:space-between;padding:0 .9rem;">
+              <div style="display:flex;align-items:center;gap:.35rem;">
+                <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
+              </div>
+              <div style="font-size:.48rem;color:#888;letter-spacing:.03em;font-family:var(--fb);">voyageluxe.nl</div>
+              <div style="font-size:.33rem;color:var(--gold);letter-spacing:.14em;font-weight:600;">● LIVE</div>
             </div>
-            <div class="ms-fitness mock-screen" style="display:flex;flex-direction:column;flex:1;">
-              <div class="mst">Elite Fitness</div>
-              <div class="msh">Jouw Lichaam.<br>Jouw Kracht.</div>
-              <div class="mspills">
-                <div class="mspill">Kracht</div>
-                <div class="mspill">Cardio</div>
-                <div class="mspill">Yoga</div>
+            <div class="pf-iframe-outer">
+              <div class="pf-iframe-scaler">
+                <iframe data-src="../voyage-luxe/index.html" scrolling="no" frameborder="0" title="Voyage Luxe — live website preview" tabindex="-1"></iframe>
               </div>
-              <div class="msstats">
-                <div class="msst"><div class="msst-n">500+</div><div class="msst-l">Leden</div></div>
-                <div class="msst"><div class="msst-n">24/7</div><div class="msst-l">Open</div></div>
-                <div class="msst"><div class="msst-n">15+</div><div class="msst-l">Trainers</div></div>
-              </div>
+              <a href="../voyage-luxe/index.html" target="_blank" class="pf-iframe-overlay" aria-label="Bekijk Voyage Luxe website" tabindex="-1"></a>
             </div>
           </div>
           <div class="pf-info">
-            <div class="pf-tag">Fitness</div>
-            <div class="pf-name">Elite Fitness Studio</div>
-            <div class="pf-desc">Rooster · Trainers · Leden app</div>
+            <div class="pf-tag">Luxe Travel</div>
+            <div class="pf-name">Voyage Luxe</div>
+            <div class="pf-desc">Ultra-premium reiswebsite met cinematische scroll-animaties en video achtergrond</div>
+            <a href="../voyage-luxe/index.html" target="_blank" class="pf-bekijk-btn">
+              <span>Bekijk Website</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Slide 4 -->
-      <div class="swiper-slide">
+      <!-- Kaart 3: Koffiezaak -->
+      <div class="pf-3d-item" data-index="3">
         <div class="pf-slide">
-          <div class="pf-mock" style="display:flex;flex-direction:column;">
-            <div class="mock-chrome" style="background:#0f0f0c;justify-content:space-between;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:.65rem;font-weight:700;color:#C9A84C;letter-spacing:.1em;">VAN DER BERG</div>
-              <div class="mc-url" style="flex:0;width:60px;"></div>
-              <div style="font-size:.32rem;color:#555;letter-spacing:.15em;">ADVOCATEN</div>
+          <div class="pf-mock pf-mock-live" style="display:flex;flex-direction:column;">
+            <div class="mock-chrome" style="justify-content:space-between;padding:0 .9rem;">
+              <div style="display:flex;align-items:center;gap:.35rem;">
+                <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
+              </div>
+              <div style="font-size:.48rem;color:#888;letter-spacing:.03em;font-family:var(--fb);">stucvakman-amsterdam.nl</div>
+              <div style="font-size:.33rem;color:var(--gold);letter-spacing:.14em;font-weight:600;">● LIVE</div>
             </div>
-            <div class="ms-advocaat mock-screen" style="background:#080806;flex:1;display:grid;grid-template-columns:1fr 1fr;">
-              <div class="ms-left">
-                <div class="mst">Juridisch Advies</div>
-                <div class="msh">Uw Recht.<br>Onze Missie.</div>
-                <div class="msb">Meer dan 20 jaar ervaring in arbeidsrecht, familierecht en vastgoed.</div>
-                <div class="mscta">AFSPRAAK MAKEN</div>
+            <div class="pf-iframe-outer">
+              <div class="pf-iframe-scaler">
+                <iframe data-src="https://adorable-marshmallow-f5e353.netlify.app/" scrolling="no" frameborder="0" title="LG Stucadoors — live website preview" tabindex="-1"></iframe>
               </div>
-              <div class="ms-right">
-                <div style="font-size:2.5rem;opacity:.18;">⚖️</div>
-              </div>
+              <a href="https://adorable-marshmallow-f5e353.netlify.app/" target="_blank" class="pf-iframe-overlay" aria-label="Bekijk LG Stucadoors website" tabindex="-1"></a>
             </div>
           </div>
           <div class="pf-info">
-            <div class="pf-tag">Juridisch</div>
-            <div class="pf-name">Van der Berg Advocaten</div>
-            <div class="pf-desc">Vertrouwen · Expertise · Conversie</div>
+            <div class="pf-tag">Stukadoor</div>
+            <div class="pf-name">LG Stucadoors</div>
+            <div class="pf-desc">Stukadoor — Amsterdam</div>
+            <a href="https://adorable-marshmallow-f5e353.netlify.app/" target="_blank" class="pf-bekijk-btn">
+              <span>Bekijk Website</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Slide 5 -->
-      <div class="swiper-slide">
-        <div class="pf-slide">
-          <div class="pf-mock" style="display:flex;flex-direction:column;">
-            <div class="mock-chrome" style="background:#080f08;justify-content:space-between;">
-              <div style="font-family:'Cormorant Garamond',serif;font-size:.7rem;font-weight:700;color:#fff;">Flora &amp; Bloom</div>
-              <div style="padding:.12rem .5rem;background:#6abf6a;font-size:.3rem;color:#000;letter-spacing:.1em;">SHOP</div>
-            </div>
-            <div class="ms-bloemen mock-screen" style="flex:1;">
-              <div class="mst">Verse Bloemen</div>
-              <div class="msh">Bezorgd Aan<br>Uw Deur</div>
-              <div class="msitems">
-                <div class="msitem"><div class="msitem-img"></div><div class="msitem-lbl">Rozen</div><div class="msitem-p">€12,99</div></div>
-                <div class="msitem"><div class="msitem-img" style="background:linear-gradient(135deg,#0a150a,#051005);"></div><div class="msitem-lbl">Tulpen</div><div class="msitem-p">€8,99</div></div>
-                <div class="msitem"><div class="msitem-img" style="background:linear-gradient(135deg,#0d180d,#080f08);"></div><div class="msitem-lbl">Boeket</div><div class="msitem-p">€24,99</div></div>
-              </div>
-            </div>
-          </div>
-          <div class="pf-info">
-            <div class="pf-tag">Retail</div>
-            <div class="pf-name">Flora &amp; Bloom</div>
-            <div class="pf-desc">Webshop · Bezorging · Seizoenen</div>
-          </div>
-        </div>
-      </div>
+    </div><!-- /.pf-3d-stage -->
+  </div><!-- /.pf-3d-scene -->
 
+  <!-- Navigatie: pijlen + stipjes -->
+  <div class="pf-3d-footer">
+    <button class="pf-nav pf-nav-prev" id="pf-nav-prev" aria-label="Vorige kaart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="pf-3d-dots" id="pf-3d-dots">
+      <span class="pf-3d-dot"></span>
+      <span class="pf-3d-dot"></span>
+      <span class="pf-3d-dot"></span>
+      <span class="pf-3d-dot"></span>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
+    <button class="pf-nav pf-nav-next" id="pf-nav-next" aria-label="Volgende kaart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
   </div>
+
 </section>
 
 <!-- ═══════════════ WERKWIJZE ═══════════════ -->
@@ -1854,32 +2959,125 @@
     <h2 class="section-title">Van Idee Naar<br><span class="g shimmer-gold">Online Succes</span></h2>
   </div>
 
-  <div class="ww-steps">
-    <div class="ww-step">
-      <div class="ww-num-wrap"><div class="ww-num">01</div></div>
-      <span class="ww-icon">💬</span>
-      <div class="ww-title">Gratis Gesprek</div>
-      <p class="ww-body">We plannen een vrijblijvend gesprek om jouw wensen, doelen en budget te bespreken. Geen verplichtingen — gewoon eerlijk advies op maat.</p>
-    </div>
-    <div class="ww-step">
-      <div class="ww-num-wrap"><div class="ww-num">02</div></div>
-      <span class="ww-icon">✏️</span>
-      <div class="ww-title">Strategie &amp; Design</div>
-      <p class="ww-body">Wij ontwerpen een uniek visueel concept dat jouw merk perfect representeert. Jij geeft feedback, wij verfijnen tot het perfect is.</p>
-    </div>
-    <div class="ww-step">
-      <div class="ww-num-wrap"><div class="ww-num">03</div></div>
-      <span class="ww-icon">⚡</span>
-      <div class="ww-title">Bouwen &amp; Animeren</div>
-      <p class="ww-body">Onze developers bouwen de website met premium animaties, snelle laadtijden en volledige SEO-optimalisatie. Pixel-perfect afgewerkt.</p>
-    </div>
-    <div class="ww-step">
-      <div class="ww-num-wrap"><div class="ww-num">04</div></div>
-      <span class="ww-icon">🚀</span>
-      <div class="ww-title">Live &amp; Groei</div>
-      <p class="ww-body">Na jouw goedkeuring gaat de site live. Wij verzorgen de overdracht, training en optioneel doorlopend onderhoud voor slechts €79/maand.</p>
-    </div>
-  </div>
+  <!-- MacBook Laptop animatie -->
+  <div class="ww-mac-wrap" id="ww-mac-wrap" aria-label="Laptop met werkwijze stappen">
+
+    <!-- ── Lid (klapt open) ── -->
+    <div class="ww-mac-lid" id="ww-mac-lid">
+      <div class="ww-mac-lid-outer">
+        <div class="ww-mac-camera"></div>
+        <div class="ww-mac-bezel">
+          <div class="ww-mac-display" id="ww-mac-display">
+
+            <!-- Status bar -->
+            <div class="ww-mac-statusbar">
+              <span class="ww-mac-logo">PL</span>
+              <div class="ww-mac-status-items">
+                <span>Werkwijze</span>
+                <span>Diensten</span>
+                <span>Contact</span>
+              </div>
+              <span class="ww-mac-clock" id="ww-mac-time">09:41</span>
+            </div>
+
+            <!-- Scherm inhoud: 4 stappen -->
+            <div class="ww-mac-screen-content">
+              <div class="ww-mac-scr-header">
+                <span class="ww-mac-scr-eyebrow">Werkwijze</span>
+                <span class="ww-mac-scr-title">Van Idee Naar Online Succes</span>
+              </div>
+              <div class="ww-mac-steps-grid" id="ww-mac-steps-grid">
+
+                <!-- Stap 01 -->
+                <div class="ww-mac-step-card" data-step="0">
+                  <div class="ww-ms-num-wrap"><div class="ww-ms-num-ring"><div class="ww-ms-num">01</div></div></div>
+                  <svg class="ww-ms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
+                  <div class="ww-ms-title" data-text="Gratis Gesprek"></div>
+                  <div class="ww-ms-body" data-text="We plannen een vrijblijvend gesprek om jouw wensen, doelen en budget te bespreken. Geen verplichtingen — eerlijk advies op maat."></div>
+                </div>
+
+                <!-- Stap 02 -->
+                <div class="ww-mac-step-card" data-step="1">
+                  <div class="ww-ms-num-wrap"><div class="ww-ms-num-ring"><div class="ww-ms-num">02</div></div></div>
+                  <svg class="ww-ms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/></svg>
+                  <div class="ww-ms-title" data-text="Strategie &amp; Design"></div>
+                  <div class="ww-ms-body" data-text="Wij ontwerpen een uniek visueel concept dat jouw merk perfect representeert. Jij geeft feedback, wij verfijnen tot het perfect is."></div>
+                </div>
+
+                <!-- Stap 03 -->
+                <div class="ww-mac-step-card" data-step="2">
+                  <div class="ww-ms-num-wrap"><div class="ww-ms-num-ring"><div class="ww-ms-num">03</div></div></div>
+                  <svg class="ww-ms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"/></svg>
+                  <div class="ww-ms-title" data-text="Bouwen &amp; Animeren"></div>
+                  <div class="ww-ms-body" data-text="Onze developers bouwen de website met premium animaties, snelle laadtijden en volledige SEO-optimalisatie. Pixel-perfect afgewerkt."></div>
+                </div>
+
+                <!-- Stap 04 -->
+                <div class="ww-mac-step-card" data-step="3">
+                  <div class="ww-ms-num-wrap"><div class="ww-ms-num-ring"><div class="ww-ms-num">04</div></div></div>
+                  <svg class="ww-ms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
+                  <div class="ww-ms-title" data-text="Live &amp; Groei"></div>
+                  <div class="ww-ms-body" data-text="Na jouw goedkeuring gaat de site live. Wij verzorgen de overdracht, training en doorlopend onderhoud voor slechts €79/maand."></div>
+                </div>
+
+              </div><!-- /.ww-mac-steps-grid -->
+
+              <!-- Terminal onderaan scherm -->
+              <div class="ww-mac-terminal" id="ww-mac-terminal">
+                <div class="ww-term-header">
+                  <div class="ww-term-dots">
+                    <span class="ww-term-dot ww-td-r"></span>
+                    <span class="ww-term-dot ww-td-y"></span>
+                    <span class="ww-term-dot ww-td-g"></span>
+                  </div>
+                  <span class="ww-term-title">pl-web-solutions — terminal</span>
+                </div>
+                <div class="ww-term-body" id="ww-term-body">
+                  <div class="ww-term-line ww-tl-cmd"  data-text="$ npm run build — pl-web-solutions"></div>
+                  <div class="ww-term-line"             data-text="Building your website..."></div>
+                  <div class="ww-term-line ww-tl-ok"   data-text="Adding premium animations...  ✓"></div>
+                  <div class="ww-term-line ww-tl-ok"   data-text="Optimizing SEO...  ✓"></div>
+                  <div class="ww-term-line ww-tl-done" data-text="Going live!  ✓  Done in 2.4s"></div>
+                </div>
+              </div>
+
+            </div><!-- /.ww-mac-screen-content -->
+
+            <div class="ww-screen-reflection"></div>
+          </div><!-- /.ww-mac-display -->
+        </div><!-- /.ww-mac-bezel -->
+      </div><!-- /.ww-mac-lid-outer -->
+    </div><!-- /.ww-mac-lid -->
+
+    <!-- ── Scharnier ── -->
+    <div class="ww-mac-hinge"></div>
+
+    <!-- ── Base ── -->
+    <div class="ww-mac-base">
+      <div class="ww-mac-touchbar">
+        <div class="ww-tb-esc"></div>
+        <div class="ww-tb-strip"></div>
+        <div class="ww-tb-touch"></div>
+      </div>
+      <div class="ww-mac-keyboard">
+        <div class="ww-mac-kb-row ww-kb-fn"></div>
+        <div class="ww-mac-kb-row"></div>
+        <div class="ww-mac-kb-row"></div>
+        <div class="ww-mac-kb-row"></div>
+        <div class="ww-mac-kb-row ww-kb-bottom">
+          <div class="ww-kb-bottom-key ww-kb-sm"></div>
+          <div class="ww-kb-bottom-key ww-kb-sm"></div>
+          <div class="ww-kb-bottom-key ww-kb-space"></div>
+          <div class="ww-kb-bottom-key ww-kb-sm"></div>
+          <div class="ww-kb-bottom-key ww-kb-sm"></div>
+        </div>
+      </div>
+      <div class="ww-mac-trackpad"></div>
+    </div><!-- /.ww-mac-base -->
+
+  </div><!-- /.ww-mac-wrap -->
+
+
 </section>
 
 <!-- ═══════════════ REVIEWS ═══════════════ -->
@@ -1960,19 +3158,19 @@
       </p>
       <div class="ct-details">
         <div class="ct-item">
-          <div class="ct-icon">📧</div>
+          <div class="ct-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg></div>
           <div><div class="ct-item-lbl">E-mail</div><div class="ct-item-val">info@plwebsolutions.nl</div></div>
         </div>
         <div class="ct-item">
-          <div class="ct-icon">📱</div>
-          <div><div class="ct-item-lbl">WhatsApp</div><div class="ct-item-val">+31 6 12 34 56 78</div></div>
+          <div class="ct-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg></div>
+          <div><div class="ct-item-lbl">WhatsApp</div><div class="ct-item-val">06-30937447</div></div>
         </div>
         <div class="ct-item">
-          <div class="ct-icon">📍</div>
+          <div class="ct-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg></div>
           <div><div class="ct-item-lbl">Locatie</div><div class="ct-item-val">Nederland — Landelijk actief</div></div>
         </div>
         <div class="ct-item">
-          <div class="ct-icon">⏱</div>
+          <div class="ct-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div>
           <div><div class="ct-item-lbl">Reactietijd</div><div class="ct-item-val">Binnen 24 uur</div></div>
         </div>
       </div>
@@ -2008,6 +3206,11 @@
       <div class="fg">
         <label class="fl" for="f-bericht">Jouw Verhaal</label>
         <textarea class="fta" id="f-bericht" placeholder="Vertel ons over je bedrijf en wat je van je nieuwe website verwacht..."></textarea>
+      </div>
+      <!-- Honeypot: verborgen voor mensen, bots vullen dit in -->
+      <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
+        <label for="f-honeypot">Laat dit veld leeg</label>
+        <input type="text" id="f-honeypot" name="honeypot" tabindex="-1" autocomplete="off" />
       </div>
       <div class="form-submit">
         <button type="submit" class="btn btn-primary"><span>Verstuur Aanvraag →</span></button>
@@ -2048,7 +3251,7 @@
   <div class="ft-bottom">
     <p class="ft-copy">&copy; 2026 <span>PL Web Solutions</span> — Alle rechten voorbehouden</p>
     <div class="ft-legal">
-      <a href="#">Privacybeleid</a>
+      <a href="privacybeleid.html">Privacybeleid</a>
       <a href="#">Algemene Voorwaarden</a>
     </div>
   </div>
@@ -2062,8 +3265,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.min.js"></script>
-<script src="three-bg.js"></script>
 
 <script>
 /* ─── Plugin registratie ─── */
@@ -2140,114 +3341,169 @@ function parallax(target, opts = {}) {
 }
 
 /* ══════════════════════════════════════════
-   GOUDEN PARTICLES — pure Canvas 2D
-   Geen CDN/WebGL vereist, werkt altijd
+   WEBGL FLUID SHADER — vloeiende goud/zwart achtergrond
+   Raw WebGL — op mobiel uitgeschakeld (CSS gradient fallback)
+   Op desktop: gestart via requestIdleCallback na eerste render
 ══════════════════════════════════════════ */
-(function initHeroParticles() {
-  const canvas = document.getElementById('hero-particles');
+function initHeroShader() {
+  const canvas  = document.getElementById('hero-particles');
   if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const heroEl = document.getElementById('hero');
+  const heroEl  = document.getElementById('hero');
 
+  /* WebGL context — alpha:false voor betere compositing */
+  const gl = canvas.getContext('webgl',  { antialias: false, alpha: false }) ||
+             canvas.getContext('experimental-webgl', { antialias: false, alpha: false });
+  if (!gl) return; /* geen WebGL → canvas blijft transparant, dat is prima */
+
+  /* ── Vertex shader — fullscreen quad ── */
+  const VS = `
+    attribute vec2 aPos;
+    void main() { gl_Position = vec4(aPos, 0.0, 1.0); }
+  `;
+
+  /* ── Fragment shader — domain-warped fbm in goud/zwart ── */
+  const FS = `
+    precision highp float;
+    uniform float  uTime;
+    uniform vec2   uMouse;
+    uniform vec2   uRes;
+
+    /* Gradient noise basis */
+    vec2 hash2(vec2 p) {
+      p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
+      return -1.0 + 2.0 * fract(sin(p) * 43758.5453);
+    }
+    float vnoise(vec2 p) {
+      vec2 i = floor(p), f = fract(p);
+      vec2 u = f * f * (3.0 - 2.0 * f);
+      return mix(mix(dot(hash2(i),           f),
+                     dot(hash2(i+vec2(1,0)), f-vec2(1,0)), u.x),
+                 mix(dot(hash2(i+vec2(0,1)), f-vec2(0,1)),
+                     dot(hash2(i+vec2(1,1)), f-vec2(1,1)), u.x), u.y);
+    }
+
+    /* Fractal Brownian Motion — 4 octaven voor vloeibaar gevoel */
+    float fbm(vec2 p) {
+      float s = 0.0, a = 0.5;
+      mat2  r = mat2(1.6, 1.2, -1.2, 1.6);
+      for (int i = 0; i < 4; i++) { s += a * vnoise(p); p = r * p; a *= 0.5; }
+      return s;
+    }
+
+    void main() {
+      vec2  uv = gl_FragCoord.xy / uRes;
+      float t  = uTime * 0.10;
+
+      /* Muisinvloed — trekt golfpatroon naar cursor */
+      vec2  m  = uMouse;
+      float md = length(uv - m);
+      vec2  mw = (uv - m) * 0.28 * smoothstep(0.45, 0.0, md);
+
+      /* Domain warping laag 1 */
+      vec2 q = vec2(fbm(uv * 2.2 + t),
+                    fbm(uv * 2.2 + vec2(5.2, 1.3) + t));
+      q += mw;
+
+      /* Domain warping laag 2 */
+      vec2 r2 = vec2(fbm(uv * 1.8 + 3.5 * q + vec2(1.7, 9.2) + t * 0.7),
+                     fbm(uv * 1.8 + 3.5 * q + vec2(8.3, 2.8) + t * 0.5));
+
+      float f = fbm(uv * 1.4 + 3.0 * r2 + t * 0.4) * 0.5 + 0.5;
+
+      /* Kleur ramp: zwart → donker amber → goud (#C9A84C) → licht goud (#F0C060) */
+      vec3 c = vec3(0.0);
+      c = mix(c, vec3(0.10, 0.07, 0.01), smoothstep(0.28, 0.50, f));
+      c = mix(c, vec3(0.45, 0.34, 0.07), smoothstep(0.48, 0.68, f));
+      c = mix(c, vec3(0.788, 0.659, 0.298), smoothstep(0.64, 0.84, f));
+      c = mix(c, vec3(0.941, 0.784, 0.471), smoothstep(0.80, 1.00, f));
+
+      /* Dimmen — hero tekst moet leesbaar blijven */
+      c *= 0.50;
+
+      gl_FragColor = vec4(c, 1.0);
+    }
+  `;
+
+  /* Shader compileerhulper */
+  function compile(type, src) {
+    const sh = gl.createShader(type);
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+      console.warn('[HeroShader]', gl.getShaderInfoLog(sh));
+      gl.deleteShader(sh); return null;
+    }
+    return sh;
+  }
+
+  const vs = compile(gl.VERTEX_SHADER, VS);
+  const fs = compile(gl.FRAGMENT_SHADER, FS);
+  if (!vs || !fs) return;
+
+  const prog = gl.createProgram();
+  gl.attachShader(prog, vs); gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+    console.warn('[HeroShader] link:', gl.getProgramInfoLog(prog)); return;
+  }
+  gl.useProgram(prog);
+
+  /* Fullscreen quad als TRIANGLE_STRIP */
+  const vbuf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vbuf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const aPos = gl.getAttribLocation(prog, 'aPos');
+  gl.enableVertexAttribArray(aPos);
+  gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+  /* Uniform locaties */
+  const uTime  = gl.getUniformLocation(prog, 'uTime');
+  const uMouse = gl.getUniformLocation(prog, 'uMouse');
+  const uRes   = gl.getUniformLocation(prog, 'uRes');
+
+  /* Pixel buffer op halve resolutie — CSS stretcht naar 100%×100% (sneller + organisch) */
   let W = 0, H = 0;
   function resize() {
-    W = canvas.width  = heroEl.offsetWidth  || window.innerWidth;
-    H = canvas.height = heroEl.offsetHeight || window.innerHeight;
+    const cw = heroEl.offsetWidth  || window.innerWidth;
+    const ch = heroEl.offsetHeight || window.innerHeight;
+    W = Math.round(cw * 0.5);
+    H = Math.round(ch * 0.5);
+    canvas.width  = W; canvas.height = H;
+    /* CSS width/height blijven 100%/100% — browser stretcht de buffer */
+    gl.viewport(0, 0, W, H);
+    gl.uniform2f(uRes, W, H);
   }
   resize();
   window.addEventListener('resize', resize, { passive: true });
 
-  /* Muispositie voor lichte interactie */
-  let mx = -9999, my = -9999;
+  /* Muispositie genormaliseerd (Y geflipt voor WebGL-coördinatenstelsel) */
+  let mx = 0.5, my = 0.5;
   heroEl.addEventListener('mousemove', e => {
-    const r = heroEl.getBoundingClientRect();
-    mx = e.clientX - r.left; my = e.clientY - r.top;
+    const rect = heroEl.getBoundingClientRect();
+    mx = (e.clientX - rect.left) / rect.width;
+    my = 1.0 - (e.clientY - rect.top)  / rect.height;
   }, { passive: true });
-  heroEl.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
+  heroEl.addEventListener('mouseleave', () => { mx = 0.5; my = 0.5; });
 
-  /* ── Particle klassen ── */
-  const PALETTES = [
-    '201,168,76',   // goud
-    '201,168,76',   // goud (vaker)
-    '240,192,96',   // licht goud
-    '240,192,96',   // licht goud
-    '255,220,120',  // warm wit-goud
-    '255,255,200',  // bijna wit
-  ];
-
-  function mkParticle(spreadY) {
-    const p = {};
-    function reset(atBottom) {
-      p.x     = Math.random() * W;
-      p.y     = atBottom ? H + Math.random() * 60 : Math.random() * H;
-      p.vy    = -(0.12 + Math.random() * 0.32);
-      p.vx    = (Math.random() - 0.5) * 0.15;
-      p.size  = 0.5 + Math.random() * 2.0;
-      p.glow  = p.size * (3 + Math.random() * 3);
-      p.alpha = 0;
-      p.targetAlpha = 0.18 + Math.random() * 0.65;
-      p.fadeIn  = 0.006 + Math.random() * 0.008;
-      p.fadeOut = 0.0006 + Math.random() * 0.0012;
-      p.phase   = Math.random() * Math.PI * 2;
-      p.col     = PALETTES[Math.floor(Math.random() * PALETTES.length)];
-      p.life    = 1;    // 1 = nog levend
-    }
-    reset(!spreadY);
-    if (spreadY) p.y = Math.random() * H;  // initieel gespreid
-    p.reset = reset;
-    return p;
-  }
-
-  const COUNT = window.innerWidth < 768 ? 65 : 130;
-  const parts  = Array.from({ length: COUNT }, () => mkParticle(true));
-
-  function drawParticle(p) {
-    if (p.alpha <= 0.005) return;
-    // Glow halo
-    const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.glow);
-    g.addColorStop(0,   `rgba(${p.col},${(p.alpha * 0.9).toFixed(3)})`);
-    g.addColorStop(0.35,`rgba(${p.col},${(p.alpha * 0.45).toFixed(3)})`);
-    g.addColorStop(1,   `rgba(${p.col},0)`);
-    ctx.beginPath();
-    ctx.fillStyle = g;
-    ctx.arc(p.x, p.y, p.glow, 0, Math.PI * 2);
-    ctx.fill();
-    // Harde kern
-    ctx.beginPath();
-    ctx.fillStyle = `rgba(${p.col},${Math.min(p.alpha * 1.8, 1).toFixed(3)})`;
-    ctx.arc(p.x, p.y, p.size * 0.45, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
+  /* Render loop */
   function tick(ts) {
     requestAnimationFrame(tick);
-    const t = ts * 0.001;
-    ctx.clearRect(0, 0, W, H);
-
-    for (let i = 0; i < parts.length; i++) {
-      const p = parts[i];
-      // Beweging
-      p.x += p.vx + Math.sin(t * 0.35 + p.phase) * 0.06;
-      p.y += p.vy;
-      // Fade in/out op basis van levensduur
-      if (p.alpha < p.targetAlpha) p.alpha = Math.min(p.alpha + p.fadeIn, p.targetAlpha);
-      else                          p.alpha = Math.max(p.alpha - p.fadeOut, 0);
-      // Muis repulsie (zacht)
-      const dx = p.x - mx, dy = p.y - my;
-      const d2 = dx * dx + dy * dy;
-      if (d2 < 6400) { // 80px radius
-        const d = Math.sqrt(d2) + 0.001;
-        const f = (80 - d) / 80 * 0.4;
-        p.x += (dx / d) * f;
-        p.y += (dy / d) * f;
-      }
-      // Herstart als particle boven het scherm is of te faded
-      if (p.y < -p.glow - 5) { p.reset(true); }
-      drawParticle(p);
-    }
+    gl.uniform1f(uTime,  ts * 0.001);
+    gl.uniform2f(uMouse, mx, my);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   }
   requestAnimationFrame(tick);
-})();
+}
+
+/* Mobiel: overslaan — CSS gradient achtergrond blijft zichtbaar
+   Desktop: uitstellen tot browser idle na eerste render          */
+if (!isMobile) {
+  if (typeof requestIdleCallback === 'function') {
+    requestIdleCallback(initHeroShader, { timeout: 2000 });
+  } else {
+    setTimeout(initHeroShader, 200);
+  }
+}
 
 
 /* ══════════════════════════════════════════
@@ -2274,7 +3530,7 @@ const heroChars = document.querySelectorAll('.hero-headline .hchar');
 
 /* Begin-staat: alles verborgen */
 gsap.set(heroChars, { y: 70, opacity: 0, transformOrigin: 'bottom center' });
-gsap.set(['.hero-eyebrow', '.hero-actions', '.hero-scroll-hint'], { opacity: 0, y: 22 });
+gsap.set(['.hero-eyebrow', '.hero-actions'], { opacity: 0, y: 22 });
 
 
 /* Entrance timeline — gestart door preloader */
@@ -2291,9 +3547,65 @@ heroTl
     ease: 'power3.out',
   }, 0.25)
   /* 3. CTA knop */
-  .to('.hero-actions', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 1.0)
-  /* 4. Scroll hint */
-  .to('.hero-scroll-hint', { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 1.3);
+  .to('.hero-actions', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 1.0);
+
+/* ══════════════════════════════════════════
+   MORPHING TEKST — hero accent woord
+   Dissolve cyclus: Websites → Resultaten → Meesterwerken
+   Start 2.5s na einde hero entrance
+══════════════════════════════════════════ */
+if (!prefersReducedMotion) {
+  const _morphWords = ['Websites', 'Resultaten', 'Meesterwerken'];
+  let   _morphIdx   = 0;
+  const _accentWord = document.querySelector('.hero-headline .word.accent');
+
+  function _doMorph() {
+    if (!_accentWord) return;
+    const chars = Array.from(_accentWord.querySelectorAll('.hchar'));
+    if (!chars.length) return;
+
+    const nextWord = _morphWords[_morphIdx];
+    _morphIdx = (_morphIdx + 1) % _morphWords.length;
+
+    /* Fade uit — blur dissolve vanuit midden naar buiten */
+    gsap.to(chars, {
+      opacity: 0, filter: 'blur(9px)',
+      duration: 0.42,
+      stagger: { amount: 0.18, from: 'center' },
+      ease: 'power2.in',
+      onComplete() {
+        /* Vervang tekst door volgend woord */
+        _accentWord.innerHTML = '';
+        const newChars = [];
+        [...nextWord].forEach(ch => {
+          const s = document.createElement('span');
+          s.className   = 'hchar';
+          s.style.color = 'var(--gold)';
+          s.textContent = ch === ' ' ? '\u00A0' : ch;
+          _accentWord.appendChild(s);
+          newChars.push(s);
+        });
+
+        gsap.set(newChars, { opacity: 0, filter: 'blur(9px)' });
+
+        /* Fade in — blur dissolve vanuit midden naar buiten */
+        gsap.to(newChars, {
+          opacity: 1, filter: 'blur(0px)',
+          duration: 0.55,
+          stagger: { amount: 0.22, from: 'center' },
+          ease: 'power3.out',
+          onComplete() {
+            newChars.forEach(c => gsap.set(c, { clearProps: 'filter' }));
+            gsap.delayedCall(3.0, _doMorph); /* plan volgende morph */
+          },
+        });
+      },
+    });
+  }
+
+  /* Koppel aan einde van hero entrance */
+  heroTl.eventCallback('onComplete', () => gsap.delayedCall(2.5, _doMorph));
+}
 
 /* ══════════════════════════════════════════
    PARALLAX — diepte-effect bij scrollen
@@ -2310,11 +3622,6 @@ if (!prefersReducedMotion) {
     scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 0.5 },
     y: '15%',
     ease: 'none',
-  });
-  /* Scroll hint verdwijnt snel weg */
-  gsap.to('.hero-scroll-hint', {
-    scrollTrigger: { trigger: '#hero', start: 'top top', end: '18% top', scrub: 0.3 },
-    opacity: 0, y: 16, ease: 'none',
   });
 }
 
@@ -2410,21 +3717,203 @@ fadeUp('.oo-cta',    { delay: 0.2 });
 fadeUp('.oo-values > div', { stagger: 0.12, trigger: '.oo-values', delay: 0.1 });
 
 /* Diensten */
-fadeUp('.diensten-head', { y: 40 });
-gsap.from('.pc', {
+fadeUp('#diensten .diensten-head', { y: 40, trigger: '#diensten .diensten-head' });
+gsap.from('.pricing-grid .pc', {
   scrollTrigger: { trigger: '.pricing-grid', start: 'top 78%' },
   y: 70, opacity: 0, duration: 0.85, stagger: 0.14, ease: 'power3.out',
 });
 fadeUp('.onderhoud', { y: 40, trigger: '.onderhoud' });
 
+/* Chatbot pricing sectie */
+(function initChatbotPricing() {
+  const toggle     = document.getElementById('cb-billing-toggle');
+  const grid       = document.getElementById('cb-grid');
+  const labelMonth = document.getElementById('cb-monthly-label');
+  const labelYear  = document.getElementById('cb-yearly-label');
+  if (!toggle) return;
+
+  toggle.addEventListener('click', () => {
+    const yearly = toggle.getAttribute('aria-pressed') !== 'true';
+    toggle.setAttribute('aria-pressed', yearly ? 'true' : 'false');
+    grid.classList.toggle('yearly-mode', yearly);
+    labelMonth.classList.toggle('active', !yearly);
+    labelYear.classList.toggle('active', yearly);
+  });
+
+  if (!prefersReducedMotion) {
+    /* Heading en toggle animeren pas zodra de sectie zelf in beeld komt */
+    gsap.from('#chatbot-pricing .diensten-head', {
+      scrollTrigger: { trigger: '#chatbot-pricing', start: 'top 82%' },
+      y: 40, opacity: 0, duration: 0.9, ease: 'power3.out',
+    });
+    gsap.from('.cb-toggle-wrap', {
+      scrollTrigger: { trigger: '#chatbot-pricing', start: 'top 82%' },
+      y: 25, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power3.out',
+    });
+    /* Chatbot cards — eigen trigger, los van .pricing-grid */
+    gsap.from('.cb-card', {
+      scrollTrigger: { trigger: '#chatbot-pricing .cb-grid', start: 'top 80%' },
+      y: 60, opacity: 0, duration: 0.85, stagger: 0.14, ease: 'power3.out',
+    });
+    gsap.from('.cb-footnote', {
+      scrollTrigger: { trigger: '.cb-footnote', start: 'top 90%' },
+      y: 20, opacity: 0, duration: 0.7, ease: 'power3.out',
+    });
+  }
+})();
+
+/* Stats bar — staggered entrance per cel */
+gsap.from('.stat-cell', {
+  scrollTrigger: { trigger: '#stats-bar', start: 'top 88%' },
+  y: 30, opacity: 0, duration: 0.75, stagger: 0.12, ease: 'power3.out',
+});
+
+/* Laptop animatie — werkwijze sectie */
+(function initMacAnim() {
+  const wrap      = document.getElementById('ww-mac-wrap');
+  const lid       = document.getElementById('ww-mac-lid');
+  const display   = document.getElementById('ww-mac-display');
+  const cards     = Array.from(document.querySelectorAll('.ww-mac-step-card'));
+  const termWrap  = document.getElementById('ww-mac-terminal');
+  const termLines = Array.from(document.querySelectorAll('#ww-term-body .ww-term-line'));
+  if (!wrap || !lid) return;
+
+  /* ── Klok: toon actuele tijd in macOS-stijl ── */
+  const clockEl = document.getElementById('ww-mac-time');
+  if (clockEl) {
+    const updateClock = () => {
+      const now = new Date();
+      clockEl.textContent =
+        now.getHours().toString().padStart(2,'0') + ':' +
+        now.getMinutes().toString().padStart(2,'0');
+    };
+    updateClock();
+    setInterval(updateClock, 30000);
+  }
+
+  /* ── Prefill data-text content ── */
+  cards.forEach(card => {
+    const title = card.querySelector('.ww-ms-title');
+    const body  = card.querySelector('.ww-ms-body');
+    if (title) title.dataset.text = title.dataset.text || title.textContent;
+    if (body)  body.dataset.text  = body.dataset.text  || body.textContent;
+    if (title) title.textContent = '';
+    if (body)  body.textContent  = '';
+  });
+  termLines.forEach(line => { line.textContent = ''; });
+
+  /* ── Begintoestand ── */
+  gsap.set(wrap, { y: 55, opacity: 0 });
+  gsap.set(lid,  { rotationX: 88, transformPerspective: 1200 });
+  gsap.set(display, { opacity: 0 });
+
+  /* ── Reduced motion: toon alles direct zonder animatie ── */
+  if (prefersReducedMotion) {
+    gsap.set(wrap, { opacity: 1, y: 0 });
+    gsap.set(lid,  { rotationX: -8 });
+    gsap.set(display, { opacity: 1 });
+    cards.forEach(card => {
+      const title = card.querySelector('.ww-ms-title');
+      const body  = card.querySelector('.ww-ms-body');
+      gsap.set(card, { opacity: 1, y: 0 });
+      if (title) title.textContent = title.dataset.text;
+      if (body)  body.textContent  = body.dataset.text;
+      card.classList.add('card-lit');
+    });
+    display.classList.add('glow-active');
+    if (termWrap) termWrap.classList.add('term-visible');
+    termLines.forEach(line => {
+      line.textContent = line.dataset.text;
+      gsap.set(line, { opacity: 1 });
+    });
+    return;
+  }
+
+  /* ── Hoofd-timeline ── */
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#werkwijze',
+      start: 'top 62%',
+      once: true,
+    },
+  });
+
+  /* 1. Laptop verschijnt vanuit onderen */
+  tl.to(wrap, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' });
+
+  /* 2. Scherm klapt open: 88° → -8° */
+  tl.to(lid, {
+    rotationX: -8,
+    duration: 1.2,
+    ease: 'power2.inOut',
+  }, '+=0.08');
+
+  /* 3. Scherm wordt zichtbaar (lit) */
+  tl.to(display, { opacity: 1, duration: 0.55, ease: 'power2.out' }, '-=0.35');
+
+  /* 4. Stappen verschijnen één voor één */
+  cards.forEach((card, i) => {
+    const titleEl = card.querySelector('.ww-ms-title');
+    const bodyEl  = card.querySelector('.ww-ms-body');
+    const offset  = i === 0 ? '+=0.1' : '-=0.25';
+
+    /* Kaart flitst op in goud, dan normaal */
+    tl.to(card, {
+      opacity: 1, y: 0,
+      duration: 0.45,
+      ease: 'power2.out',
+      onStart() {
+        /* Goud flash */
+        gsap.fromTo(card,
+          { filter: 'brightness(2.5) saturate(4)' },
+          { filter: 'brightness(1) saturate(1)', duration: 0.65, ease: 'power2.out' }
+        );
+        card.classList.add('card-lit');
+      },
+    }, offset);
+
+    /* Titel: typewriter via TextPlugin */
+    if (titleEl && titleEl.dataset.text) {
+      tl.to(titleEl, {
+        duration: titleEl.dataset.text.length * 0.032,
+        text: { value: titleEl.dataset.text, delimiter: '' },
+        ease: 'none',
+      }, `>-0.1`);
+    }
+
+    /* Body tekst: typewriter (sneller) */
+    if (bodyEl && bodyEl.dataset.text) {
+      tl.to(bodyEl, {
+        duration: bodyEl.dataset.text.length * 0.012,
+        text: { value: bodyEl.dataset.text, delimiter: '' },
+        ease: 'none',
+      }, `>-0.05`);
+    }
+  });
+
+  /* 5. Activeer scherm-glow pulsering na reveal */
+  tl.add(() => display.classList.add('glow-active'), '+=0.2');
+
+  /* 6. Terminal verschijnt en typt regels één voor één */
+  tl.add(() => {
+    if (termWrap) termWrap.classList.add('term-visible');
+  }, '+=0.15');
+
+  termLines.forEach((line, i) => {
+    const txt = line.dataset.text || '';
+    /* Prefill zodat GSAP TextPlugin er iets op heeft */
+    line.textContent = '';
+    tl.to(line, { opacity: 1, duration: 0.15, ease: 'none' }, i === 0 ? '+=0.05' : '-=0.05');
+    tl.to(line, {
+      duration: txt.length * 0.028,
+      text: { value: txt, delimiter: '' },
+      ease: 'none',
+    }, '>');
+  });
+})();
+
 /* Portfolio */
 fadeUp('.pf-head', { y: 35 });
-
-/* Werkwijze */
-gsap.from('.ww-step', {
-  scrollTrigger: { trigger: '.ww-steps', start: 'top 78%' },
-  y: 60, opacity: 0, duration: 0.85, stagger: 0.16, ease: 'power3.out',
-});
 
 /* Reviews */
 fadeUp('.rev-head');
@@ -2591,24 +4080,131 @@ mobMenu.querySelectorAll('a').forEach(a => {
 });
 
 /* ══════════════════════════════════════════
-   SWIPER — Portfolio
+   PORTFOLIO — 3D Boog Carrousel
+   Middelste kaart: scale 1.0 · Zijkaarten: scale 0.76
+   + rotateY ±44° + z -200px · Auto 5s · GSAP 3D
 ══════════════════════════════════════════ */
-new Swiper('#pf-swiper', {
-  loop: true,
-  grabCursor: true,
-  slidesPerView: 1,
-  spaceBetween: 24,
-  navigation: {
-    nextEl: '#pf-swiper .swiper-button-next',
-    prevEl: '#pf-swiper .swiper-button-prev',
-  },
-  pagination: { el: '#pf-swiper .swiper-pagination', clickable: true },
-  breakpoints: {
-    600:  { slidesPerView: 1.35 },
-    900:  { slidesPerView: 2.15 },
-    1200: { slidesPerView: 2.75 },
-  },
-});
+(function initPf3D() {
+  const scene = document.getElementById('pf-3d-scene');
+  const stage = document.getElementById('pf-3d-stage');
+  const items = Array.from(stage.querySelectorAll('.pf-3d-item'));
+  const dots  = Array.from(document.querySelectorAll('.pf-3d-dot'));
+  const total = items.length;
+  let cur     = 0;
+  let autoTimer = null;
+
+  /* ── Responsieve kaartbreedte ── */
+  function cardW() {
+    return window.innerWidth < 600 ? 300
+         : window.innerWidth < 900 ? 380
+         : 500;
+  }
+
+  /* ── Positie-configuratie per relatieve slot ── */
+  function getConf(rel) {
+    const gap = Math.round(cardW() * 0.88);
+    if (rel === 0)  return { x: 0,    rotationY: 0,   scale: 1.00, opacity: 1.0, zIndex: 10 };
+    if (rel === -1) return { x: -gap, rotationY:  44, scale: 0.76, opacity: 1.0, zIndex:  5 };
+    if (rel ===  1) return { x:  gap, rotationY: -44, scale: 0.76, opacity: 1.0, zIndex:  5 };
+    /* Ver buiten beeld (toekomstige uitbreiding > 3 kaarten) */
+    return { x: rel < 0 ? -1200 : 1200, rotationY: rel < 0 ? 70 : -70, scale: 0.4, opacity: 0, zIndex: 1 };
+  }
+
+  /* ── Relatieve positie t.o.v. huidige index ── */
+  function relPos(i) {
+    let d = (i - cur + total) % total;
+    if (d > Math.floor(total / 2)) d -= total;
+    return d;
+  }
+
+  /* ── Plaats alle kaarten (animate=false → direct zetten) ── */
+  function place(animate) {
+    items.forEach((el, i) => {
+      const c = getConf(relPos(i));
+      (animate ? gsap.to : gsap.set)(el, {
+        x: c.x, rotationY: c.rotationY,
+        scale: c.scale, opacity: c.opacity, zIndex: c.zIndex,
+        duration: animate ? 0.72 : 0,
+        ease: 'power3.out',
+        overwrite: true,
+      });
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+
+  /* ── Iframe-schaling (zit hier zodat initPfIframeScale niet meer nodig is) ── */
+  function scaleIframes() {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.pf-iframe-outer').forEach(outer => {
+        const scaler = outer.querySelector('.pf-iframe-scaler');
+        if (!scaler) return;
+        const w = outer.offsetWidth;
+        const h = outer.offsetHeight;
+        if (!w || !h) return;
+        scaler.style.transform = `scale(${w / 1440})`;
+        scaler.style.height = Math.round(h / (w / 1440)) + 'px';
+      });
+    });
+  }
+
+  /* ── Navigatie ── */
+  function loadIframe(idx) {
+    const iframe = items[idx] && items[idx].querySelector('iframe[data-src]');
+    if (iframe) { iframe.src = iframe.dataset.src; iframe.removeAttribute('data-src'); }
+  }
+  function goTo(idx) {
+    cur = ((idx % total) + total) % total;
+    loadIframe(cur);
+    place(true);
+    scaleIframes();
+  }
+  function next() { goTo(cur + 1); }
+  function prev() { goTo(cur - 1); }
+
+  /* ── Autoplay ── */
+  function startAuto() { stopAuto(); autoTimer = setInterval(next, 5000); }
+  function stopAuto()  { clearInterval(autoTimer); autoTimer = null; }
+
+  /* ── Klik op zijkaart → navigeer ── */
+  items.forEach((el, i) => {
+    el.addEventListener('click', () => {
+      if (i !== cur) { stopAuto(); goTo(i); startAuto(); }
+    });
+  });
+
+  /* ── Pijlen ── */
+  document.getElementById('pf-nav-prev').addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
+  document.getElementById('pf-nav-next').addEventListener('click', () => { stopAuto(); next(); startAuto(); });
+
+  /* ── Stipjes ── */
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); }));
+
+  /* ── Hover: pauzeer autoplay ── */
+  scene.addEventListener('mouseenter', stopAuto);
+  scene.addEventListener('mouseleave', startAuto);
+
+  /* ── Resize: herpositioneer zonder animatie ── */
+  window.addEventListener('resize', () => { place(false); scaleIframes(); }, { passive: true });
+
+  /* ── Init ── */
+  gsap.set(items, { transformPerspective: 1400 });
+  place(false);
+  scaleIframes();
+  requestAnimationFrame(() => requestAnimationFrame(scaleIframes));
+
+  /* Laad eerste iframe pas wanneer portfolio in beeld komt */
+  const pfSection = document.getElementById('portfolio');
+  if (pfSection && 'IntersectionObserver' in window) {
+    const pfObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { loadIframe(0); pfObserver.disconnect(); }
+    }, { rootMargin: '200px' });
+    pfObserver.observe(pfSection);
+  } else {
+    loadIframe(0);
+  }
+
+  startAuto();
+})();
 
 /* ══════════════════════════════════════════
    SWIPER — Reviews (horizontale carrousel)
@@ -2651,7 +4247,50 @@ const revSwiper = new Swiper('#rev-swiper', {
 ══════════════════════════════════════════ */
 document.getElementById('ct-form').addEventListener('submit', function (e) {
   e.preventDefault();
-  const btn = this.querySelector('.btn span');
+
+  /* ── Validatie ── */
+  const naam   = document.getElementById('f-naam');
+  const email  = document.getElementById('f-email');
+  const errors = [];
+
+  /* Naam: verplicht, min 2 tekens */
+  if (!naam.value.trim() || naam.value.trim().length < 2) {
+    errors.push('Vul een geldige naam in (minimaal 2 tekens).');
+    naam.style.borderColor = 'rgba(220,60,60,.7)';
+  } else {
+    naam.style.borderColor = '';
+  }
+
+  /* E-mail: verplicht + basisformaat */
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email.value.trim() || !emailRe.test(email.value.trim())) {
+    errors.push('Vul een geldig e-mailadres in.');
+    email.style.borderColor = 'rgba(220,60,60,.7)';
+  } else {
+    email.style.borderColor = '';
+  }
+
+  /* Honeypot: als ingevuld → bot, stille weigering */
+  const hp = document.getElementById('f-honeypot');
+  if (hp && hp.value) return;
+
+  if (errors.length) {
+    let errDiv = document.getElementById('ct-form-errors');
+    if (!errDiv) {
+      errDiv = document.createElement('div');
+      errDiv.id = 'ct-form-errors';
+      errDiv.style.cssText = 'color:#e06060;font-size:.78rem;margin-top:-.4rem;line-height:1.7;';
+      document.querySelector('.form-submit').before(errDiv);
+    }
+    errDiv.textContent = errors.join(' ');
+    return;
+  }
+
+  /* Verwijder eventuele foutmelding */
+  const errDiv = document.getElementById('ct-form-errors');
+  if (errDiv) errDiv.remove();
+
+  const btn  = this.querySelector('.btn span');
   const orig = btn.textContent;
   btn.textContent = 'Verzonden ✓';
   this.querySelectorAll('input, select, textarea').forEach(el => el.value = '');
@@ -2659,6 +4298,327 @@ document.getElementById('ct-form').addEventListener('submit', function (e) {
 });
 
 /* Page visibility — pause Three.js via tab switch handled by rAF natively */
+
+/* ══════════════════════════════════════════
+   MAGNETIC BUTTONS — "Start Jouw Project" & "Ons Portfolio"
+   Knoppen trekken magnetisch naar de cursor toe
+   Elastische terugveeranimatie bij mouseleave
+══════════════════════════════════════════ */
+(function initMagneticBtns() {
+  if (prefersReducedMotion || isMobile) return;
+
+  /* Hero CTA + Over Ons knoppen */
+  document.querySelectorAll('.hero-cta, .oo-cta .btn').forEach(btn => {
+    const inner = btn.querySelector('span') || btn.firstElementChild;
+
+    btn.addEventListener('mousemove', e => {
+      const r  = btn.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width  * 0.5)) * 0.38;
+      const dy = (e.clientY - (r.top  + r.height * 0.5)) * 0.38;
+      gsap.to(btn,   { x: dx,        y: dy,        duration: 0.25, ease: 'power2.out', overwrite: true });
+      if (inner) gsap.to(inner, { x: dx * 0.18, y: dy * 0.18, duration: 0.25, ease: 'power2.out', overwrite: true });
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn,   { x: 0, y: 0, duration: 0.72, ease: 'elastic.out(1.1, 0.4)', overwrite: true });
+      if (inner) gsap.to(inner, { x: 0, y: 0, duration: 0.72, ease: 'elastic.out(1.1, 0.4)', overwrite: true });
+    });
+  });
+})();
+</script>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" async></script>
+
+<!-- ══ PL ASSISTENT — CHATBOT WIDGET ══════════════════════════════ -->
+<style>
+#pl-chat-widget{position:fixed;bottom:28px;right:28px;z-index:8000;font-family:'Inter',sans-serif;font-weight:300;line-height:1}
+#pl-chat-btn{width:58px;height:58px;border-radius:50%;background:#070708;border:1.5px solid rgba(201,168,76,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 4px 24px rgba(0,0,0,.65);transition:border-color .25s,box-shadow .25s,transform .2s}
+#pl-chat-btn:hover{border-color:rgba(201,168,76,.88);box-shadow:0 6px 28px rgba(0,0,0,.7),0 0 22px rgba(201,168,76,.22);transform:scale(1.06)}
+#pl-chat-btn svg{width:22px;height:22px;color:#C9A84C;position:absolute;transition:opacity .22s,transform .22s}
+#pl-icon-open{opacity:1;transform:scale(1) rotate(0)}
+#pl-icon-xclose{opacity:0;transform:scale(.6) rotate(-90deg)}
+#pl-chat-btn.open #pl-icon-open{opacity:0;transform:scale(.6) rotate(90deg)}
+#pl-chat-btn.open #pl-icon-xclose{opacity:1;transform:scale(1) rotate(0)}
+#pl-chat-win{position:absolute;bottom:70px;right:0;width:380px;height:560px;background:#070708;border:1px solid rgba(201,168,76,.18);border-radius:18px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8),0 0 50px rgba(201,168,76,.06);opacity:0;transform:translateY(14px) scale(.97);pointer-events:none;transition:opacity .26s cubic-bezier(.4,0,.2,1),transform .26s cubic-bezier(.4,0,.2,1)}
+#pl-chat-win.open{opacity:1;transform:none;pointer-events:all}
+#pl-chat-head{padding:13px 14px;background:#0a0a0c;border-bottom:1px solid rgba(201,168,76,.1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.plcb-brand{display:flex;align-items:center;gap:10px}
+.plcb-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#C9A84C,#8a6e2a);border:1.5px solid rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;color:#000;flex-shrink:0}
+.plcb-hname{display:block;font-size:13.5px;font-weight:500;color:#f0f0f0;letter-spacing:.02em;line-height:1.2}
+.plcb-status{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,.42);margin-top:2px}
+.plcb-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 6px rgba(74,222,128,.5);animation:plcb-blink 2.2s ease-in-out infinite}
+@keyframes plcb-blink{0%,100%{opacity:1}50%{opacity:.3}}
+#pl-chat-x{width:28px;height:28px;border:none;border-radius:50%;background:rgba(255,255,255,.04);color:rgba(255,255,255,.4);font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;flex-shrink:0}
+#pl-chat-x:hover{background:rgba(201,168,76,.1);color:#C9A84C}
+#pl-chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+#pl-chat-msgs::-webkit-scrollbar{width:3px}
+#pl-chat-msgs::-webkit-scrollbar-thumb{background:rgba(201,168,76,.18);border-radius:2px}
+.plcb-row{display:flex;align-items:flex-end;gap:8px;animation:plcb-in .22s ease-out}
+@keyframes plcb-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.plcb-row.bot{flex-direction:row}
+.plcb-row.usr{flex-direction:row-reverse}
+.plcb-ava{width:26px;height:26px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#C9A84C,#8a6e2a);font-family:'Cormorant Garamond',serif;font-size:9px;font-weight:700;color:#000;display:flex;align-items:center;justify-content:center}
+.plcb-bub{max-width:80%;padding:10px 13px;font-size:13.5px;line-height:1.58;border-radius:14px;word-break:break-word}
+.plcb-row.bot .plcb-bub{background:#111113;border:1px solid rgba(255,255,255,.055);color:#d0d0d0;border-radius:4px 14px 14px 14px}
+.plcb-row.usr .plcb-bub{background:linear-gradient(135deg,#C9A84C,#a8872c);color:#000;font-weight:400;border-radius:14px 4px 14px 14px}
+.plcb-typing{display:flex;gap:4px;padding:3px 0}
+.plcb-typing span{width:7px;height:7px;border-radius:50%;background:rgba(201,168,76,.55);animation:plcb-dot .85s ease-in-out infinite}
+.plcb-typing span:nth-child(2){animation-delay:.16s}
+.plcb-typing span:nth-child(3){animation-delay:.32s}
+@keyframes plcb-dot{0%,80%,100%{transform:none;opacity:.55}40%{transform:translateY(-6px);opacity:1}}
+#pl-chat-foot{padding:10px 12px;background:#0a0a0c;border-top:1px solid rgba(201,168,76,.09);display:flex;gap:8px;align-items:center;flex-shrink:0}
+#pl-chat-inp{flex:1;background:#111113;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:9px 15px;font-size:13.5px;font-family:'Inter',sans-serif;color:#eee;outline:none;transition:border-color .2s}
+#pl-chat-inp::placeholder{color:rgba(255,255,255,.22)}
+#pl-chat-inp:focus{border-color:rgba(201,168,76,.38)}
+#pl-chat-go{width:38px;height:38px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#C9A84C,#a8872c);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .18s,box-shadow .18s}
+#pl-chat-go:hover{transform:scale(1.07);box-shadow:0 0 16px rgba(201,168,76,.35)}
+#pl-chat-go:disabled{opacity:.35;cursor:default;transform:none;box-shadow:none}
+#pl-chat-go svg{width:16px;height:16px;color:#000}
+#pl-chat-pw{text-align:center;font-size:10px;color:rgba(255,255,255,.14);padding:4px 0 7px;background:#0a0a0c;flex-shrink:0}
+@media(max-width:480px){
+  .hero-headline { font-size: clamp(1.6rem, 7.5vw, 8rem); }
+  .hero-headline .word { white-space: nowrap; }
+  #pl-chat-widget{bottom:16px;right:16px}
+  #pl-chat-win{width:calc(100vw - 32px);height:min(75vh,540px)}
+}
+</style>
+
+<div id="pl-chat-widget">
+  <button id="pl-chat-btn" aria-label="Open PL Assistent" aria-expanded="false" aria-controls="pl-chat-win">
+    <svg id="pl-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg id="pl-icon-xclose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div id="pl-chat-win" role="dialog" aria-label="PL Assistent chat" aria-modal="true">
+    <div id="pl-chat-head">
+      <div class="plcb-brand">
+        <div class="plcb-av">PL</div>
+        <div>
+          <span class="plcb-hname">PL Assistent</span>
+          <div class="plcb-status"><span class="plcb-dot"></span><span>Online &nbsp;·&nbsp; PL Web Solutions</span></div>
+        </div>
+      </div>
+      <button id="pl-chat-x" aria-label="Sluit chat">&times;</button>
+    </div>
+    <div id="pl-chat-msgs" aria-live="polite" aria-label="Chatberichten"></div>
+    <div id="pl-chat-foot">
+      <input id="pl-chat-inp" type="text" placeholder="Stel je vraag..." autocomplete="off" maxlength="500" aria-label="Chatbericht">
+      <button id="pl-chat-go" aria-label="Verstuur bericht">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div id="pl-chat-pw">Powered by Claude AI &nbsp;·&nbsp; PL Web Solutions</div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   PL ASSISTENT — AI Chatbot
+   ────────────────────────────────────────────────────────────
+   ⚙️  STAP 1: Vul hier jouw Anthropic API-sleutel in
+   ⚠️  Let op: zichtbaar in broncode — gebruik een
+       backend-proxy voor productie
+════════════════════════════════════════════════════════════════ */
+/* API-aanroepen lopen via de Cloudflare Worker — geen sleutel nodig in de browser */
+const WORKER_URL = 'https://fragrant-frog-a52apl-chatbot-api.pleunvandenakker01.workers.dev';
+
+/* ⚙️  STAP 2: EmailJS sleutels (gratis op emailjs.com)
+   Template variabelen: {{lead_name}} {{lead_email}} {{conversation}} {{timestamp}}
+   Stel 'To Email' in op plwebsolutions@outlook.com in jouw EmailJS template */
+const EMAILJS_PUBLIC   = 'JOUW_EMAILJS_PUBLIC_KEY';
+const EMAILJS_SERVICE  = 'JOUW_EMAILJS_SERVICE_ID';
+const EMAILJS_TEMPLATE = 'JOUW_EMAILJS_TEMPLATE_ID';
+/* ════════════════════════════════════════════════════════════════ */
+
+(function () {
+  'use strict';
+
+  const SYSTEM = `Jij bent PL Assistent, de vriendelijke digitale assistent van PL Web Solutions — een premium webdesign bureau van Pleun en Lars.
+
+JOUW ROL:
+- Help bezoekers met vragen over diensten, pakketten en werkwijze
+- Leg de werkwijze uit als gevraagd: Gratis Gesprek → Strategie & Design → Bouwen & Animeren → Live & Groei
+- Verwijs voor details altijd naar de juiste sectie op de site
+
+PAKKETTEN (noem NOOIT exacte prijzen — verwijs naar de pakketten sectie):
+- Starter: voor startende ondernemers die online willen gaan
+- Business: voor groeiende bedrijven die meer resultaat willen
+- Premium: voor serieuze online aanwezigheid met geavanceerde functies
+- Elite: voor toonaangevende bedrijven die het allerbeste willen
+
+STRIKTE REGELS:
+1. Spreek ALTIJD in het Nederlands
+2. Noem NOOIT concurrenten of andere bureaus
+3. Geef NOOIT exacte prijzen — verwijs naar de pakketten sectie op de site
+4. Houd antwoorden bondig (2-4 zinnen)
+5. Sluit af met een uitnodiging voor het contactformulier
+6. Wees warm, enthousiast en professioneel`;
+
+  const S = {
+    msgs: [], open: false, busy: false,
+    lead: 'none', name: '', email: '', welcomed: false,
+  };
+
+  const btn   = document.getElementById('pl-chat-btn');
+  const win   = document.getElementById('pl-chat-win');
+  const msgs  = document.getElementById('pl-chat-msgs');
+  const inp   = document.getElementById('pl-chat-inp');
+  const go    = document.getElementById('pl-chat-go');
+  const xbtn  = document.getElementById('pl-chat-x');
+
+  if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC !== 'JOUW_EMAILJS_PUBLIC_KEY') {
+    emailjs.init(EMAILJS_PUBLIC);
+  }
+
+  const esc  = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const scrl = () => setTimeout(() => { msgs.scrollTop = msgs.scrollHeight; }, 30);
+  const lock = v  => { inp.disabled = v; go.disabled = v; };
+
+  function botMsg(text) {
+    const el = document.createElement('div');
+    el.className = 'plcb-row bot';
+    el.innerHTML = `<div class="plcb-ava">PL</div><div class="plcb-bub">${esc(text).replace(/\n/g,'<br>')}</div>`;
+    msgs.appendChild(el); scrl();
+  }
+
+  function usrMsg(text) {
+    const el = document.createElement('div');
+    el.className = 'plcb-row usr';
+    el.innerHTML = `<div class="plcb-bub">${esc(text)}</div>`;
+    msgs.appendChild(el); scrl();
+  }
+
+  let typEl = null;
+  function showTyp() {
+    if (typEl) return;
+    typEl = document.createElement('div');
+    typEl.className = 'plcb-row bot';
+    typEl.innerHTML = `<div class="plcb-ava">PL</div><div class="plcb-bub"><div class="plcb-typing"><span></span><span></span><span></span></div></div>`;
+    msgs.appendChild(typEl); scrl();
+  }
+  function hideTyp() { if (typEl) { typEl.remove(); typEl = null; } }
+
+  function openWin() {
+    S.open = true;
+    win.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    inp.focus();
+    if (!S.welcomed) {
+      S.welcomed = true;
+      setTimeout(() => botMsg('Goeiedag! Ik ben PL Assistent van PL Web Solutions.\n\nKan ik je helpen met vragen over onze diensten, pakketten of werkwijze?'), 320);
+    }
+  }
+  function closeWin() {
+    S.open = false;
+    win.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click',  () => S.open ? closeWin() : openWin());
+  xbtn.addEventListener('click', closeWin);
+
+  async function callClaude(userText) {
+    const res = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 350,
+        system: SYSTEM,
+        messages: [...S.msgs, { role: 'user', content: userText }],
+      }),
+    });
+    if (!res.ok) {
+      const e = await res.json().catch(() => ({}));
+      throw new Error(e.error?.message || `HTTP ${res.status}`);
+    }
+    return (await res.json()).content?.[0]?.text || 'Geen antwoord ontvangen.';
+  }
+
+  const INTEREST = ['offerte','pakket','prijs','kosten','website laten','website maken',
+    'starten','samenwerking','opdracht','aanvragen','starter','business','premium','elite','interesse','bestellen'];
+  const hasInterest  = t => INTEREST.some(w => t.toLowerCase().includes(w));
+  const validEmail   = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim());
+
+  async function sendLead() {
+    if (typeof emailjs === 'undefined' || EMAILJS_SERVICE === 'JOUW_EMAILJS_SERVICE_ID') return;
+    const log = S.msgs.map(m =>
+      `${m.role === 'user' ? 'Bezoeker' : 'PL Assistent'}: ${m.content}`
+    ).join('\n\n');
+    emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+      lead_name: S.name, lead_email: S.email,
+      conversation: log,
+      timestamp: new Date().toLocaleString('nl-NL'),
+    }).catch(console.error);
+  }
+
+  async function send() {
+    const text = inp.value.trim();
+    if (!text || S.busy) return;
+    inp.value = '';
+    S.busy = true;
+    lock(true);
+    usrMsg(text);
+
+    /* Lead: naam verzamelen */
+    if (S.lead === 'ask_name') {
+      const neg = ['nee','no','skip','niet','liever niet'];
+      if (neg.some(n => text.toLowerCase().includes(n))) {
+        S.lead = 'none';
+        showTyp(); await wait(700); hideTyp();
+        botMsg('Geen probleem! Heb je nog andere vragen over onze diensten?');
+      } else {
+        S.name = text; S.lead = 'ask_email';
+        showTyp(); await wait(900); hideTyp();
+        botMsg(`Fijn om je te leren kennen, ${S.name}! Wat is je e-mailadres zodat we je persoonlijk kunnen bereiken?`);
+      }
+      S.busy = false; lock(false); inp.focus(); return;
+    }
+
+    /* Lead: e-mail verzamelen */
+    if (S.lead === 'ask_email') {
+      if (validEmail(text)) {
+        S.email = text; S.lead = 'done';
+        showTyp(); await wait(1000); hideTyp();
+        botMsg(`Bedankt, ${S.name}! We nemen zo snel mogelijk contact met je op.\n\nHeb je nog andere vragen?`);
+        sendLead();
+      } else {
+        showTyp(); await wait(700); hideTyp();
+        botMsg('Dat lijkt geen geldig e-mailadres. Kun je het herhalen?');
+      }
+      S.busy = false; lock(false); inp.focus(); return;
+    }
+
+    /* Normaal: Claude API */
+    showTyp();
+    try {
+      const reply = await callClaude(text);
+      hideTyp();
+      S.msgs.push({ role: 'user', content: text });
+      S.msgs.push({ role: 'assistant', content: reply });
+      if (S.msgs.length > 20) S.msgs = S.msgs.slice(-20);
+      botMsg(reply);
+
+      if (hasInterest(text) && S.lead === 'none') {
+        await wait(1100);
+        showTyp(); await wait(950); hideTyp();
+        botMsg('Mag ik je naam vragen zodat we je persoonlijk kunnen helpen?');
+        S.lead = 'ask_name';
+      }
+    } catch (err) {
+      hideTyp();
+      botMsg('Er is een verbindingsfout opgetreden. Probeer opnieuw of gebruik het contactformulier op de site.');
+      console.error('[PL Chatbot]', err);
+    }
+    S.busy = false; lock(false); inp.focus();
+  }
+
+  go.addEventListener('click', send);
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); send(); } });
+})();
 </script>
 </body>
 </html>

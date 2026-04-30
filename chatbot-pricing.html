@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chatbot Pricing — PL Web Solutions</title>
+  <meta name="description" content="Transparante prijzen voor AI-chatbots op maat. Starter, Business of Premium — altijd maandelijks opzegbaar." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+  /* ═══════════════════════════════════════════
+     TOKENS & RESET
+  ═══════════════════════════════════════════ */
+  :root {
+    --black:    #000000;
+    --black-s:  #080808;
+    --black-m:  #111111;
+    --black-c:  #161616;
+    --black-e:  #1c1c1c;
+    --gold:     #C9A84C;
+    --gold-l:   #F0C060;
+    --gold-d:   #8a6e2a;
+    --g05:      rgba(201,168,76,.05);
+    --g10:      rgba(201,168,76,.10);
+    --g15:      rgba(201,168,76,.15);
+    --g25:      rgba(201,168,76,.25);
+    --g40:      rgba(201,168,76,.40);
+    --white:    #ffffff;
+    --grey:     #cccccc;
+    --grey-d:   #888888;
+    --grey-dd:  #333333;
+    --fh:       'Cormorant Garamond', Georgia, serif;
+    --fb:       'Inter', sans-serif;
+    --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+    --dur:      0.35s;
+    --r:        14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html  { scroll-behavior: smooth; font-size: 16px; }
+  body  {
+    background: var(--black);
+    color: var(--grey);
+    font-family: var(--fb);
+    font-weight: 300;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+  a     { color: inherit; text-decoration: none; }
+  ::selection { background: var(--g25); color: var(--white); }
+
+  /* ═══════════════════════════════════════════
+     HEADER (navbar)
+  ═══════════════════════════════════════════ */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 900;
+    padding: 1.4rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background var(--dur) var(--ease), backdrop-filter var(--dur);
+  }
+  .site-header.scrolled {
+    background: rgba(0,0,0,.85);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border-bottom: 1px solid var(--grey-dd);
+  }
+  .header-logo {
+    font-family: var(--fh);
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: .08em;
+    color: var(--white);
+  }
+  .header-logo span { color: var(--gold); }
+  .header-back {
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--grey-d);
+    transition: color var(--dur);
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .header-back:hover { color: var(--gold); }
+  .header-back::before { content: '←'; font-style: normal; }
+
+  /* ═══════════════════════════════════════════
+     HERO
+  ═══════════════════════════════════════════ */
+  .hero {
+    position: relative;
+    height: 62vh;
+    min-height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  #hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  /* Radial gold glow centre */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,.07), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem;
+    max-width: 800px;
+  }
+  .hero-eyebrow {
+    display: block;
+    font-size: clamp(.6rem, 1.5vw, .72rem);
+    font-weight: 500;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+  .hero-title {
+    font-family: var(--fh);
+    font-size: clamp(2.8rem, 7vw, 6.5rem);
+    font-weight: 300;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  .hero-sub {
+    font-size: clamp(.88rem, 1.8vw, 1rem);
+    color: var(--grey-d);
+    line-height: 1.8;
+  }
+
+  /* ═══════════════════════════════════════════
+     GOLD RULE
+  ═══════════════════════════════════════════ */
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--g40), transparent);
+  }
+
+  /* ═══════════════════════════════════════════
+     BILLING TOGGLE
+  ═══════════════════════════════════════════ */
+  .toggle-section {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 2rem 0;
+  }
+  .toggle-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--black-m);
+    border: 1px solid var(--grey-dd);
+    border-radius: 50px;
+    padding: .65rem 1.5rem;
+  }
+  .toggle-label {
+    font-size: .82rem;
+    font-weight: 400;
+    color: var(--grey-d);
+    transition: color var(--dur);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    user-select: none;
+  }
+  .toggle-label.active { color: var(--white); }
+  .save-badge {
+    display: inline-block;
+    font-size: .62rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+    padding: .18rem .55rem;
+    border-radius: 50px;
+    background: var(--g15);
+    border: 1px solid var(--g25);
+    color: var(--gold-l);
+  }
+  .toggle-switch {
+    position: relative;
+    width: 46px;
+    height: 24px;
+    background: var(--black-e);
+    border: 1px solid var(--grey-dd);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: border-color var(--dur), background var(--dur);
+    flex-shrink: 0;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background: var(--gold-d);
+    border-radius: 50%;
+    transition: transform var(--dur) var(--ease), background var(--dur);
+  }
+  .toggle-switch.on {
+    border-color: var(--gold);
+    background: var(--g10);
+  }
+  .toggle-switch.on::after {
+    transform: translateX(22px);
+    background: var(--gold);
+  }
+
+  /* ═══════════════════════════════════════════
+     PRICING GRID
+  ═══════════════════════════════════════════ */
+  .pricing-section {
+    padding: 5rem 2rem 2.5rem;
+  }
+  .pricing-grid {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* ── Card base ── */
+  .pkg-card {
+    background: var(--black-m);
+    border: 1px solid var(--grey-dd);
+    border-radius: var(--r);
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: border-color var(--dur) var(--ease),
+                transform var(--dur) var(--ease),
+                box-shadow var(--dur) var(--ease);
+  }
+  .pkg-card:hover {
+    border-color: var(--g40);
+    transform: translateY(-5px);
+    box-shadow: 0 24px 64px rgba(201,168,76,.08);
+  }
+
+  /* ── Featured card (Business) ── */
+  .pkg-card.featured {
+    background: var(--black-c);
+    border-color: var(--gold);
+    transform: translateY(-14px);
+    box-shadow:
+      0 0 0 1px var(--g25),
+      0 32px 80px rgba(201,168,76,.14),
+      inset 0 1px 0 rgba(201,168,76,.12);
+  }
+  .pkg-card.featured:hover {
+    transform: translateY(-18px);
+    box-shadow:
+      0 0 0 1px var(--g40),
+      0 40px 100px rgba(201,168,76,.22),
+      inset 0 1px 0 rgba(201,168,76,.18);
+  }
+  /* Top-edge gold glow line on featured */
+  .pkg-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 15%; right: 15%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-l), transparent);
+    border-radius: 0 0 2px 2px;
+  }
+
+  /* Badge */
+  .pkg-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: .28rem 1rem;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+
+  /* Tier name */
+  .pkg-tier {
+    font-family: var(--fh);
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 300;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: .25rem;
+  }
+  .pkg-tagline {
+    font-size: .77rem;
+    color: var(--grey-d);
+    margin-bottom: 2rem;
+  }
+
+  /* Price */
+  .pkg-price-row {
+    display: flex;
+    align-items: flex-end;
+    gap: .15rem;
+    margin-bottom: .4rem;
+  }
+  .pkg-currency {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gold);
+    padding-bottom: .65rem;
+  }
+  .pkg-amount {
+    font-family: var(--fh);
+    font-size: clamp(2.8rem, 5vw, 3.8rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+  }
+  .pkg-per {
+    font-size: .75rem;
+    color: var(--grey-d);
+    padding-bottom: .55rem;
+    margin-left: .1rem;
+  }
+  .pkg-annual-note {
+    font-size: .73rem;
+    color: var(--gold-d);
+    min-height: 1.15em;
+    margin-bottom: 1.75rem;
+  }
+  .pkg-annual-note:empty { margin-bottom: 1.75rem; }
+
+  /* Divider */
+  .pkg-divider {
+    height: 1px;
+    background: var(--grey-dd);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Features list */
+  .pkg-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    margin-bottom: 2rem;
+    flex: 1;
+  }
+  .pkg-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    font-size: .82rem;
+    line-height: 1.45;
+  }
+  .feat-icon {
+    flex-shrink: 0;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .58rem;
+    font-weight: 700;
+    margin-top: .14em;
+  }
+  .feat-icon.yes {
+    background: var(--g15);
+    color: var(--gold-l);
+    border: 1px solid var(--g25);
+  }
+  .feat-icon.no {
+    background: rgba(255,255,255,.03);
+    color: var(--grey-dd);
+    border: 1px solid var(--grey-dd);
+  }
+  li.feat-off { color: var(--grey-dd); }
+
+  /* Buttons */
+  .pkg-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: .875rem 1.5rem;
+    border-radius: 8px;
+    font-family: var(--fb);
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition:
+      background var(--dur) var(--ease),
+      color var(--dur) var(--ease),
+      box-shadow var(--dur) var(--ease),
+      transform .15s;
+  }
+  .pkg-btn:hover  { transform: translateY(-2px); }
+  .pkg-btn:active { transform: translateY(0); }
+
+  .pkg-btn.gold-fill {
+    background: var(--gold);
+    color: var(--black);
+  }
+  .pkg-btn.gold-fill:hover {
+    background: var(--gold-l);
+    box-shadow: 0 8px 32px rgba(201,168,76,.42);
+  }
+  .pkg-btn.gold-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--g40);
+  }
+  .pkg-btn.gold-outline:hover {
+    background: var(--g10);
+    border-color: var(--gold);
+    box-shadow: 0 8px 24px rgba(201,168,76,.12);
+  }
+
+  /* ═══════════════════════════════════════════
+     ADD-ONS
+  ═══════════════════════════════════════════ */
+  .addons-section {
+    padding: 4rem 2rem 5rem;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+  .section-eyebrow {
+    display: block;
+    font-size: clamp(.58rem, 1.2vw, .68rem);
+    font-weight: 500;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .75rem;
+  }
+  .section-title {
+    font-family: var(--fh);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: .6rem;
+    line-height: 1.1;
+  }
+  .section-body {
+    font-size: .88rem;
+    color: var(--grey-d);
+    margin-bottom: 2.75rem;
+    max-width: 460px;
+    line-height: 1.8;
+  }
+  .addons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .addon-card {
+    background: var(--black-m);
+    border: 1px solid var(--grey-dd);
+    border-radius: var(--r);
+    padding: 1.6rem 1.5rem 1.4rem;
+    position: relative;
+    overflow: hidden;
+    transition:
+      border-color var(--dur) var(--ease),
+      transform var(--dur) var(--ease);
+  }
+  .addon-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top left, var(--g05) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity var(--dur);
+  }
+  .addon-card:hover {
+    border-color: var(--g40);
+    transform: translateY(-3px);
+  }
+  .addon-card:hover::before { opacity: 1; }
+  .addon-name {
+    font-size: .82rem;
+    color: var(--white);
+    font-weight: 400;
+    line-height: 1.45;
+    margin-bottom: 1.25rem;
+  }
+  .addon-price {
+    font-family: var(--fh);
+    font-size: 1.9rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .addon-per {
+    font-size: .7rem;
+    color: var(--grey-d);
+    margin-top: .25rem;
+  }
+
+  /* ═══════════════════════════════════════════
+     FOOTNOTE
+  ═══════════════════════════════════════════ */
+  .pricing-footnote {
+    text-align: center;
+    padding: 1.5rem 2rem 3.5rem;
+    font-size: .74rem;
+    color: var(--grey-dd);
+    letter-spacing: .04em;
+  }
+  .pricing-footnote span {
+    display: inline-block;
+    margin: 0 .6rem;
+    color: var(--grey-dd);
+  }
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════════ */
+  @media (max-width: 1080px) {
+    .addons-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 820px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .pkg-card.featured { transform: none; }
+    .pkg-card.featured:hover { transform: translateY(-5px); }
+    .site-header { padding: 1.2rem 1.5rem; }
+  }
+  @media (max-width: 540px) {
+    .addons-grid { grid-template-columns: 1fr; }
+    .toggle-pill { flex-wrap: wrap; justify-content: center; gap: .75rem; }
+    .pricing-section { padding: 4rem 1.25rem 2rem; }
+    .addons-section  { padding: 3rem 1.25rem 4rem; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="site-header" id="siteHeader">
+  <a href="index.html" class="header-logo">PL <span>Web Solutions</span></a>
+  <a href="index.html" class="header-back">Terug naar website</a>
+</header>
+
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="hero" aria-label="Pricing hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <span class="hero-eyebrow">AI Chatbot Diensten</span>
+    <h1 class="hero-title">Kies&nbsp;Je&nbsp;Pakket</h1>
+    <p class="hero-sub">Eenvoudige, transparante prijzen — geen verborgen kosten.<br>Maandelijks opzegbaar.</p>
+  </div>
+</section>
+<div class="gold-rule"></div>
+
+
+<!-- ═══════════════ TOGGLE ═══════════════ -->
+<div class="toggle-section" aria-label="Factureringsperiode kiezen">
+  <div class="toggle-pill">
+    <span class="toggle-label active" id="lbl-m" role="button" tabindex="0">Maandelijks</span>
+    <button
+      class="toggle-switch"
+      id="billingToggle"
+      role="switch"
+      aria-checked="false"
+      aria-label="Schakel naar jaarlijks factureren"
+    ></button>
+    <span class="toggle-label" id="lbl-y" role="button" tabindex="0">
+      Jaarlijks&ensp;<span class="save-badge">2 maanden gratis</span>
+    </span>
+  </div>
+</div>
+
+
+<!-- ═══════════════ PRICING CARDS ═══════════════ -->
+<section class="pricing-section" aria-label="Prijspakketten">
+  <div class="pricing-grid">
+
+    <!-- STARTER -->
+    <article class="pkg-card" aria-label="Starter pakket">
+      <p class="pkg-tier">Starter</p>
+      <p class="pkg-tagline">Perfecte start voor kleine bedrijven</p>
+      <div class="pkg-price-row">
+        <span class="pkg-currency">€</span>
+        <span class="pkg-amount" id="amt-starter">49</span>
+        <span class="pkg-per">/maand</span>
+      </div>
+      <p class="pkg-annual-note" id="note-starter" aria-live="polite"></p>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-features">
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Chatbot op de website</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Tot 500 gesprekken per maand</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Standaard chatvenster</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Basis statistieken</li>
+        <li class="feat-off"><span class="feat-icon no" aria-hidden="true">✗</span>WhatsApp koppeling</li>
+        <li class="feat-off"><span class="feat-icon no" aria-hidden="true">✗</span>E-mail koppeling</li>
+        <li class="feat-off"><span class="feat-icon no" aria-hidden="true">✗</span>Eigen branding</li>
+      </ul>
+      <a href="#contact" class="pkg-btn gold-outline">Aan de slag</a>
+    </article>
+
+    <!-- BUSINESS (featured) -->
+    <article class="pkg-card featured" aria-label="Business pakket, meest gekozen">
+      <span class="pkg-badge" aria-label="Meest gekozen pakket">Meest Gekozen</span>
+      <p class="pkg-tier">Business</p>
+      <p class="pkg-tagline">Alles wat een groeiend bedrijf nodig heeft</p>
+      <div class="pkg-price-row">
+        <span class="pkg-currency">€</span>
+        <span class="pkg-amount" id="amt-business">119</span>
+        <span class="pkg-per">/maand</span>
+      </div>
+      <p class="pkg-annual-note" id="note-business" aria-live="polite"></p>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-features">
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Chatbot op de website</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Tot 2.500 gesprekken per maand</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>WhatsApp koppeling</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>E-mail koppeling</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Eigen branding &amp; kleuren</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Uitgebreide rapportage</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>E-mail support</li>
+      </ul>
+      <a href="#contact" class="pkg-btn gold-fill">Aan de slag</a>
+    </article>
+
+    <!-- PREMIUM -->
+    <article class="pkg-card" aria-label="Premium pakket">
+      <p class="pkg-tier">Premium</p>
+      <p class="pkg-tagline">Maximale kracht voor professionele organisaties</p>
+      <div class="pkg-price-row">
+        <span class="pkg-currency">€</span>
+        <span class="pkg-amount" id="amt-premium">249</span>
+        <span class="pkg-per">/maand</span>
+      </div>
+      <p class="pkg-annual-note" id="note-premium" aria-live="polite"></p>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-features">
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Chatbot op de website</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Onbeperkt gesprekken</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>WhatsApp koppeling</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>E-mail koppeling</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Volledig maatwerk branding</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Geavanceerde analytics</li>
+        <li><span class="feat-icon yes" aria-hidden="true">✓</span>Prioriteit support + SLA</li>
+      </ul>
+      <a href="#contact" class="pkg-btn gold-outline">Contact opnemen</a>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════ ADD-ONS ═══════════════ -->
+<div class="gold-rule" style="max-width:1160px;margin:0 auto;"></div>
+
+<section class="addons-section" aria-label="Uitbreidingen">
+  <span class="section-eyebrow">Uitbreidingen</span>
+  <h2 class="section-title">Maak Het&nbsp;Jouw Eigen</h2>
+  <p class="section-body">Voeg losse modules toe aan elk pakket — betaal alleen voor wat je gebruikt, altijd maandelijks aanpasbaar.</p>
+
+  <div class="addons-grid">
+    <div class="addon-card">
+      <p class="addon-name">Extra 500 gesprekken per maand</p>
+      <p class="addon-price">+€15</p>
+      <p class="addon-per">per maand</p>
+    </div>
+    <div class="addon-card">
+      <p class="addon-name">WhatsApp koppeling toevoegen</p>
+      <p class="addon-price">+€39</p>
+      <p class="addon-per">per maand</p>
+    </div>
+    <div class="addon-card">
+      <p class="addon-name">E-mail koppeling toevoegen</p>
+      <p class="addon-price">+€29</p>
+      <p class="addon-per">per maand</p>
+    </div>
+    <div class="addon-card">
+      <p class="addon-name">Eigen branding toevoegen</p>
+      <p class="addon-price">+€19</p>
+      <p class="addon-per">per maand</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ FOOTNOTE ═══════════════ -->
+<div class="gold-rule"></div>
+<p class="pricing-footnote">
+  Alle prijzen zijn excl.&nbsp;btw
+  <span aria-hidden="true">·</span>
+  Jaarlijks betalen&nbsp;= 2 maanden gratis
+  <span aria-hidden="true">·</span>
+  Maandelijks opzegbaar
+</p>
+
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.min.js"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ── Three.js gold particle background ───────────── */
+(function initParticles() {
+  const canvas   = document.getElementById('hero-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+  camera.position.z = 3;
+
+  const isMobile = window.innerWidth < 768;
+  const count    = isMobile ? 2000 : 5000;
+  const pos      = new Float32Array(count * 3);
+  for (let i = 0; i < count * 3; i++) pos[i] = (Math.random() - 0.5) * 9;
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+
+  const mat = new THREE.PointsMaterial({
+    color: 0xC9A84C,
+    size: 0.014,
+    transparent: true,
+    opacity: 0.60,
+    sizeAttenuation: true,
+  });
+
+  const points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  function resize() {
+    const w = canvas.parentElement.clientWidth;
+    const h = canvas.parentElement.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  let mx = 0, my = 0;
+  if (!isMobile) {
+    document.addEventListener('mousemove', e => {
+      mx = (e.clientX / window.innerWidth  - 0.5) * 0.45;
+      my = (e.clientY / window.innerHeight - 0.5) * 0.45;
+    });
+  }
+
+  let t = 0;
+  (function frame() {
+    requestAnimationFrame(frame);
+    t += 0.00035;
+    points.rotation.y = t + mx * 0.8;
+    points.rotation.x = t * 0.38 - my * 0.5;
+    renderer.render(scene, camera);
+  })();
+})();
+
+/* ── Header scroll behaviour ─────────────────────── */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── GSAP animations ─────────────────────────────── */
+// Hero — on load
+const heroTL = gsap.timeline({ delay: 0.15 });
+heroTL
+  .from('.hero-eyebrow', { opacity: 0, y: 24, duration: .9, ease: 'power3.out' })
+  .from('.hero-title',   { opacity: 0, y: 50, duration: 1.1, ease: 'power3.out' }, '-=.55')
+  .from('.hero-sub',     { opacity: 0, y: 24, duration: .9,  ease: 'power3.out' }, '-=.6')
+  .from('.toggle-pill',  { opacity: 0, y: 18, duration: .8,  ease: 'power3.out' }, '-=.5');
+
+// Pricing cards — staggered slide-up
+gsap.from('.pkg-card', {
+  scrollTrigger: { trigger: '.pricing-grid', start: 'top 82%' },
+  opacity: 0,
+  y: 55,
+  stagger: 0.14,
+  duration: 1,
+  ease: 'power3.out',
+});
+
+// Add-ons header
+gsap.from(['.section-eyebrow', '.section-title', '.section-body'], {
+  scrollTrigger: { trigger: '.addons-section', start: 'top 82%' },
+  opacity: 0,
+  y: 30,
+  stagger: 0.1,
+  duration: .9,
+  ease: 'power3.out',
+});
+
+// Add-on cards
+gsap.from('.addon-card', {
+  scrollTrigger: { trigger: '.addons-grid', start: 'top 85%' },
+  opacity: 0,
+  y: 40,
+  stagger: 0.09,
+  duration: .85,
+  ease: 'power3.out',
+});
+
+/* ── Billing toggle ──────────────────────────────── */
+const toggleBtn = document.getElementById('billingToggle');
+const lblM      = document.getElementById('lbl-m');
+const lblY      = document.getElementById('lbl-y');
+
+const PRICES = {
+  starter:  { m: 49,  y: 41  },
+  business: { m: 119, y: 99  },
+  premium:  { m: 249, y: 208 },
+};
+const NOTES = {
+  starter:  'Jaarlijks €490 — bespaar €98',
+  business: 'Jaarlijks €1.190 — bespaar €238',
+  premium:  'Jaarlijks €2.490 — bespaar €498',
+};
+
+let yearly = false;
+
+function flipPrice(id, pkg) {
+  const el   = document.getElementById('amt-' + id);
+  const note = document.getElementById('note-' + id);
+  const val  = PRICES[id][pkg];
+
+  gsap.to(el, {
+    opacity: 0, y: -8, duration: .15,
+    onComplete() {
+      el.textContent = val;
+      note.textContent = pkg === 'y' ? NOTES[id] : '';
+      gsap.fromTo(el, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .22, ease: 'power2.out' });
+      if (pkg === 'y') {
+        gsap.fromTo(note, { opacity: 0 }, { opacity: 1, duration: .35, ease: 'power2.out' });
+      }
+    },
+  });
+}
+
+function applyToggle() {
+  const pkg = yearly ? 'y' : 'm';
+  ['starter', 'business', 'premium'].forEach(id => flipPrice(id, pkg));
+
+  toggleBtn.classList.toggle('on', yearly);
+  toggleBtn.setAttribute('aria-checked', yearly ? 'true' : 'false');
+  lblM.classList.toggle('active', !yearly);
+  lblY.classList.toggle('active',  yearly);
+}
+
+toggleBtn.addEventListener('click', () => { yearly = !yearly; applyToggle(); });
+lblM.addEventListener('click', () => { if (yearly)  { yearly = false; applyToggle(); } });
+lblY.addEventListener('click', () => { if (!yearly) { yearly = true;  applyToggle(); } });
+
+// Keyboard support for labels
+[lblM, lblY].forEach(lbl => {
+  lbl.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbl.click(); }
+  });
+});
+</script>
+</body>
+</html>

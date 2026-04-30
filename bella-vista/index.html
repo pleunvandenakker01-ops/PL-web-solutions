@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ristorante Bella Vista</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-text">Bella Vista</span>
+        <span class="logo-sub">Ristorante</span>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu openen">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#menu" onclick="closeMenu()">Menu</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Openingstijden</a></li>
+        <li><a href="#reviews" onclick="closeMenu()">Reviews</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+        <li><a href="#reserveren" class="nav-cta" onclick="closeMenu()">Reserveren</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <img
+      class="hero-bg"
+      src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=85"
+      alt="Sfeervolle Italiaanse restaurantzaal met kaarsverlichting"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tagline">Welkom bij</p>
+      <h1>Ristorante<br><em>Bella Vista</em></h1>
+      <p class="hero-sub">Authentieke Italiaanse keuken in het hart van de stad.<br>Waar elke maaltijd een herinnering wordt.</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">Bekijk ons menu</a>
+        <a href="#reserveren" class="btn btn-outline">Reserveer een tafel</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll naar beneden</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- About / Sfeer Section -->
+  <section class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-label">Ons verhaal</span>
+          <h2>La Dolce Vita — Het zoete leven</h2>
+          <p>Al meer dan 25 jaar brengen wij de authentieke smaken van Italië naar uw bord. Onze chef, geboren en getogen in Toscane, bereidt elk gerecht met passie, verse ingrediënten en de liefde voor de Italiaanse keuken die hij van zijn nonna leerde.</p>
+          <p>Bij Bella Vista eten we niet alleen — we beleven. Van de versgebakken focaccia tot de hand-gerekte pasta, elk detail ademt La Dolce Vita.</p>
+          <div class="about-highlights">
+            <div class="highlight">
+              <span class="highlight-number">25+</span>
+              <span class="highlight-label">Jaar ervaring</span>
+            </div>
+            <div class="highlight">
+              <span class="highlight-number">100%</span>
+              <span class="highlight-label">Verse ingrediënten</span>
+            </div>
+            <div class="highlight">
+              <span class="highlight-number">4.9</span>
+              <span class="highlight-label">Gemiddelde beoordeling</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <div class="image-frame">
+            <img
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+              alt="Warm verlichte eetzaal van Ristorante Bella Vista"
+              loading="lazy"
+            />
+          </div>
+          <div class="image-badge">
+            <span>Gecertificeerd</span>
+            <strong>Authentiek Italiaans</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Strip -->
+  <div class="photo-strip">
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Italiaanse gerechten" loading="lazy" />
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Restaurant sfeer" loading="lazy" />
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80&crop=bottom" alt="Diner tafel" loading="lazy" />
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80" alt="Pasta bereiding" loading="lazy" />
+    </div>
+  </div>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Onze keuken</span>
+        <h2>Il Menu</h2>
+        <p>Verse bereidingen, dagelijks wisselende specials en tijdloze Italiaanse klassiekers.</p>
+      </div>
+
+      <div class="menu-tabs">
+        <button class="tab-btn active" data-tab="antipasti">Antipasti</button>
+        <button class="tab-btn" data-tab="primi">Primi Piatti</button>
+        <button class="tab-btn" data-tab="secondi">Secondi Piatti</button>
+        <button class="tab-btn" data-tab="dolci">Dolci</button>
+        <button class="tab-btn" data-tab="vini">Vini</button>
+      </div>
+
+      <!-- Antipasti -->
+      <div class="menu-tab-content active" id="tab-antipasti">
+        <div class="menu-grid">
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1594978583693-8dfdfc93f052?auto=format&fit=crop&w=600&q=80" alt="Bruschetta al Pomodoro" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Bruschetta al Pomodoro</h3>
+                <span class="price">€ 8,50</span>
+              </div>
+              <p>Knapperig geroosterd brood met rijpe tomaten, verse basilicum en extra vergine olijfolie.</p>
+              <span class="menu-tag">Vegetarisch</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1613420408779-e517581a26aa?auto=format&fit=crop&w=600&q=80" alt="Carpaccio di Manzo" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Carpaccio di Manzo</h3>
+                <span class="price">€ 14,50</span>
+              </div>
+              <p>Dun gesneden rauwe rundvlees met rucola, Parmezaanse schaafsels en truffelolie.</p>
+              <span class="menu-tag">Chef's keuze</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1751451985575-c8c15d25694c?auto=format&fit=crop&w=600&q=80" alt="Burrata con Prosciutto" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Burrata con Prosciutto</h3>
+                <span class="price">€ 16,00</span>
+              </div>
+              <p>Romige burrata met Prosciutto di Parma, zongedroogde tomaten en basilicumolie.</p>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1581347860118-588a42326161?auto=format&fit=crop&w=600&q=80" alt="Zuppa di Pomodoro" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Zuppa di Pomodoro</h3>
+                <span class="price">€ 9,50</span>
+              </div>
+              <p>Huisgemaakte tomatensoep met rucola, croutons en een scheutje room.</p>
+              <span class="menu-tag">Vegetarisch</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1676300185089-8781af127fee?auto=format&fit=crop&w=600&q=80" alt="Insalata Caprese" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Insalata Caprese</h3>
+                <span class="price">€ 12,00</span>
+              </div>
+              <p>Verse mozzarella di bufala, rijpe vleestomaten, basilicum en Siciliaanse olijfolie.</p>
+              <span class="menu-tag">Vegetarisch</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1603133872575-9989ab68d24c?auto=format&fit=crop&w=600&q=80" alt="Calamari Fritti" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Calamari Fritti</h3>
+                <span class="price">€ 13,50</span>
+              </div>
+              <p>Krokant gefrituurde inktvisringen met citroen, aioli en verse peterselie.</p>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Antipasto della Casa" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Antipasto della Casa</h3>
+                <span class="price">€ 19,50</span>
+              </div>
+              <p>Groot bordje huisgemaakte vleeswaren, kazen, olijven, geroosterde paprika en focaccia.</p>
+              <span class="menu-tag">Delen</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Primi -->
+      <div class="menu-tab-content" id="tab-primi">
+        <div class="menu-grid">
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1553842306-6ea7d5c6b152?auto=format&fit=crop&w=600&q=80" alt="Tagliatelle al Ragù" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Tagliatelle al Ragù</h3>
+                <span class="price">€ 18,50</span>
+              </div>
+              <p>Verse eierpasta met langzaam gestoofde Bolognese van rund en varken, Parmezaan.</p>
+              <span class="menu-tag">Huisgemaakt</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=600&q=80" alt="Risotto ai Funghi Porcini" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Risotto ai Funghi Porcini</h3>
+                <span class="price">€ 19,00</span>
+              </div>
+              <p>Romige Arborio-rijst met wilde eekhoorntjesbrood, tijm en geraspte Grana Padano.</p>
+              <span class="menu-tag">Vegetarisch</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=600&q=80" alt="Spaghetti con Gamberi" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Spaghetti con Gamberi</h3>
+                <span class="price">€ 22,00</span>
+              </div>
+              <p>Spaghetti met verse Atlantische garnalen, witte wijn, knoflook, peterselie en olijfolie.</p>
+              <span class="menu-tag">Chef's keuze</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" alt="Pizza Mozzarella" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Pizza Mozzarella</h3>
+                <span class="price">€ 17,50</span>
+              </div>
+              <p>Dunne knapperige bodem met rijpe San Marzano-tomatensaus, verse mozzarella fior di latte, basilicum en een scheut olijfolie.</p>
+              <span class="menu-tag">Vegetarisch</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=600&q=80" alt="Lasagne della Nonna" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Lasagne della Nonna</h3>
+                <span class="price">€ 19,50</span>
+              </div>
+              <p>Klassieke lasagne naar grootmoeders recept, met béchamel, ragù en verse pasta.</p>
+              <span class="menu-tag">Huisgemaakt</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1676300184847-4ee4030409c0?auto=format&fit=crop&w=600&q=80" alt="Penne all'Arrabbiata" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Penne all'Arrabbiata</h3>
+                <span class="price">€ 15,50</span>
+              </div>
+              <p>Penne in pikante tomatensaus met knoflook, verse chili en basilicum.</p>
+              <span class="menu-tag">Vegan</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1588013273468-315fd88ea34c?auto=format&fit=crop&w=600&q=80" alt="Cacio e Pepe" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Cacio e Pepe</h3>
+                <span class="price">€ 16,50</span>
+              </div>
+              <p>Tonnarello-pasta met Pecorino Romano en grof gemalen zwarte peper — een Romeins icoon.</p>
+              <span class="menu-tag">Vegetarisch</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1588418440629-7e2811259e7b?auto=format&fit=crop&w=600&q=80" alt="Orecchiette con Salsiccia" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Orecchiette con Salsiccia</h3>
+                <span class="price">€ 20,50</span>
+              </div>
+              <p>Verse orecchiette met pikante Pugliese worstjes, broccoli rabe en knoflook.</p>
+              <span class="menu-tag">Huisgemaakt</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondi -->
+      <div class="menu-tab-content" id="tab-secondi">
+        <div class="menu-grid">
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=80" alt="Bistecca alla Fiorentina" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Bistecca alla Fiorentina</h3>
+                <span class="price">€ 38,00</span>
+              </div>
+              <p>T-bone steak op Florentijnse wijze, gegrild op houtskool met rozemarijn en zeezout.</p>
+              <span class="menu-tag">Signature</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80" alt="Branzino al Forno" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Branzino al Forno</h3>
+                <span class="price">€ 28,00</span>
+              </div>
+              <p>Ovengebakken zeebaars met citroen, kappertjes, olijven en verse kruiden.</p>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=600&q=80" alt="Pollo alla Cacciatora" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Pollo alla Cacciatora</h3>
+                <span class="price">€ 24,00</span>
+              </div>
+              <p>Kip in jagerssaus met tomaten, olijven, rozemarijn en witte wijn.</p>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=600&q=80" alt="Saltimbocca alla Romana" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Saltimbocca alla Romana</h3>
+                <span class="price">€ 26,00</span>
+              </div>
+              <p>Kalfsvlees met Prosciutto en salie, bereid in witte wijn en boter.</p>
+              <span class="menu-tag">Chef's keuze</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://plus.unsplash.com/premium_photo-1729624129505-69f8d10709d6?auto=format&fit=crop&w=600&q=80" alt="Pollo al Limone" loading="lazy" style="object-position: center top;" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Pollo al Limone</h3>
+                <span class="price">€ 32,00</span>
+              </div>
+              <p>Gegrilde kipfilet met citroen, knoflook, rozemarijn en olijfolie, geserveerd met geroosterde groenten.</p>
+              <span class="menu-tag">Signature</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1676471977139-315014bed47e?auto=format&fit=crop&w=600&q=80" alt="Costolette d'Agnello" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Costolette d'Agnello</h3>
+                <span class="price">€ 34,00</span>
+              </div>
+              <p>Lamskoteletten gegrild met rozemarijn, knoflook en een salsa verde van verse kruiden.</p>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1587606381492-7586d66a04a5?auto=format&fit=crop&w=600&q=80" alt="Frittura di Mare" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Frittura di Mare</h3>
+                <span class="price">€ 29,00</span>
+              </div>
+              <p>Gemengde friture van garnalen, calamari en visfilet met tartaarsaus en citroen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dolci -->
+      <div class="menu-tab-content" id="tab-dolci">
+        <div class="menu-grid">
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1639744211487-b27e3551b07c?auto=format&fit=crop&w=600&q=80" alt="Tiramisù della Casa" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Tiramisù della Casa</h3>
+                <span class="price">€ 9,00</span>
+              </div>
+              <p>Huisgemaakt naar ons geheim recept met mascarpone, espresso en savoiardi.</p>
+              <span class="menu-tag">Huisgemaakt</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1565953596149-1f97ee0e7ad9?auto=format&fit=crop&w=600&q=80" alt="Panna Cotta ai Frutti di Bosco" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Panna Cotta ai Frutti di Bosco</h3>
+                <span class="price">€ 8,50</span>
+              </div>
+              <p>Zijdezachte vanillepanna cotta met frisse bossenvruchtencoulis.</p>
+              <span class="menu-tag">Vegetarisch</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1604071489531-21b6358751cd?auto=format&fit=crop&w=600&q=80" alt="Cannoli Siciliani" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Cannoli Siciliani</h3>
+                <span class="price">€ 8,00</span>
+              </div>
+              <p>Krokante deegrolletjes gevuld met ricotta, pistache en stukjes chocolade.</p>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=600&q=80" alt="Gelato Artigianale" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Gelato Artigianale</h3>
+                <span class="price">€ 7,00</span>
+              </div>
+              <p>Drie bolletjes ambachtelijk ijs naar keuze: vanille, pistache, stracciatella of citroen.</p>
+              <span class="menu-tag">Vegetarisch</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Torta al Cioccolato" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Torta al Cioccolato</h3>
+                <span class="price">€ 9,50</span>
+              </div>
+              <p>Warme chocoladetaart met vloeibare kern, vanille-ijs en gezouten karamel.</p>
+              <span class="menu-tag">Huisgemaakt</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://plus.unsplash.com/premium_photo-1669880504259-93586025a91b?auto=format&fit=crop&w=600&q=80" alt="Zabaione al Marsala" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Zabaione al Marsala</h3>
+                <span class="price">€ 8,50</span>
+              </div>
+              <p>Klassieke Siciliaanse zabaione van eidooiers, suiker en Marsala, warm geserveerd.</p>
+              <span class="menu-tag">Vegetarisch</span>
+            </div>
+          </div>
+          <div class="menu-card">
+            <div class="menu-card-img">
+              <img src="https://images.unsplash.com/photo-1741399106443-6e691136de55?auto=format&fit=crop&w=600&q=80" alt="Semifreddo al Pistacchio" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3>Semifreddo al Pistacchio</h3>
+                <span class="price">€ 9,00</span>
+              </div>
+              <p>Half bevroren pistachedessert met amarettokoekjes, slagroom en gehakte noten.</p>
+              <span class="menu-tag">Vegetarisch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vini -->
+      <div class="menu-tab-content" id="tab-vini">
+        <div class="wine-banner">
+          <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80" alt="Italiaanse wijnen" loading="lazy" />
+          <div class="wine-banner-overlay">
+            <p>Onze wijnselectie — zorgvuldig samengesteld door onze sommelier</p>
+          </div>
+        </div>
+        <div class="wine-list">
+          <div class="wine-category">
+            <h3>Vini Rossi — Rode Wijnen</h3>
+            <div class="wine-item">
+              <div>
+                <strong>Chianti Classico DOCG</strong>
+                <span>Toscane — Sangiovese</span>
+              </div>
+              <span class="price">€ 36,00</span>
+            </div>
+            <div class="wine-item">
+              <div>
+                <strong>Barolo DOCG</strong>
+                <span>Piëmont — Nebbiolo</span>
+              </div>
+              <span class="price">€ 58,00</span>
+            </div>
+            <div class="wine-item">
+              <div>
+                <strong>Primitivo di Manduria</strong>
+                <span>Puglia — Primitivo</span>
+              </div>
+              <span class="price">€ 42,00</span>
+            </div>
+          </div>
+          <div class="wine-category">
+            <h3>Vini Bianchi — Witte Wijnen</h3>
+            <div class="wine-item">
+              <div>
+                <strong>Pinot Grigio delle Venezie</strong>
+                <span>Veneto — Pinot Grigio</span>
+              </div>
+              <span class="price">€ 32,00</span>
+            </div>
+            <div class="wine-item">
+              <div>
+                <strong>Vernaccia di San Gimignano</strong>
+                <span>Toscane — Vernaccia</span>
+              </div>
+              <span class="price">€ 38,00</span>
+            </div>
+          </div>
+          <div class="wine-category">
+            <h3>Prosecco &amp; Spumante</h3>
+            <div class="wine-item">
+              <div>
+                <strong>Prosecco Superiore DOCG</strong>
+                <span>Veneto — Per glas</span>
+              </div>
+              <span class="price">€ 9,00</span>
+            </div>
+            <div class="wine-item">
+              <div>
+                <strong>Franciacorta Brut</strong>
+                <span>Lombardije — Fles</span>
+              </div>
+              <span class="price">€ 52,00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="menu-note">Alle gerechten worden bereid met verse, seizoensgebonden ingrediënten. Allergenen informatie beschikbaar op aanvraag. Dagspecials zijn afhankelijk van beschikbaarheid.</p>
+    </div>
+  </section>
+
+  <!-- Reviews Sectie -->
+  <section id="reviews" class="reviews-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Wat onze gasten zeggen</span>
+        <h2>Le Recensioni</h2>
+        <p>Echte ervaringen van onze gewaardeerde gasten — wij zijn trots op elke beoordeling.</p>
+      </div>
+
+      <div class="reviews-summary">
+        <div class="summary-score">
+          <span class="score-number">4.9</span>
+          <div class="score-stars">★★★★★</div>
+          <span class="score-label">Gemiddelde beoordeling</span>
+        </div>
+        <div class="summary-bars">
+          <div class="bar-row"><span>5 ★</span><div class="bar"><div class="bar-fill" style="width:88%"></div></div><span>88%</span></div>
+          <div class="bar-row"><span>4 ★</span><div class="bar"><div class="bar-fill" style="width:9%"></div></div><span>9%</span></div>
+          <div class="bar-row"><span>3 ★</span><div class="bar"><div class="bar-fill" style="width:2%"></div></div><span>2%</span></div>
+          <div class="bar-row"><span>2 ★</span><div class="bar"><div class="bar-fill" style="width:1%"></div></div><span>1%</span></div>
+          <div class="bar-row"><span>1 ★</span><div class="bar"><div class="bar-fill" style="width:0%"></div></div><span>0%</span></div>
+        </div>
+        <div class="summary-platforms">
+          <div class="platform-badge">
+            <span class="platform-score">4.9</span>
+            <span class="platform-name">Google</span>
+            <span class="platform-count">312 beoordelingen</span>
+          </div>
+          <div class="platform-badge">
+            <span class="platform-score">9.4</span>
+            <span class="platform-name">TripAdvisor</span>
+            <span class="platform-count">187 beoordelingen</span>
+          </div>
+          <div class="platform-badge">
+            <span class="platform-score">4.8</span>
+            <span class="platform-name">Iens</span>
+            <span class="platform-count">94 beoordelingen</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+
+        <div class="review-card featured">
+          <div class="review-header">
+            <img class="reviewer-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80" alt="Sofia Bergmann" loading="lazy" />
+            <div class="reviewer-info">
+              <strong>Sofia Bergmann</strong>
+              <span>Amsterdam</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <span class="review-platform google">Google</span>
+          </div>
+          <blockquote>
+            "Bella Vista is simpelweg het beste Italiaanse restaurant van Amsterdam. De Tagliatelle al Ragù smaakt alsof je in Toscane zit — de pasta is zijdezacht, de saus heeft uren geprutteld. Het personeel maakt je meteen welkom en de sfeer is ongelooflijk romantisch. Wij komen hier al vijf jaar en het niveau blijft constant hoog."
+          </blockquote>
+          <div class="review-footer">
+            <span class="review-dish">Gerecht: Tagliatelle al Ragù</span>
+            <span class="review-date">Maart 2026</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img class="reviewer-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="Marco de Vries" loading="lazy" />
+            <div class="reviewer-info">
+              <strong>Marco de Vries</strong>
+              <span>Utrecht</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <span class="review-platform tripadvisor">TripAdvisor</span>
+          </div>
+          <blockquote>
+            "De Bistecca alla Fiorentina was een openbaring. Perfect rosé van binnen, krokant van buiten. De wijnkaart is uitstekend — de sommelier adviseerde een Barolo die perfect bij het vlees paste. Reserveer ruim van tevoren, want dit restaurant is terecht immens populair!"
+          </blockquote>
+          <div class="review-footer">
+            <span class="review-dish">Gerecht: Bistecca alla Fiorentina</span>
+            <span class="review-date">Februari 2026</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img class="reviewer-photo" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=80&h=80&q=80" alt="Lena van der Berg" loading="lazy" />
+            <div class="reviewer-info">
+              <strong>Lena van der Berg</strong>
+              <span>Rotterdam</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <span class="review-platform google">Google</span>
+          </div>
+          <blockquote>
+            "Wij kwamen voor ons 10-jarig jubileum en zijn geweldig verrast door de service. Een dessertbordje met 'Gelukkig jubileum' stond al klaar zonder dat we er om hadden gevraagd. De Burrata was hemels vers en het Tiramisù is het beste buiten Italië. Absoluut een aanrader!"
+          </blockquote>
+          <div class="review-footer">
+            <span class="review-dish">Gerecht: Burrata + Tiramisù</span>
+            <span class="review-date">Januari 2026</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img class="reviewer-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&h=80&q=80" alt="Thomas Hoekstra" loading="lazy" />
+            <div class="reviewer-info">
+              <strong>Thomas Hoekstra</strong>
+              <span>Den Haag</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <span class="review-platform iens">Iens</span>
+          </div>
+          <blockquote>
+            "Als Italiaan durf ik te zeggen: dit is de echte deal. Chef Giuseppe bereidt de Cacio e Pepe precies zoals in Rome — geen room, geen shortcuts. De sfeer doet me denken aan de kleine trattorie in Trastevere. Een absolute must voor wie van authentieke Italiaanse keuken houdt."
+          </blockquote>
+          <div class="review-footer">
+            <span class="review-dish">Gerecht: Cacio e Pepe</span>
+            <span class="review-date">December 2025</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img class="reviewer-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=80&h=80&q=80" alt="Jan Smit" loading="lazy" />
+            <div class="reviewer-info">
+              <strong>Jan Smit</strong>
+              <span>Haarlem</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <span class="review-platform google">Google</span>
+          </div>
+          <blockquote>
+            "Zakelijk diner met klanten — iedereen onder de indruk. De ambiance, het eten, de wijnpresentatie: alles was tiptop. Het Ossobuco alla Milanese was het gesprek van de avond. De bedrijfsvoering hier is vlekkeloos; stipt, vriendelijk en betrokken."
+          </blockquote>
+          <div class="review-footer">
+            <span class="review-dish">Gerecht: Ossobuco alla Milanese</span>
+            <span class="review-date">November 2025</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img class="reviewer-photo" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&h=80&q=80" alt="Emma Janssen" loading="lazy" />
+            <div class="reviewer-info">
+              <strong>Emma Janssen</strong>
+              <span>Leiden</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <span class="review-platform tripadvisor">TripAdvisor</span>
+          </div>
+          <blockquote>
+            "Vegetarisch genieten op topniveau! Het Risotto ai Funghi Porcini was romig, geurig en perfect gekruid. Ik ben onder de indruk hoe serieus het restaurant ook vegetarische opties neemt — geen aanpassing van een vleesgerecht, maar echt eigen creaties. Bravo!"
+          </blockquote>
+          <div class="review-footer">
+            <span class="review-dish">Gerecht: Risotto ai Funghi Porcini</span>
+            <span class="review-date">Oktober 2025</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img class="reviewer-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=80&h=80&q=80" alt="Yasmin El Amrani" loading="lazy" />
+            <div class="reviewer-info">
+              <strong>Yasmin El Amrani</strong>
+              <span>Amsterdam</span>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <span class="review-platform google">Google</span>
+          </div>
+          <blockquote>
+            "Elke keer als ik hier kom, voel ik mij welkom als een vaste gast — ook al is het mijn tweede bezoek. De Spaghetti alle Vongole is fenomenaal vers, de kokkels zijn heerlijk zilt en de saus licht en aromatisch. De sfeer op zaterdagavond is magisch."
+          </blockquote>
+          <div class="review-footer">
+            <span class="review-dish">Gerecht: Spaghetti alle Vongole</span>
+            <span class="review-date">September 2025</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <img class="reviewer-photo" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=80&h=80&q=80" alt="Pieter Bakker" loading="lazy" />
+            <div class="reviewer-info">
+              <strong>Pieter Bakker</strong>
+              <span>Almere</span>
+              <div class="review-stars">★★★★☆</div>
+            </div>
+            <span class="review-platform iens">Iens</span>
+          </div>
+          <blockquote>
+            "Heerlijk gegeten, mooie locatie en uitstekende wijnkaart. De Antipasto della Casa was ruim genoeg voor twee personen en van uitstekende kwaliteit. De enige kleine kanttekening: het kan druk worden op vrijdagavond, maar dat neemt de kwaliteit van het eten niet weg."
+          </blockquote>
+          <div class="review-footer">
+            <span class="review-dish">Gerecht: Antipasto della Casa</span>
+            <span class="review-date">Augustus 2025</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reviews-cta">
+        <p>Heeft u bij ons gegeten? Deel uw ervaring!</p>
+        <a href="https://www.google.com" target="_blank" rel="noopener" class="btn btn-outline-dark">Schrijf een review op Google</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Openingstijden -->
+  <!-- Contact & Reserveren -->
+  <section id="contact" class="contact-section">
+    <div class="contact-top-bar"></div>
+    <div class="container">
+      <div class="contact-header">
+        <span class="contact-label">Kom langs of neem contact op</span>
+        <h2 class="contact-title">Contatti</h2>
+        <div class="contact-ornament"><span>✦ ✦ ✦</span></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+
+          <div class="contact-item">
+            <div class="contact-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/></svg>
+            </div>
+            <div>
+              <strong>Adres</strong>
+              <p>Via Bella Vista 42<br>1012 AB Amsterdam</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+            </div>
+            <div>
+              <strong>Telefoon</strong>
+              <p><a href="tel:+31201234567">+31 (0)20 123 45 67</a></p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <strong>E-mail</strong>
+              <p><a href="mailto:info@bellavista.nl">info@bellavista.nl</a></p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            </div>
+            <div>
+              <strong>Openingstijden</strong>
+              <p>Di – Do: 17:00 – 22:00<br>Vrijdag: 17:00 – 23:00<br>Za – Zo: 12:00 – 23:00<br><em>Maandag gesloten</em></p>
+            </div>
+          </div>
+
+          <div class="contact-social-wrap">
+            <span class="contact-social-label">Volg ons</span>
+            <div class="contact-social-links">
+              <a href="#" aria-label="Instagram" class="contact-social-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                <span>Instagram</span>
+              </a>
+              <a href="#" aria-label="Facebook" class="contact-social-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                <span>Facebook</span>
+              </a>
+              <a href="#" aria-label="TripAdvisor" class="contact-social-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8l1.5 3 3.5.5-2.5 2.5.5 3.5L12 16l-3 1.5.5-3.5L7 11.5l3.5-.5z"/></svg>
+                <span>TripAdvisor</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="reserveren" class="contact-form-wrap">
+          <h3>Reserveer uw tafel</h3>
+          <form class="contact-form" id="reservationForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="naam">Naam *</label>
+                <input type="text" id="naam" name="naam" placeholder="Uw naam" required />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" placeholder="uw@email.nl" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefoon">Telefoon</label>
+                <input type="tel" id="telefoon" name="telefoon" placeholder="+31 6 12345678" />
+              </div>
+              <div class="form-group">
+                <label for="personen">Aantal personen *</label>
+                <select id="personen" name="personen" required>
+                  <option value="">Kies...</option>
+                  <option value="1">1 persoon</option>
+                  <option value="2">2 personen</option>
+                  <option value="3">3 personen</option>
+                  <option value="4">4 personen</option>
+                  <option value="5">5 personen</option>
+                  <option value="6">6 personen</option>
+                  <option value="7+">7 of meer</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="datum">Datum *</label>
+                <input type="date" id="datum" name="datum" required />
+              </div>
+              <div class="form-group">
+                <label for="tijd">Gewenste tijd *</label>
+                <select id="tijd" name="tijd" required>
+                  <option value="">Kies...</option>
+                  <optgroup label="Lunch">
+                    <option value="12:00">12:00</option>
+                    <option value="12:30">12:30</option>
+                    <option value="13:00">13:00</option>
+                    <option value="13:30">13:30</option>
+                    <option value="14:00">14:00</option>
+                  </optgroup>
+                  <optgroup label="Diner">
+                    <option value="18:00">18:00</option>
+                    <option value="18:30">18:30</option>
+                    <option value="19:00">19:00</option>
+                    <option value="19:30">19:30</option>
+                    <option value="20:00">20:00</option>
+                    <option value="20:30">20:30</option>
+                    <option value="21:00">21:00</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="gelegenheid">Speciale gelegenheid</label>
+              <select id="gelegenheid" name="gelegenheid">
+                <option value="">Geen speciale gelegenheid</option>
+                <option value="verjaardag">Verjaardag</option>
+                <option value="jubileum">Jubileum / Huwelijksverjaardag</option>
+                <option value="zakelijk">Zakelijk diner</option>
+                <option value="romantisch">Romantisch diner</option>
+                <option value="anders">Anders</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="bericht">Bijzondere wensen of opmerkingen</label>
+              <textarea id="bericht" name="bericht" rows="4" placeholder="Allergieën, dieetwensen, decoratieverzoeken..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <span>Reservering bevestigen</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">✓</div>
+            <h3>Grazie mille!</h3>
+            <p>Uw reservering is ontvangen. Wij nemen binnen 24 uur contact met u op ter bevestiging.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Copyright -->
+  <div class="site-copyright">
+    <p>&copy; 2026 Ristorante Bella Vista. Alle rechten voorbehouden. &nbsp;·&nbsp; <em>"A tavola non si invecchia"</em></p>
+  </div>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

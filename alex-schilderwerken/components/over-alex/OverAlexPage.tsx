@@ -47,8 +47,9 @@ const trustBadges = [
 const timeline = [
   { year: "2016", title: "Start vakopleiding", desc: "Begon met de officiële schildersopleiding — twee jaar intensief leren." },
   { year: "2018", title: "Diploma behaald", desc: "Afgestudeerd als officieel gediplomeerd schilder." },
-  { year: "2018", title: "Eigen bedrijf", desc: "Alex Schilderwerken opgericht. Begonnen als zelfstandige vakman." },
-  { year: "Nu", title: "8 jaar later", desc: "Honderden tevreden klanten, elk project met dezelfde toewijding." },
+  { year: "2018–2022", title: "In loondienst", desc: "Jaren praktijkervaring opgedaan als schilder bij een bedrijf — van woningen tot grote projecten." },
+  { year: "2022", title: "Eigen bedrijf gestart", desc: "Alex Schilderwerken opgericht. Zelfstandig verder gegaan met dezelfde vakkennis en toewijding." },
+  { year: "Nu", title: "~3 jaar zelfstandig", desc: "Elk project — groot of klein — met dezelfde nauwkeurigheid en persoonlijke aanpak." },
 ];
 
 export default function OverAlexPage() {
@@ -74,34 +75,35 @@ export default function OverAlexPage() {
       {/* Main story */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-stretch">
             {/* Text */}
             <AnimatedSection direction="left">
               <div className="space-y-6 text-muted text-base leading-[1.85]">
                 <p>
-                  Schilderen is voor mij niet zomaar een vak — het is een passie. Ik ben Alex
-                  Lanotte, en al meer dan 8 jaar zorg ik ervoor dat woningen en gebouwen er
-                  op hun allerbest uitzien.
+                  Mijn naam is Alex Lanotte. Na een gedegen 2-jarige vakopleiding en meer dan
+                  8 jaar praktijkervaring weet ik wat kwalitatief schilderwerk vraagt — en wat
+                  nodig is om het consequent goed te leveren.
                 </p>
                 <p>
-                  Na mijn 2-jarige vakopleiding, die ik met diploma heb afgerond, ben ik
-                  voor mezelf begonnen. Sindsdien werk ik als zelfstandige — dat betekent dat
-                  u altijd met mij persoonlijk te maken heeft. Geen onderaannemers, geen
-                  miscommunicatie. Gewoon vakmanschap van begin tot einde.
+                  Ik werk als zelfstandige, wat betekent dat u van begin tot eind met mij
+                  persoonlijk te maken heeft. Geen onderaannemers, geen tussenpersonen. U weet
+                  altijd wie er bij u aan het werk is en wie verantwoordelijk is voor het
+                  eindresultaat.
                 </p>
                 <p>
-                  Ik werk uitsluitend met Sigma-verf. Niet omdat het moet, maar omdat ik
-                  geloof dat een goed resultaat begint met de juiste materialen. Goedkope
-                  verf spaart op korte termijn — maar na twee jaar ziet u het verschil.
+                  Voor elk project kies ik bewust voor Sigma-verf. Niet omdat het verplicht is,
+                  maar omdat ik ervan overtuigd ben dat een duurzaam resultaat begint bij de
+                  juiste materialen. Het verschil met goedkopere alternatieven is na twee jaar
+                  duidelijk zichtbaar.
                 </p>
                 <p>
-                  Elk project — groot of klein — pak ik aan met dezelfde nauwkeurigheid. Van
-                  een kamer tot een complete renovatie: ik neem de tijd om het goed te doen,
-                  ook als dat extra moeite kost. Dat is de enige manier waarop ik werk.
+                  Of het nu gaat om een binnenkamer of een complete gevelrenovatie: elk project
+                  verdient dezelfde voorbereiding en zorgvuldigheid. Ik neem de tijd, werk
+                  nauwkeurig, en ga pas weg als ik tevreden ben met het resultaat.
                 </p>
                 <p className="text-foreground font-medium">
-                  Ik kom altijd persoonlijk langs om alles te bekijken en op te meten. De
-                  offerte is altijd volledig vrijblijvend — u zit nergens aan vast.
+                  Ik kom altijd persoonlijk langs voor een inspectie en opmeting. De offerte
+                  die u ontvangt is volledig vrijblijvend — u zit nergens aan vast.
                 </p>
               </div>
 
@@ -121,7 +123,7 @@ export default function OverAlexPage() {
               </div>
 
               {/* Mini stat row */}
-              <div className="mt-12 flex gap-10 pt-8 border-t border-border/40">
+              <div className="mt-12 flex gap-10 pt-8">
                 <div>
                   <span className="font-display text-3xl font-bold text-foreground block">
                     <StatCounter end={8} suffix="+" />
@@ -137,20 +139,16 @@ export default function OverAlexPage() {
               </div>
             </AnimatedSection>
 
-            {/* Profile photo slot */}
-            <AnimatedSection direction="right" delay={0.2}>
-              <div className="relative max-w-md">
-                <div className="aspect-[3/4] bg-card border border-border rounded-sm flex items-center justify-center overflow-hidden relative">
-                  <div className="text-center p-10">
-                    <div className="w-20 h-20 bg-primary/20 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-5">
-                      <svg className="w-10 h-10 text-accent/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                      </svg>
-                    </div>
-                    <p className="text-foreground font-semibold font-display text-lg">Alex Lanotte</p>
-                    <p className="text-muted text-sm mt-1">Profielfoto volgt</p>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-primary/10 to-transparent" />
+            {/* Project image */}
+            <AnimatedSection direction="right" delay={0.2} className="h-full">
+              <div className="relative h-full">
+                <div className="h-full overflow-hidden rounded-sm border border-border">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/alex-schilderwerken/Huis 3 bezig met schilderen.jpeg"
+                    alt="Pand in uitvoering"
+                    className="w-full h-full object-cover block"
+                  />
                 </div>
                 {/* Decorative accent */}
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 border border-accent/20 rounded-sm -z-10" />

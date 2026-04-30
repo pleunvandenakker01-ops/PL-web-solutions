@@ -44,18 +44,12 @@ function IconLayers() {
   );
 }
 
-function IconShield() {
-  return (
-    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-    </svg>
-  );
-}
 
 const diensten = [
   {
     id: "binnenschilderwerk",
     icon: <IconHome />,
+    image: { src: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800", position: "center" },
     title: "Binnenschilderwerk",
     shortDesc: "Vakkundig afgewerkte muren, plafonds en kozijnen",
     desc: `Van voorbereiding tot eindresultaat — ik zorg dat elke vierkante meter er perfect uitziet. Muren worden grondig voorbereid: plamuren waar nodig, schuren en ontstoffen voordat het schilderwerk begint.\n\nDe eindlaag wordt aangebracht met de verfspuit of roller, afhankelijk van het oppervlak. Altijd met Sigma-verf — want kwaliteit begint met het juiste materiaal.`,
@@ -64,6 +58,7 @@ const diensten = [
   {
     id: "buitenschilderwerk",
     icon: <IconBuilding />,
+    image: { src: "/alex-schilderwerken/Huis 3 bezig met schilderen.jpeg", position: "center" },
     title: "Buitenschilderwerk",
     shortDesc: "Bescherming en uitstraling voor uw gevel",
     desc: `Buitenwerk vraagt om een andere aanpak dan binnenwerk. Hout moet grondig ontvet en geschuurd worden, oude verf die loslaat wordt verwijderd, en daarna volgt een grondlaag voor maximale hechting.\n\nKozijnen, boeidelen, dakgoten en gevelpanelen — alles wordt vakkundig behandeld met weerbestendige verf van Sigma. Het resultaat is jarenlange bescherming én een perfecte uitstraling.`,
@@ -72,6 +67,7 @@ const diensten = [
   {
     id: "tex",
     icon: <IconBrush />,
+    image: { src: "https://images.pexels.com/photos/6474302/pexels-photo-6474302.jpeg", position: "center" },
     title: "Tex spuiten & rollen",
     shortDesc: "Structuurpleister voor een modern, egaal resultaat",
     desc: `Tex is een structuurverf die muren en plafonds een moderne, effen uitstraling geeft. Het kan worden gespoten voor een fijn gespoten effect, of gerold voor een iets grovere textuur.\n\nEen uitstekende keuze voor nieuwbouw, renovatie of wanneer u rauwe of beschadigde muren wilt wegwerken. Ik geef u advies over de beste methode voor uw situatie.`,
@@ -80,6 +76,7 @@ const diensten = [
   {
     id: "houtrot",
     icon: <IconWrench />,
+    image: { src: "https://images.pexels.com/photos/13159228/pexels-photo-13159228.jpeg", position: "center" },
     title: "Houtrotreparaties",
     shortDesc: "Aangetast hout vakkundig hersteld",
     desc: `Houtrot is een sluipend probleem. Wordt het niet tijdig aangepakt, dan kan schade aan kozijnen, raamkozijnen of dakranden snel uitbreiden.\n\nIk snij het aangetaste hout weg, behandel de ondergrond met een consolidant, en vul daarna op met reparatiemortel. Na uitharden wordt alles geschuurd en geschilderd — u ziet het verschil niet meer.`,
@@ -88,18 +85,11 @@ const diensten = [
   {
     id: "pleisterwerk",
     icon: <IconLayers />,
+    image: { src: "https://images.pexels.com/photos/5691596/pexels-photo-5691596.jpeg", position: "center" },
     title: "Pleisterwerk",
     shortDesc: "Gladde, vloeiende wandoppervlakken",
     desc: `Een goede schilderlaag staat of valt met de ondergrond. Ik voer pleisterwerk uit op muren en plafonds om oneffenheden weg te werken en een gladde, spuitklare ondergrond te creëren.\n\nOf het nu gaat om kleine reparaties of volledige wanden — ik zorg voor een naadloos resultaat dat als basis dient voor een perfecte verflaag.`,
     included: ["Muren en plafonds egaliseren", "Reparatie van beschadigingen", "Naden en scheuren opvullen", "Spuitklare ondergrond"],
-  },
-  {
-    id: "verzekering",
-    icon: <IconShield />,
-    title: "Verzekeringsherstel",
-    shortDesc: "Schade professioneel hersteld na water, brand of storm",
-    desc: `Na waterschade, brand of stormschade is een snelle en vakkundige aanpak essentieel. Ik herstel aangetaste muren, plafonds, kozijnen en andere oppervlakken en zorg dat uw woning er weer als nieuw uitziet.\n\nIk werk samen met uw verzekeraar en lever een gedetailleerd rapport als dat nodig is. Als BA-verzekerd vakman staat mijn werk garant voor een professioneel resultaat.`,
-    included: ["Waterschadeherstel", "Brand- en rookschadeherstel", "Stormschadeherstel", "Rapportage voor verzekeraar"],
   },
 ];
 
@@ -135,6 +125,18 @@ export default function DienstenPage() {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
               className="group bg-card border border-border hover:border-accent/30 rounded-sm overflow-hidden transition-all duration-500 hover:shadow-glow-sm"
             >
+              {dienst.image && (
+                <div className="h-52 sm:h-60 lg:h-64 overflow-hidden relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={dienst.image.src}
+                    alt={dienst.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ objectPosition: dienst.image.position }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/70 via-transparent to-transparent" />
+                </div>
+              )}
               <div className="p-8 lg:p-10 grid lg:grid-cols-2 gap-8 lg:gap-16">
                 <div>
                   <div className="flex items-center gap-4 mb-6">
