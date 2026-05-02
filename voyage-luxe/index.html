@@ -55,36 +55,11 @@ body {
   color: var(--ocean);
   overflow-x: hidden;
   line-height: 1.7;
-  cursor: none;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
-button { cursor: none; font-family: inherit; }
-
-/* ── Custom Cursor ──────────────────────────── */
-#cur-ring {
-  position: fixed; top: 0; left: 0;
-  width: 44px; height: 44px;
-  border: 1.5px solid rgba(201,168,76,.6);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%,-50%);
-  transition: width .3s var(--ease), height .3s var(--ease), border-color .3s;
-  will-change: transform;
-}
-#cur-dot {
-  position: fixed; top: 0; left: 0;
-  width: 8px; height: 8px;
-  background: var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%,-50%);
-  will-change: transform;
-}
-#cur-ring.hovering { width: 64px; height: 64px; border-color: rgba(201,168,76,.9); }
+button { font-family: inherit; }
 
 /* ── Buttons ────────────────────────────────── */
 .btn {
@@ -96,7 +71,6 @@ button { cursor: none; font-family: inherit; }
   font-weight: 500;
   letter-spacing: .15em;
   text-transform: uppercase;
-  cursor: none;
   border: 1.5px solid transparent;
   transition: all .35s var(--ease);
   position: relative;
@@ -561,7 +535,6 @@ button { cursor: none; font-family: inherit; }
   border-radius: 20px;
   overflow: hidden;
   aspect-ratio: 3/4;
-  cursor: none;
   transform-style: preserve-3d;
   background: rgba(255,255,255,0.92);
   box-shadow: 0 8px 40px rgba(0,0,0,.14), 0 2px 8px rgba(0,0,0,.08);
@@ -983,7 +956,6 @@ button { cursor: none; font-family: inherit; }
   text-transform: uppercase;
   font-weight: 500;
   transition: all .35s var(--ease);
-  cursor: none;
 }
 .pkg-pearl .pkg-cta {
   background: rgba(255,255,255,.1);
@@ -1246,7 +1218,6 @@ button { cursor: none; font-family: inherit; }
   font-weight: 600;
   letter-spacing: .2em;
   text-transform: uppercase;
-  cursor: none;
   transition: all .35s var(--ease);
   box-shadow: 0 8px 30px rgba(201,168,76,.25);
 }
@@ -1376,7 +1347,6 @@ button { cursor: none; font-family: inherit; }
   display: flex; align-items: center; justify-content: center;
   color: rgba(255,255,255,.45);
   transition: border-color .3s ease, color .3s ease;
-  cursor: none;
 }
 .footer-social a:hover {
   border-color: #C5A050;
@@ -1481,8 +1451,6 @@ button { cursor: none; font-family: inherit; }
   .form-row { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
-  body { cursor: auto; }
-  #cur-ring, #cur-dot { display: none; }
 }
 @media (max-width: 480px) {
   .hero-title { letter-spacing: .03em; }
@@ -1493,10 +1461,6 @@ button { cursor: none; font-family: inherit; }
 </head>
 
 <body>
-
-<!-- Custom Cursor -->
-<div id="cur-ring"></div>
-<div id="cur-dot"></div>
 
 <!-- Navigation -->
 <nav id="navbar">
@@ -2135,26 +2099,6 @@ function closeMob() {
   mobMenu.classList.remove('open');
   mobMenu.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
-}
-
-/* ── 4. Custom Cursor ────────────────────────── */
-const curRing = document.getElementById('cur-ring');
-const curDot  = document.getElementById('cur-dot');
-if (curRing && curDot) {
-  let tx = -100, ty = -100, rx = -100, ry = -100;
-  document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
-  window.addEventListener('mousemove', e => {
-    gsap.to(curDot, { x: e.clientX, y: e.clientY, duration: 0.06, ease: 'none' });
-  });
-  (function animRing() {
-    rx += (tx - rx) * 0.1; ry += (ty - ry) * 0.1;
-    curRing.style.left = rx + 'px'; curRing.style.top = ry + 'px';
-    requestAnimationFrame(animRing);
-  })();
-  document.querySelectorAll('a, button, [data-tilt], .pkg-cta, .form-submit').forEach(el => {
-    el.addEventListener('mouseenter', () => curRing.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => curRing.classList.remove('hovering'));
-  });
 }
 
 /* ── 5. Hero Particles ───────────────────────── */
