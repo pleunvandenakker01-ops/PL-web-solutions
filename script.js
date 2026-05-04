@@ -898,40 +898,89 @@ mobMenu.querySelectorAll('a').forEach(a => {
 })();
 
 /* ══════════════════════════════════════════
-   SWIPER — Reviews (horizontale carrousel)
+   REVIEWS — eigen scroll-snap carrousel
+   Vervangt Swiper (151KB) — geen afhankelijkheid
 ══════════════════════════════════════════ */
-const revSwiper = new Swiper('#rev-swiper', {
-  loop:           true,
-  grabCursor:     true,
-  centeredSlides: true,
-  slidesPerView:  1.1,
-  spaceBetween:   28,
-  speed:          750,
-  autoplay: { delay: 4800, disableOnInteraction: false, pauseOnMouseEnter: true },
-  pagination: { el: '#rev-swiper .swiper-pagination', clickable: true },
-  navigation: { nextEl: '#rev-swiper .swiper-button-next', prevEl: '#rev-swiper .swiper-button-prev' },
-  breakpoints: {
-    600:  { slidesPerView: 1.35, centeredSlides: true },
-    900:  { slidesPerView: 2.15, centeredSlides: true },
-    1200: { slidesPerView: 2.75, centeredSlides: true },
-  },
-  on: {
-    /* Smooth GSAP fade+scale op actieve slide */
-    slideChange() {
-      const slides = this.slides;
-      slides.forEach((s, i) => {
-        const card = s.querySelector('.rev-card');
-        if (!card) return;
-        if (s.classList.contains('swiper-slide-active')) {
-          gsap.to(card, { scale: 1.03, opacity: 1, duration: 0.55, ease: 'power2.out' });
-        } else {
-          gsap.to(card, { scale: 0.97, opacity: 0.65, duration: 0.55, ease: 'power2.out' });
-        }
+(function () {
+  const track   = document.getElementById('rev-track');
+  const dotsEl  = document.getElementById('rev-dots');
+  const prevBtn = document.querySelector('.rev-prev');
+  const nextBtn = document.querySelector('.rev-next');
+  if (!track) return;
+
+  const slides = Array.from(track.querySelectorAll('.rev-slide'));
+  const total  = slides.length;
+  let current  = 0;
+  let autoTimer;
+
+  /* Dots aanmaken */
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'rev-dot';
+    d.setAttribute('role', 'tab');
+    d.setAttribute('aria-label', `Review ${i + 1}`);
+    d.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+  const dots = Array.from(dotsEl.children);
+
+  function updateUI(idx) {
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === idx);
+      d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    });
+    slides.forEach((sl, i) => {
+      const card = sl.querySelector('.rev-card');
+      if (!card) return;
+      card.classList.toggle('is-active', i === idx);
+      gsap.to(card, {
+        scale:    i === idx ? 1.03 : 0.97,
+        opacity:  i === idx ? 1    : 0.65,
+        duration: 0.55,
+        ease:     'power2.out',
       });
-    },
-    init() { this.emit('slideChange'); },
-  },
-});
+    });
+  }
+
+  function goTo(idx) {
+    current = ((idx % total) + total) % total;
+    slides[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    updateUI(current);
+    resetAutoplay();
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 4800);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  /* Sync dots bij handmatig scrollen (touch/muis) */
+  let scrollTimer;
+  track.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      const trackMid = track.getBoundingClientRect().left + track.clientWidth / 2;
+      let closest = 0, minDist = Infinity;
+      slides.forEach((sl, i) => {
+        const rect = sl.getBoundingClientRect();
+        const dist = Math.abs(rect.left + rect.width / 2 - trackMid);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      if (closest !== current) { current = closest; updateUI(current); }
+    }, 80);
+  }, { passive: true });
+
+  /* Pauzeer autoplay bij hover */
+  track.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  track.addEventListener('mouseleave', resetAutoplay);
+
+  goTo(0);
+  resetAutoplay();
+})();
 
 /* ══════════════════════════════════════════
    CONTACT FORM

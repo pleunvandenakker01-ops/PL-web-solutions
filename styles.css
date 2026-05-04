@@ -1789,16 +1789,12 @@
     height: 100%;
     transition: border-color .4s;
   }
-  #rev-swiper .swiper-wrapper {
-    align-items: stretch;
-  }
-  #rev-swiper .swiper-slide {
+  .rev-slide {
     display: flex;
     align-items: stretch;
-    height: auto !important;   /* overschrijft de JS-gestelde hoogte per slide */
     box-sizing: border-box;
   }
-  #rev-swiper .rev-card {
+  .rev-slide .rev-card {
     height: 100%;
     box-sizing: border-box;
   }
@@ -2026,43 +2022,78 @@
   .pf-slide .pf-info { transform: translateZ(10px); }
 
   /* ═══════════════════════════════════════════════
-     REVIEWS CAROUSEL SMOOTH
+     REVIEWS CAROUSEL
   ═══════════════════════════════════════════════ */
-  #rev-swiper { overflow: visible !important; }
+  .rev-carousel { position: relative; }
   #reviews { overflow: hidden; }
+
+  .rev-track {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 1rem 5vw 2.5rem;
+    scroll-padding-inline: 5vw;
+  }
+  .rev-track::-webkit-scrollbar { display: none; }
+
+  .rev-slide {
+    flex: 0 0 min(90%, 480px);
+    scroll-snap-align: start;
+  }
+  @media (min-width: 600px)  { .rev-slide { flex: 0 0 min(72%, 520px); } }
+  @media (min-width: 900px)  { .rev-slide { flex: 0 0 min(44%, 540px); } }
+  @media (min-width: 1200px) { .rev-slide { flex: 0 0 min(35%, 560px); } }
+
   .rev-card {
     transform-origin: center center;
     transition: border-color .4s, box-shadow .4s;
   }
-  .rev-card:hover {
-    box-shadow: 0 0 40px rgba(201,168,76,.08);
-  }
-  .swiper-slide-active .rev-card {
-    border-color: rgba(201,168,76,.2) !important;
-  }
+  .rev-card:hover { box-shadow: 0 0 40px rgba(201,168,76,.08); }
+  .rev-card.is-active { border-color: rgba(201,168,76,.2) !important; }
 
-  /* ═══════════════════════════════════════════════
-     SWIPER OVERRIDES
-  ═══════════════════════════════════════════════ */
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: var(--gold) !important;
-    border: 1px solid var(--gold-25);
-    width: 50px !important;
-    height: 50px !important;
-    background: rgba(0,0,0,.8);
-    transition: background .3s, border-color .3s;
+  .rev-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding-bottom: 1rem;
   }
-  .swiper-button-next:hover,
-  .swiper-button-prev:hover {
-    background: var(--gold-10);
+  .rev-btn {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,.35);
+    background: rgba(0,0,0,.65);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .25s, border-color .25s, color .25s, box-shadow .25s;
+    flex-shrink: 0;
+  }
+  .rev-btn:hover {
+    background: var(--gold);
     border-color: var(--gold);
+    color: #000;
+    box-shadow: 0 0 24px rgba(201,168,76,.35);
   }
-  .swiper-button-next::after,
-  .swiper-button-prev::after { font-size: .95rem !important; }
+  .rev-btn:active { transform: scale(.93); }
 
-  .swiper-pagination-bullet            { background: var(--grey-d) !important; opacity: 1 !important; }
-  .swiper-pagination-bullet-active     { background: var(--gold)   !important; }
+  .rev-dots { display: flex; gap: .65rem; align-items: center; }
+  .rev-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--grey-dd);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background .3s, transform .3s;
+  }
+  .rev-dot.active { background: var(--gold); transform: scale(1.5); }
 
   /* ═══════════════════════════════════════════════
      RESPONSIVE
@@ -2264,10 +2295,6 @@
     .cb-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
   }
 
-  /* ── Critical Swiper layout — voorkomt CLS bij async laden van swiper CSS ── */
-  .swiper { overflow: hidden; }
-  .swiper-wrapper { display: flex; width: 100%; }
-  .swiper-slide { flex-shrink: 0; width: 100%; position: relative; }
 
 
 /* ═══════════════════════════════════════════════

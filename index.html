@@ -24,9 +24,6 @@
   <meta property="og:url" content="https://plwebsolutions.nl/" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Swiper CSS — async laden (niet render-blocking) -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /></noscript>
 
 
   <link rel="stylesheet" href="styles.css?v=2" />
@@ -794,9 +791,9 @@
     <h2 class="section-title">Wat Onze Klanten<br><span class="g shimmer-gold">Zeggen</span></h2>
   </div>
 
-  <div class="swiper" id="rev-swiper" style="padding-bottom:3.5rem;">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
+  <div class="rev-carousel" id="rev-carousel">
+    <div class="rev-track" id="rev-track">
+      <div class="rev-slide">
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
           <p class="rev-quote">Onze omzet is met 40% gestegen na de nieuwe website. Klanten zeggen dat ze ons via Google hebben gevonden. PL Web Solutions heeft echt meegedacht.</p>
@@ -806,7 +803,7 @@
           </div>
         </div>
       </div>
-      <div class="swiper-slide">
+      <div class="rev-slide">
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
           <p class="rev-quote">Binnen een week had ik een website om trots op te zijn. De animaties zijn prachtig en mijn klanten vragen constant wie hem gemaakt heeft. Absolute aanrader!</p>
@@ -816,7 +813,7 @@
           </div>
         </div>
       </div>
-      <div class="swiper-slide">
+      <div class="rev-slide">
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
           <p class="rev-quote">Professioneel, snel en eerlijk geprijsd. Ze luisteren écht en komen altijd hun beloftes na. Het onderhoudspakket is ook geweldig — ik hoef nergens meer aan te denken.</p>
@@ -826,7 +823,7 @@
           </div>
         </div>
       </div>
-      <div class="swiper-slide">
+      <div class="rev-slide">
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
           <p class="rev-quote">Als advocatenkantoor hadden we een website nodig die vertrouwen uitstraalt. PL Web Solutions begreep dat perfect. De site ziet er magistraal uit en converteert fantastisch.</p>
@@ -836,7 +833,7 @@
           </div>
         </div>
       </div>
-      <div class="swiper-slide">
+      <div class="rev-slide">
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
           <p class="rev-quote">De beste investering voor mijn salon. Ik krijg nu dagelijks online boekingen. De animaties laten precies zien waarom klanten bij mij moeten zijn.</p>
@@ -847,9 +844,15 @@
         </div>
       </div>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
+    <div class="rev-nav">
+      <button class="rev-btn rev-prev" aria-label="Vorige review">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="rev-dots" id="rev-dots" role="tablist" aria-label="Review navigatie"></div>
+      <button class="rev-btn rev-next" aria-label="Volgende review">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -970,9 +973,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-
-<script src="script.js?v=2" defer></script>
+<script src="script.js?v=3" defer></script>
 
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" async></script>
