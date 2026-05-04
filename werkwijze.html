@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Werkwijze — PL Web Solutions</title>
+  <meta name="description" content="Ontdek onze werkwijze. Van gratis gesprek tot live website in gemiddeld 7 werkdagen. Transparant, persoonlijk en resultaatgericht." />
+
+  <!-- Preconnect: fonts + CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+  <!-- Google Fonts — async laden (niet render-blocking) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
+
+  <!-- SEO canonical + OG -->
+  <link rel="canonical" href="https://plwebsolutions.nl/werkwijze.html" />
+  <meta property="og:title" content="Werkwijze — PL Web Solutions" />
+  <meta property="og:description" content="Van gratis gesprek tot live website in gemiddeld 7 werkdagen. Transparant, persoonlijk en resultaatgericht." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://plwebsolutions.nl/werkwijze.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+
+<!-- ═══════════════ COOKIE CONSENT ═══════════════ -->
+<div id="cookie-banner" role="dialog" aria-label="Cookiemelding" aria-describedby="cookie-desc" style="
+  display:none;
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:99998;
+  background:rgba(8,8,8,.97);
+  border-top:1px solid rgba(201,168,76,.2);
+  padding:1.4rem 5vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+  flex-wrap:wrap;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+">
+  <p id="cookie-desc" style="margin:0;font-family:'Inter',sans-serif;font-size:.78rem;color:#aaa;line-height:1.65;max-width:720px;">
+    Wij gebruiken functionele en analytische cookies om de website goed te laten werken en het gebruik te verbeteren.
+    Door verder te gaan of op "Accepteren" te klikken, ga je akkoord met ons
+    <a href="privacybeleid.html" style="color:#C9A84C;text-decoration:underline;">privacybeleid</a>.
+  </p>
+  <div style="display:flex;gap:.8rem;flex-shrink:0;">
+    <button id="cookie-accept" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:600;
+      letter-spacing:.15em;text-transform:uppercase;cursor:pointer;
+      background:#C9A84C;color:#000;border:none;padding:.7rem 1.6rem;
+      transition:background .25s;
+    " onmouseover="this.style.background='#F0C060'" onmouseout="this.style.background='#C9A84C'">
+      Accepteren
+    </button>
+    <button id="cookie-decline" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;
+      letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+      background:transparent;color:#888;border:1px solid rgba(255,255,255,.15);
+      padding:.7rem 1.4rem;transition:color .25s,border-color .25s;
+    " onmouseover="this.style.color='#ccc';this.style.borderColor='rgba(255,255,255,.35)'"
+       onmouseout="this.style.color='#888';this.style.borderColor='rgba(255,255,255,.15)'">
+      Alleen functioneel
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  const banner = document.getElementById('cookie-banner');
+  if (!localStorage.getItem('pl-cookie-consent')) banner.style.display = 'flex';
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'all');
+    banner.style.display = 'none';
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'functional');
+    banner.style.display = 'none';
+  });
+})();
+</script>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">PL <b>Web</b> Solutions</a>
+  <ul class="nav-links">
+    <li><a href="index.html#over-ons">Over Ons</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="werkwijze.html" class="nav-active">Werkwijze</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mob-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mob-menu" role="navigation" aria-label="Mobiel navigatiemenu">
+  <button class="mob-close" id="mob-close" aria-label="Menu sluiten">✕</button>
+  <a href="index.html#over-ons">Over Ons</a>
+  <a href="diensten.html">Diensten</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="werkwijze.html">Werkwijze</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ═══════════════ PAGE HERO ═══════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow page-hero-eyebrow">Onze Werkwijze</div>
+    <h1 class="page-hero-title">Van Idee Naar<br><span class="g">Online Succes</span></h1>
+    <p class="page-hero-sub">In 4 heldere stappen van eerste gesprek tot een live website waar jij trots op bent.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ MACBOOK ANIMATIE ═══════════════ -->
+<section id="werkwijze-mac">
+  <div class="ww-head">
+    <div class="eyebrow" style="margin-bottom:1.2rem">Werkwijze</div>
+    <h2 class="section-title">Van Idee Naar<br><span class="g shimmer-gold">Online Succes</span></h2>
+  </div>
+
+  <!-- MacBook Laptop animatie -->
+  <div class="ww-mac-wrap" id="ww-mac-wrap" aria-label="Laptop met werkwijze stappen">
+
+    <!-- ── Lid (klapt open) ── -->
+    <div class="ww-mac-lid" id="ww-mac-lid">
+      <div class="ww-mac-lid-outer">
+        <div class="ww-mac-camera"></div>
+        <div class="ww-mac-bezel">
+          <div class="ww-mac-display" id="ww-mac-display">
+
+            <!-- Status bar -->
+            <div class="ww-mac-statusbar">
+              <span class="ww-mac-logo">PL</span>
+              <div class="ww-mac-status-items">
+                <span>Werkwijze</span>
+                <span>Diensten</span>
+                <span>Contact</span>
+              </div>
+              <span class="ww-mac-clock" id="ww-mac-time">09:41</span>
+            </div>
+
+            <!-- Scherm inhoud: 4 stappen -->
+            <div class="ww-mac-screen-content">
+              <div class="ww-mac-scr-header">
+                <span class="ww-mac-scr-eyebrow">Werkwijze</span>
+                <span class="ww-mac-scr-title">Van Idee Naar Online Succes</span>
+              </div>
+              <div class="ww-mac-steps-grid" id="ww-mac-steps-grid">
+
+                <!-- Stap 01 -->
+                <div class="ww-mac-step-card" data-step="0">
+                  <div class="ww-ms-num-wrap"><div class="ww-ms-num-ring"><div class="ww-ms-num">01</div></div></div>
+                  <svg class="ww-ms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
+                  <div class="ww-ms-title" data-text="Gratis Gesprek"></div>
+                  <div class="ww-ms-body" data-text="We plannen een vrijblijvend gesprek om jouw wensen, doelen en budget te bespreken. Geen verplichtingen — eerlijk advies op maat."></div>
+                </div>
+
+                <!-- Stap 02 -->
+                <div class="ww-mac-step-card" data-step="1">
+                  <div class="ww-ms-num-wrap"><div class="ww-ms-num-ring"><div class="ww-ms-num">02</div></div></div>
+                  <svg class="ww-ms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/></svg>
+                  <div class="ww-ms-title" data-text="Strategie &amp; Design"></div>
+                  <div class="ww-ms-body" data-text="Wij ontwerpen een uniek visueel concept dat jouw merk perfect representeert. Jij geeft feedback, wij verfijnen tot het perfect is."></div>
+                </div>
+
+                <!-- Stap 03 -->
+                <div class="ww-mac-step-card" data-step="2">
+                  <div class="ww-ms-num-wrap"><div class="ww-ms-num-ring"><div class="ww-ms-num">03</div></div></div>
+                  <svg class="ww-ms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"/></svg>
+                  <div class="ww-ms-title" data-text="Bouwen &amp; Animeren"></div>
+                  <div class="ww-ms-body" data-text="Onze developers bouwen de website met premium animaties, snelle laadtijden en volledige SEO-optimalisatie. Pixel-perfect afgewerkt."></div>
+                </div>
+
+                <!-- Stap 04 -->
+                <div class="ww-mac-step-card" data-step="3">
+                  <div class="ww-ms-num-wrap"><div class="ww-ms-num-ring"><div class="ww-ms-num">04</div></div></div>
+                  <svg class="ww-ms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
+                  <div class="ww-ms-title" data-text="Live &amp; Groei"></div>
+                  <div class="ww-ms-body" data-text="Na jouw goedkeuring gaat de site live. Wij verzorgen de overdracht, training en doorlopend onderhoud voor slechts €79/maand."></div>
+                </div>
+
+              </div><!-- /.ww-mac-steps-grid -->
+
+              <!-- Terminal onderaan scherm -->
+              <div class="ww-mac-terminal" id="ww-mac-terminal">
+                <div class="ww-term-header">
+                  <div class="ww-term-dots">
+                    <span class="ww-term-dot ww-td-r"></span>
+                    <span class="ww-term-dot ww-td-y"></span>
+                    <span class="ww-term-dot ww-td-g"></span>
+                  </div>
+                  <span class="ww-term-title">pl-web-solutions — terminal</span>
+                </div>
+                <div class="ww-term-body" id="ww-term-body">
+                  <div class="ww-term-line ww-tl-cmd"  data-text="$ npm run build — pl-web-solutions"></div>
+                  <div class="ww-term-line"             data-text="Building your website..."></div>
+                  <div class="ww-term-line ww-tl-ok"   data-text="Adding premium animations...  ✓"></div>
+                  <div class="ww-term-line ww-tl-ok"   data-text="Optimizing SEO...  ✓"></div>
+                  <div class="ww-term-line ww-tl-done" data-text="Going live!  ✓  Done in 2.4s"></div>
+                </div>
+              </div>
+
+            </div><!-- /.ww-mac-screen-content -->
+
+            <div class="ww-screen-reflection"></div>
+          </div><!-- /.ww-mac-display -->
+        </div><!-- /.ww-mac-bezel -->
+      </div><!-- /.ww-mac-lid-outer -->
+    </div><!-- /.ww-mac-lid -->
+
+    <!-- ── Scharnier ── -->
+    <div class="ww-mac-hinge"></div>
+
+    <!-- ── Base ── -->
+    <div class="ww-mac-base">
+      <div class="ww-mac-touchbar">
+        <div class="ww-tb-esc"></div>
+        <div class="ww-tb-strip"></div>
+        <div class="ww-tb-touch"></div>
+      </div>
+      <div class="ww-mac-keyboard">
+        <div class="ww-mac-kb-row ww-kb-fn"></div>
+        <div class="ww-mac-kb-row"></div>
+        <div class="ww-mac-kb-row"></div>
+        <div class="ww-mac-kb-row"></div>
+        <div class="ww-mac-kb-row ww-kb-bottom">
+          <div class="ww-kb-bottom-key ww-kb-sm"></div>
+          <div class="ww-kb-bottom-key ww-kb-sm"></div>
+          <div class="ww-kb-bottom-key ww-kb-space"></div>
+          <div class="ww-kb-bottom-key ww-kb-sm"></div>
+          <div class="ww-kb-bottom-key ww-kb-sm"></div>
+        </div>
+      </div>
+      <div class="ww-mac-trackpad"></div>
+    </div><!-- /.ww-mac-base -->
+
+  </div><!-- /.ww-mac-wrap -->
+
+</section>
+
+<!-- ═══════════════ STAPPEN IN DETAIL ═══════════════ -->
+<section class="page-section bg-alt">
+  <div class="page-section-inner" style="max-width:960px;margin:0 auto;">
+    <div class="eyebrow" style="margin-bottom:1rem;text-align:center;">In Detail</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:4rem;">Elke Stap<br><span class="g">Uitgelegd</span></h2>
+    <div class="ww-detail-steps">
+      <div class="ww-detail-step">
+        <div class="ww-ds-num">01</div>
+        <div class="ww-ds-content">
+          <h3 class="ww-ds-title">Gratis Kennismakingsgesprek</h3>
+          <p class="ww-ds-body">We plannen een vrijblijvend gesprek — via telefoon, videocall of in persoon. We luisteren naar jouw verhaal, jouw doelstellingen en jouw budget. Na dit gesprek ontvang je een heldere offerte. Geen kleine lettertjes, geen verrassingen.</p>
+          <ul class="ww-ds-list">
+            <li>Duur: 30–45 minuten</li>
+            <li>Volledig gratis en vrijblijvend</li>
+            <li>Offerte binnen 24 uur</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ww-detail-step">
+        <div class="ww-ds-num">02</div>
+        <div class="ww-ds-content">
+          <h3 class="ww-ds-title">Strategie, Concept &amp; Design</h3>
+          <p class="ww-ds-body">Op basis van jouw input werken wij een visueel concept uit. Kleurenpalet, typografie, lay-out — alles afgestemd op jouw merk en doelgroep. Jij geeft feedback, wij verfijnen. Dit iteratieve proces stopt pas als jij 100% tevreden bent.</p>
+          <ul class="ww-ds-list">
+            <li>Moodboard &amp; styleguide</li>
+            <li>Maximaal 3 revisierondes</li>
+            <li>Jij behoudt altijd de regie</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ww-detail-step">
+        <div class="ww-ds-num">03</div>
+        <div class="ww-ds-content">
+          <h3 class="ww-ds-title">Bouwen, Animeren &amp; Optimaliseren</h3>
+          <p class="ww-ds-body">Nu gaan wij aan de slag. Met GSAP-animaties, Three.js particle effecten en pixel-perfect code bouwen wij een website die opvalt. Tegelijk optimaliseren wij voor Core Web Vitals, SEO en mobiele snelheid — zodat Google jou ook vindt.</p>
+          <ul class="ww-ds-list">
+            <li>GSAP &amp; Three.js animaties</li>
+            <li>SEO &amp; Core Web Vitals</li>
+            <li>Mobile-first development</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ww-detail-step">
+        <div class="ww-ds-num">04</div>
+        <div class="ww-ds-content">
+          <h3 class="ww-ds-title">Live Zetten &amp; Doorgroeien</h3>
+          <p class="ww-ds-body">Na jouw definitieve goedkeuring zetten wij de site live. Wij verzorgen domeininstallatie, SSL en hosting. Je krijgt een persoonlijke uitleg hoe alles werkt. En met ons onderhoudspakket voor €79/maand zorgen wij dat alles altijd tip-top is.</p>
+          <ul class="ww-ds-list">
+            <li>Hosting &amp; SSL inbegrepen</li>
+            <li>Persoonlijke overdracht</li>
+            <li>Onderhoud &amp; support beschikbaar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GARANTIE ═══════════════ -->
+<section class="page-section">
+  <div class="page-section-inner" style="max-width:700px;margin:0 auto;text-align:center;">
+    <div class="eyebrow">Onze Garantie</div>
+    <h2 class="section-title" style="margin-bottom:1.5rem;">100% Tevredenheid<br><span class="g">Gegarandeerd</span></h2>
+    <p class="body-text" style="margin-bottom:2.5rem;">Wij stoppen pas als jij volledig tevreden bent. Dat is geen marketingpraatje — dat is hoe wij werken. Altijd.</p>
+    <a href="contact.html" class="btn btn-primary"><span>Plan Gratis Gesprek →</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-brand">PL <span>Web</span> Solutions</div>
+      <p class="ft-tagline">Premium websites voor ambitieuze lokale ondernemers. Wij bouwen jouw digitale succes.</p>
+    </div>
+    <div>
+      <div class="ft-head">Navigatie</div>
+      <ul class="ft-links">
+        <li><a href="index.html#over-ons">Over Ons</a></li>
+        <li><a href="diensten.html">Diensten &amp; Prijzen</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="werkwijze.html">Werkwijze</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Pakketten</div>
+      <ul class="ft-links">
+        <li><a href="diensten.html">Starter — €349</a></li>
+        <li><a href="diensten.html">Business — €749</a></li>
+        <li><a href="diensten.html">Premium — €1.750</a></li>
+        <li><a href="diensten.html">Elite — €3.500</a></li>
+        <li><a href="diensten.html">Onderhoud — €79/mnd</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">&copy; 2026 <span>PL Web Solutions</span> — Alle rechten voorbehouden</p>
+    <div class="ft-legal">
+      <a href="privacybeleid.html">Privacybeleid</a>
+      <a href="#">Algemene Voorwaarden</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/combine/npm/gsap@3.12.5/dist/gsap.min.js,npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="script.js?v=3" defer></script>
+
+<!-- ══ PL ASSISTENT — CHATBOT WIDGET ══════════════════════════════ -->
+
+<div id="pl-chat-widget">
+  <button id="pl-chat-btn" aria-label="Open PL Assistent" aria-expanded="false" aria-controls="pl-chat-win">
+    <svg id="pl-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg id="pl-icon-xclose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div id="pl-chat-win" role="dialog" aria-label="PL Assistent chat" aria-modal="true">
+    <div id="pl-chat-head">
+      <div class="plcb-brand">
+        <div class="plcb-av">PL</div>
+        <div>
+          <span class="plcb-hname">PL Assistent</span>
+          <div class="plcb-status"><span class="plcb-dot"></span><span>Online &nbsp;·&nbsp; PL Web Solutions</span></div>
+        </div>
+      </div>
+      <button id="pl-chat-x" aria-label="Sluit chat">&times;</button>
+    </div>
+    <div id="pl-chat-msgs" aria-live="polite" aria-label="Chatberichten"></div>
+    <div id="pl-chat-foot">
+      <input id="pl-chat-inp" type="text" placeholder="Stel je vraag..." autocomplete="off" maxlength="500" aria-label="Chatbericht">
+      <button id="pl-chat-go" aria-label="Verstuur bericht">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div id="pl-chat-pw">Powered by Claude AI &nbsp;·&nbsp; PL Web Solutions</div>
+  </div>
+</div>
+
+</body>
+</html>

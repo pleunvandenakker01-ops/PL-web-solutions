@@ -792,6 +792,7 @@ mobMenu.querySelectorAll('a').forEach(a => {
 (function initPf3D() {
   const scene = document.getElementById('pf-3d-scene');
   const stage = document.getElementById('pf-3d-stage');
+  if (!stage) return;
   const items = Array.from(stage.querySelectorAll('.pf-3d-item'));
   const dots  = Array.from(document.querySelectorAll('.pf-3d-dot'));
   const total = items.length;
@@ -1010,7 +1011,8 @@ mobMenu.querySelectorAll('a').forEach(a => {
 /* ══════════════════════════════════════════
    CONTACT FORM
 ══════════════════════════════════════════ */
-document.getElementById('ct-form').addEventListener('submit', function (e) {
+const ctFormEl = document.getElementById('ct-form');
+if (ctFormEl) ctFormEl.addEventListener('submit', function (e) {
   e.preventDefault();
 
   /* ── Validatie ── */
@@ -1060,7 +1062,7 @@ document.getElementById('ct-form').addEventListener('submit', function (e) {
   btn.textContent = 'Verzonden ✓';
   this.querySelectorAll('input, select, textarea').forEach(el => el.value = '');
   setTimeout(() => { btn.textContent = orig; }, 4000);
-});
+}); }
 
 /* Page visibility — pause Three.js via tab switch handled by rAF natively */
 

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — PL Web Solutions</title>
+  <meta name="description" content="Neem contact op met PL Web Solutions. Vrijblijvend gesprek, reactie binnen 24 uur. Bel, app of vul het formulier in." />
+
+  <!-- Preconnect: fonts + CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+  <!-- Google Fonts — async laden (niet render-blocking) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
+
+  <!-- SEO canonical + OG -->
+  <link rel="canonical" href="https://plwebsolutions.nl/contact.html" />
+  <meta property="og:title" content="Contact — PL Web Solutions" />
+  <meta property="og:description" content="Neem contact op met PL Web Solutions. Vrijblijvend gesprek, reactie binnen 24 uur." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://plwebsolutions.nl/contact.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+
+<!-- ═══════════════ COOKIE CONSENT ═══════════════ -->
+<div id="cookie-banner" role="dialog" aria-label="Cookiemelding" aria-describedby="cookie-desc" style="
+  display:none;
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:99998;
+  background:rgba(8,8,8,.97);
+  border-top:1px solid rgba(201,168,76,.2);
+  padding:1.4rem 5vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+  flex-wrap:wrap;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+">
+  <p id="cookie-desc" style="margin:0;font-family:'Inter',sans-serif;font-size:.78rem;color:#aaa;line-height:1.65;max-width:720px;">
+    Wij gebruiken functionele en analytische cookies om de website goed te laten werken en het gebruik te verbeteren.
+    Door verder te gaan of op "Accepteren" te klikken, ga je akkoord met ons
+    <a href="privacybeleid.html" style="color:#C9A84C;text-decoration:underline;">privacybeleid</a>.
+  </p>
+  <div style="display:flex;gap:.8rem;flex-shrink:0;">
+    <button id="cookie-accept" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:600;
+      letter-spacing:.15em;text-transform:uppercase;cursor:pointer;
+      background:#C9A84C;color:#000;border:none;padding:.7rem 1.6rem;
+      transition:background .25s;
+    " onmouseover="this.style.background='#F0C060'" onmouseout="this.style.background='#C9A84C'">
+      Accepteren
+    </button>
+    <button id="cookie-decline" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;
+      letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+      background:transparent;color:#888;border:1px solid rgba(255,255,255,.15);
+      padding:.7rem 1.4rem;transition:color .25s,border-color .25s;
+    " onmouseover="this.style.color='#ccc';this.style.borderColor='rgba(255,255,255,.35)'"
+       onmouseout="this.style.color='#888';this.style.borderColor='rgba(255,255,255,.15)'">
+      Alleen functioneel
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  const banner = document.getElementById('cookie-banner');
+  if (!localStorage.getItem('pl-cookie-consent')) banner.style.display = 'flex';
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'all');
+    banner.style.display = 'none';
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'functional');
+    banner.style.display = 'none';
+  });
+})();
+</script>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">PL <b>Web</b> Solutions</a>
+  <ul class="nav-links">
+    <li><a href="index.html#over-ons">Over Ons</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="werkwijze.html">Werkwijze</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="contact.html" class="nav-active">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mob-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mob-menu" role="navigation" aria-label="Mobiel navigatiemenu">
+  <button class="mob-close" id="mob-close" aria-label="Menu sluiten">✕</button>
+  <a href="index.html#over-ons">Over Ons</a>
+  <a href="diensten.html">Diensten</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="werkwijze.html">Werkwijze</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ═══════════════ PAGE HERO ═══════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow page-hero-eyebrow">Contact</div>
+    <h1 class="page-hero-title">Klaar Om Te<br><span class="g">Groeien?</span></h1>
+    <p class="page-hero-sub">Vul het formulier in of neem direct contact op. We reageren binnen 24 uur.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact">
+  <div class="ct-grid">
+    <div class="ct-info">
+      <div class="eyebrow">Contact</div>
+      <h2 class="section-title">Klaar Om Te<br><span class="g shimmer-gold">Groeien?</span></h2>
+      <p class="body-text">
+        Vul het formulier in of neem direct contact op.
+        We reageren binnen 24 uur met een vrijblijvend advies op maat.
+      </p>
+      <div class="ct-details">
+        <div class="ct-item">
+          <div class="ct-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg></div>
+          <div><div class="ct-item-lbl">E-mail</div><div class="ct-item-val">info@plwebsolutions.nl</div></div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg></div>
+          <div><div class="ct-item-lbl">WhatsApp</div><div class="ct-item-val">06-30937447</div></div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg></div>
+          <div><div class="ct-item-lbl">Locatie</div><div class="ct-item-val">Nederland — Landelijk actief</div></div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div>
+          <div><div class="ct-item-lbl">Reactietijd</div><div class="ct-item-val">Binnen 24 uur</div></div>
+        </div>
+      </div>
+    </div>
+
+    <form class="ct-form" id="ct-form" novalidate>
+      <div class="form-row">
+        <div class="fg">
+          <label class="fl" for="f-naam">Naam</label>
+          <input class="fi" type="text" id="f-naam" placeholder="Jan de Vries" required />
+        </div>
+        <div class="fg">
+          <label class="fl" for="f-bedrijf">Bedrijfsnaam</label>
+          <input class="fi" type="text" id="f-bedrijf" placeholder="Mijn Bedrijf" />
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fl" for="f-email">E-mailadres</label>
+        <input class="fi" type="email" id="f-email" placeholder="jan@mijnbedrijf.nl" required />
+      </div>
+      <div class="fg">
+        <label class="fl" for="f-pakket">Gewenst Pakket</label>
+        <select class="fsel" id="f-pakket">
+          <option value="">Selecteer een pakket...</option>
+          <option>Starter — €349</option>
+          <option>Business — €749</option>
+          <option>Premium — €1.750</option>
+          <option>Elite — €3.500</option>
+          <option>Onderhoud — €79/maand</option>
+          <option>Weet ik nog niet</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label class="fl" for="f-bericht">Jouw Verhaal</label>
+        <textarea class="fta" id="f-bericht" placeholder="Vertel ons over je bedrijf en wat je van je nieuwe website verwacht..."></textarea>
+      </div>
+      <!-- Honeypot: verborgen voor mensen, bots vullen dit in -->
+      <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
+        <label for="f-honeypot">Laat dit veld leeg</label>
+        <input type="text" id="f-honeypot" name="honeypot" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn btn-primary"><span>Verstuur Aanvraag →</span></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-brand">PL <span>Web</span> Solutions</div>
+      <p class="ft-tagline">Premium websites voor ambitieuze lokale ondernemers. Wij bouwen jouw digitale succes.</p>
+    </div>
+    <div>
+      <div class="ft-head">Navigatie</div>
+      <ul class="ft-links">
+        <li><a href="index.html#over-ons">Over Ons</a></li>
+        <li><a href="diensten.html">Diensten &amp; Prijzen</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="werkwijze.html">Werkwijze</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Pakketten</div>
+      <ul class="ft-links">
+        <li><a href="diensten.html">Starter — €349</a></li>
+        <li><a href="diensten.html">Business — €749</a></li>
+        <li><a href="diensten.html">Premium — €1.750</a></li>
+        <li><a href="diensten.html">Elite — €3.500</a></li>
+        <li><a href="diensten.html">Onderhoud — €79/mnd</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">&copy; 2026 <span>PL Web Solutions</span> — Alle rechten voorbehouden</p>
+    <div class="ft-legal">
+      <a href="privacybeleid.html">Privacybeleid</a>
+      <a href="#">Algemene Voorwaarden</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/combine/npm/gsap@3.12.5/dist/gsap.min.js,npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="script.js?v=3" defer></script>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" async></script>
+
+<!-- ══ PL ASSISTENT — CHATBOT WIDGET ══════════════════════════════ -->
+
+<div id="pl-chat-widget">
+  <button id="pl-chat-btn" aria-label="Open PL Assistent" aria-expanded="false" aria-controls="pl-chat-win">
+    <svg id="pl-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg id="pl-icon-xclose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div id="pl-chat-win" role="dialog" aria-label="PL Assistent chat" aria-modal="true">
+    <div id="pl-chat-head">
+      <div class="plcb-brand">
+        <div class="plcb-av">PL</div>
+        <div>
+          <span class="plcb-hname">PL Assistent</span>
+          <div class="plcb-status"><span class="plcb-dot"></span><span>Online &nbsp;·&nbsp; PL Web Solutions</span></div>
+        </div>
+      </div>
+      <button id="pl-chat-x" aria-label="Sluit chat">&times;</button>
+    </div>
+    <div id="pl-chat-msgs" aria-live="polite" aria-label="Chatberichten"></div>
+    <div id="pl-chat-foot">
+      <input id="pl-chat-inp" type="text" placeholder="Stel je vraag..." autocomplete="off" maxlength="500" aria-label="Chatbericht">
+      <button id="pl-chat-go" aria-label="Verstuur bericht">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div id="pl-chat-pw">Powered by Claude AI &nbsp;·&nbsp; PL Web Solutions</div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diensten &amp; Prijzen — PL Web Solutions</title>
+  <meta name="description" content="Bekijk onze transparante diensten en pakketten. Starter €349, Business €749, Premium €1.750, Elite €3.500. AI Chatbot pakketten vanaf €49/maand." />
+
+  <!-- Preconnect: fonts + CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+  <!-- Google Fonts — async laden (niet render-blocking) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
+
+  <!-- SEO canonical + OG -->
+  <link rel="canonical" href="https://plwebsolutions.nl/diensten.html" />
+  <meta property="og:title" content="Diensten &amp; Prijzen — PL Web Solutions" />
+  <meta property="og:description" content="Bekijk onze transparante diensten en pakketten. Starter €349, Business €749, Premium €1.750, Elite €3.500." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://plwebsolutions.nl/diensten.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+
+<!-- ═══════════════ COOKIE CONSENT ═══════════════ -->
+<div id="cookie-banner" role="dialog" aria-label="Cookiemelding" aria-describedby="cookie-desc" style="
+  display:none;
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:99998;
+  background:rgba(8,8,8,.97);
+  border-top:1px solid rgba(201,168,76,.2);
+  padding:1.4rem 5vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+  flex-wrap:wrap;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+">
+  <p id="cookie-desc" style="margin:0;font-family:'Inter',sans-serif;font-size:.78rem;color:#aaa;line-height:1.65;max-width:720px;">
+    Wij gebruiken functionele en analytische cookies om de website goed te laten werken en het gebruik te verbeteren.
+    Door verder te gaan of op "Accepteren" te klikken, ga je akkoord met ons
+    <a href="privacybeleid.html" style="color:#C9A84C;text-decoration:underline;">privacybeleid</a>.
+  </p>
+  <div style="display:flex;gap:.8rem;flex-shrink:0;">
+    <button id="cookie-accept" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:600;
+      letter-spacing:.15em;text-transform:uppercase;cursor:pointer;
+      background:#C9A84C;color:#000;border:none;padding:.7rem 1.6rem;
+      transition:background .25s;
+    " onmouseover="this.style.background='#F0C060'" onmouseout="this.style.background='#C9A84C'">
+      Accepteren
+    </button>
+    <button id="cookie-decline" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;
+      letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+      background:transparent;color:#888;border:1px solid rgba(255,255,255,.15);
+      padding:.7rem 1.4rem;transition:color .25s,border-color .25s;
+    " onmouseover="this.style.color='#ccc';this.style.borderColor='rgba(255,255,255,.35)'"
+       onmouseout="this.style.color='#888';this.style.borderColor='rgba(255,255,255,.15)'">
+      Alleen functioneel
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  const banner = document.getElementById('cookie-banner');
+  if (!localStorage.getItem('pl-cookie-consent')) banner.style.display = 'flex';
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'all');
+    banner.style.display = 'none';
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'functional');
+    banner.style.display = 'none';
+  });
+})();
+</script>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">PL <b>Web</b> Solutions</a>
+  <ul class="nav-links">
+    <li><a href="index.html#over-ons">Over Ons</a></li>
+    <li><a href="diensten.html" class="nav-active">Diensten</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="werkwijze.html">Werkwijze</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mob-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mob-menu" role="navigation" aria-label="Mobiel navigatiemenu">
+  <button class="mob-close" id="mob-close" aria-label="Menu sluiten">✕</button>
+  <a href="index.html#over-ons">Over Ons</a>
+  <a href="diensten.html">Diensten</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="werkwijze.html">Werkwijze</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ═══════════════ PAGE HERO ═══════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow page-hero-eyebrow">Onze Diensten</div>
+    <h1 class="page-hero-title">Diensten &amp;<br><span class="g">Pakketten</span></h1>
+    <p class="page-hero-sub">Transparante prijzen, geen verborgen kosten. Kies het pakket dat past bij jouw ambities.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ DIENSTEN ═══════════════ -->
+<section id="diensten">
+  <div class="diensten-head">
+    <div class="eyebrow">Onze Diensten</div>
+    <h2 class="section-title">Kies Jouw<br><span class="g shimmer-gold">Pakket</span></h2>
+    <p class="body-text">Transparante prijzen, geen verborgen kosten. Kies het pakket dat past bij jouw ambities en budget.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <!-- Starter -->
+    <div class="pc">
+      <div class="pc-shimmer"></div>
+      <div class="pc-tier">Starter</div>
+      <div class="pc-price"><sup>€</sup>349</div>
+      <div class="pc-period">Eenmalige investering</div>
+      <div class="pc-divider"></div>
+      <ul class="pc-features">
+        <li>1-pagina professionele website</li>
+        <li>Volledig mobielvriendelijk design</li>
+        <li>Contactformulier</li>
+        <li>Basis SEO-optimalisatie</li>
+        <li>Oplevering binnen 5 werkdagen</li>
+      </ul>
+      <a href="contact.html" class="btn btn-ghost">Kies Starter</a>
+    </div>
+
+    <!-- Business (featured) -->
+    <div class="pc feat">
+      <div class="pc-shimmer"></div>
+      <div class="pc-badge">Meest Gekozen</div>
+      <div class="pc-tier">Business</div>
+      <div class="pc-price"><sup>€</sup>749</div>
+      <div class="pc-period">Eenmalige investering</div>
+      <div class="pc-divider"></div>
+      <ul class="pc-features">
+        <li>Tot 5 pagina's volledig op maat</li>
+        <li>GSAP animaties &amp; premium design</li>
+        <li>SEO-geoptimaliseerde content</li>
+        <li>WhatsApp &amp; socials integratie</li>
+        <li>Google Analytics koppeling</li>
+        <li>Core Web Vitals geoptimaliseerd</li>
+        <li>Oplevering binnen 7 werkdagen</li>
+      </ul>
+      <a href="contact.html" class="btn btn-ghost">Kies Business</a>
+    </div>
+
+    <!-- Premium -->
+    <div class="pc">
+      <div class="pc-shimmer"></div>
+      <div class="pc-tier">Premium</div>
+      <div class="pc-price"><sup>€</sup>1.750</div>
+      <div class="pc-period">Eenmalige investering</div>
+      <div class="pc-divider"></div>
+      <ul class="pc-features">
+        <li>Onbeperkte pagina's</li>
+        <li>3D animaties &amp; particle effecten</li>
+        <li>Blog / CMS systeem</li>
+        <li>Online afsprakensysteem</li>
+        <li>Professionele copywriting</li>
+        <li>Meertalige ondersteuning</li>
+        <li>6 maanden gratis support</li>
+        <li>Oplevering binnen 14 werkdagen</li>
+      </ul>
+      <a href="contact.html" class="btn btn-ghost">Kies Premium</a>
+    </div>
+
+    <!-- Elite -->
+    <div class="pc elite">
+      <div class="pc-shimmer"></div>
+      <div class="pc-badge">Elite</div>
+      <div class="pc-tier">Elite</div>
+      <div class="pc-price"><sup>€</sup>3.500</div>
+      <div class="pc-period">Volledig cinematisch maatwerk</div>
+      <div class="pc-divider"></div>
+      <ul class="pc-features">
+        <li>Spline 3D &amp; particle effecten</li>
+        <li>Custom cursor &amp; GSAP SplitText</li>
+        <li>Professionele copywriting</li>
+        <li>Meertalig &amp; CMS</li>
+        <li>Afsprakensysteem &amp; integraties</li>
+        <li>6 maanden support</li>
+        <li>Maandelijkse rapportage</li>
+      </ul>
+      <div class="pc-availability">Beschikbaarheid op aanvraag — maximaal 2 Elite projecten per maand</div>
+      <a href="contact.html" class="btn btn-ghost">Vraag Elite Aan</a>
+    </div>
+  </div>
+
+  <!-- Onderhoud -->
+  <div class="onderhoud">
+    <div>
+      <div class="eyebrow" style="margin-bottom:.6rem">Maandelijks Onderhoud</div>
+      <div class="onderhoud-price">€79 <sub>/maand</sub></div>
+    </div>
+    <div class="onderhoud-feats">
+      <span class="onderhoud-feat">Maandelijkse updates</span>
+      <span class="onderhoud-feat">Technisch beheer</span>
+      <span class="onderhoud-feat">Veiligheidsscans</span>
+      <span class="onderhoud-feat">Hosting inbegrepen</span>
+      <span class="onderhoud-feat">Kleine aanpassingen</span>
+      <span class="onderhoud-feat">Prioriteit support</span>
+    </div>
+    <a href="contact.html" class="btn btn-primary"><span>Activeer Onderhoud</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════ CHATBOT PRICING ═══════════════ -->
+<section id="chatbot-pricing">
+  <div class="diensten-head">
+    <div class="eyebrow">AI Chatbot Pakketten</div>
+    <h2 class="section-title">Chatbot Op Maat,<br><span class="g shimmer-gold">Elke Schaal</span></h2>
+    <p class="body-text">Activeer een slimme chatbot op jouw website. Transparante maandelijkse abonnementen, maandelijks opzegbaar.</p>
+  </div>
+
+  <!-- Billing toggle -->
+  <div class="cb-toggle-wrap">
+    <span class="cb-toggle-label active" id="cb-monthly-label">Maandelijks</span>
+    <button
+      class="cb-toggle"
+      id="cb-billing-toggle"
+      role="switch"
+      aria-pressed="false"
+      aria-label="Schakel tussen maandelijks en jaarlijks betalen"
+    >
+      <span class="cb-toggle-knob"></span>
+    </button>
+    <span class="cb-toggle-label" id="cb-yearly-label">
+      Jaarlijks<span class="cb-discount">2 maanden gratis</span>
+    </span>
+  </div>
+
+  <!-- 3 pricing cards -->
+  <div class="cb-grid" id="cb-grid">
+
+    <!-- Starter -->
+    <div class="pc cb-card">
+      <div class="pc-shimmer"></div>
+      <div class="pc-tier">Starter</div>
+
+      <div class="pc-price cb-price-monthly"><sup>€</sup>49</div>
+      <div class="cb-price-yearly">
+        <div class="pc-price"><sup>€</sup>41</div>
+      </div>
+      <div class="pc-period cb-price-monthly">/maand excl. btw</div>
+      <div class="pc-period cb-price-yearly">/maand bij jaarlijkse betaling excl. btw</div>
+
+      <div class="pc-divider"></div>
+
+      <ul class="cb-features">
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Chatbot op website
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          500 gesprekken/maand
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Basis statistieken
+        </li>
+        <li class="excluded">
+          <svg class="cb-cross" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>
+          WhatsApp koppeling
+        </li>
+        <li class="excluded">
+          <svg class="cb-cross" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>
+          E-mail koppeling
+        </li>
+        <li class="excluded">
+          <svg class="cb-cross" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>
+          Eigen branding &amp; kleuren
+        </li>
+      </ul>
+
+      <a href="contact.html" class="btn btn-ghost">Aan de slag</a>
+    </div>
+
+    <!-- Business (featured) -->
+    <div class="pc feat cb-card">
+      <div class="pc-shimmer"></div>
+      <div class="pc-badge">Meest Gekozen</div>
+      <div class="pc-tier">Business</div>
+
+      <div class="pc-price cb-price-monthly"><sup>€</sup>119</div>
+      <div class="cb-price-yearly">
+        <div class="pc-price"><sup>€</sup>99</div>
+      </div>
+      <div class="pc-period cb-price-monthly">/maand excl. btw</div>
+      <div class="pc-period cb-price-yearly">/maand bij jaarlijkse betaling excl. btw</div>
+
+      <div class="pc-divider"></div>
+
+      <ul class="cb-features">
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Chatbot op website
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          2.500 gesprekken/maand
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          WhatsApp koppeling
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          E-mail koppeling
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Eigen branding &amp; kleuren
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Uitgebreide rapportage
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          E-mail support
+        </li>
+      </ul>
+
+      <a href="contact.html" class="btn btn-ghost">Aan de slag</a>
+    </div>
+
+    <!-- Premium -->
+    <div class="pc cb-card">
+      <div class="pc-shimmer"></div>
+      <div class="pc-tier">Premium</div>
+
+      <div class="pc-price cb-price-monthly"><sup>€</sup>199</div>
+      <div class="cb-price-yearly">
+        <div class="pc-price"><sup>€</sup>166</div>
+      </div>
+      <div class="pc-period cb-price-monthly">/maand excl. btw</div>
+      <div class="pc-period cb-price-yearly">/maand bij jaarlijkse betaling excl. btw</div>
+
+      <div class="pc-divider"></div>
+
+      <ul class="cb-features">
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Chatbot op website
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Onbeperkt gesprekken
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          WhatsApp koppeling
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          E-mail koppeling
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Volledig maatwerk branding
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Geavanceerde analytics
+        </li>
+        <li class="included">
+          <svg class="cb-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+          Prioriteit support + SLA
+        </li>
+      </ul>
+
+      <a href="contact.html" class="btn btn-ghost">Aan de slag</a>
+    </div>
+
+  </div>
+
+  <p class="cb-footnote">
+    Alle prijzen zijn excl. btw &nbsp;·&nbsp; Jaarlijks betalen = 2 maanden gratis &nbsp;·&nbsp; Maandelijks opzegbaar
+  </p>
+</section>
+
+<!-- ═══════════════ WAAROM PL ═══════════════ -->
+<section class="page-section bg-alt">
+  <div class="page-section-inner" style="max-width:900px;margin:0 auto;text-align:center;">
+    <div class="eyebrow">Waarom PL Web Solutions?</div>
+    <h2 class="section-title" style="margin-bottom:2rem;">Meer Dan Alleen<br><span class="g">Een Website</span></h2>
+    <div class="features-grid">
+      <div class="feat-item">
+        <div class="feat-icon">&#9889;</div>
+        <div class="feat-title">Razendsnel</div>
+        <p class="feat-body">Core Web Vitals geoptimaliseerd. Jouw site laadt in onder 2 seconden.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">&#127919;</div>
+        <div class="feat-title">SEO-First</div>
+        <p class="feat-body">Elke website bouwen we met SEO als fundament. Meer bezoekers, meer klanten.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">&#128241;</div>
+        <div class="feat-title">Mobile-Perfect</div>
+        <p class="feat-body">70% van de bezoekers komt via mobiel. Jouw site werkt perfect op elk scherm.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">&#128737;</div>
+        <div class="feat-title">100% Tevredenheid</div>
+        <p class="feat-body">We stoppen pas als jij 100% tevreden bent. Dat is geen belofte — dat is onze standaard.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">&#128172;</div>
+        <div class="feat-title">Directe Lijn</div>
+        <p class="feat-body">Jij belt met Pleun of Lars zelf. Geen anonieme accountmanager. Korte lijnen.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">&#128640;</div>
+        <div class="feat-title">Snel Opgeleverd</div>
+        <p class="feat-body">Gemiddeld 7 werkdagen van eerste gesprek tot live website. Geen eindeloze trajecten.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="page-cta-section">
+  <div class="page-cta-inner">
+    <div class="eyebrow">Start Vandaag</div>
+    <h2 class="section-title">Klaar Om Te<br><span class="g shimmer-gold">Groeien?</span></h2>
+    <p class="body-text" style="max-width:520px;margin:0 auto 2.5rem;">Plan een gratis gesprek en ontdek welk pakket het beste bij jouw situatie past.</p>
+    <a href="contact.html" class="btn btn-primary"><span>Vraag Gratis Gesprek Aan →</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-brand">PL <span>Web</span> Solutions</div>
+      <p class="ft-tagline">Premium websites voor ambitieuze lokale ondernemers. Wij bouwen jouw digitale succes.</p>
+    </div>
+    <div>
+      <div class="ft-head">Navigatie</div>
+      <ul class="ft-links">
+        <li><a href="index.html#over-ons">Over Ons</a></li>
+        <li><a href="diensten.html">Diensten &amp; Prijzen</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="werkwijze.html">Werkwijze</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Pakketten</div>
+      <ul class="ft-links">
+        <li><a href="diensten.html">Starter — €349</a></li>
+        <li><a href="diensten.html">Business — €749</a></li>
+        <li><a href="diensten.html">Premium — €1.750</a></li>
+        <li><a href="diensten.html">Elite — €3.500</a></li>
+        <li><a href="diensten.html">Onderhoud — €79/mnd</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">&copy; 2026 <span>PL Web Solutions</span> — Alle rechten voorbehouden</p>
+    <div class="ft-legal">
+      <a href="privacybeleid.html">Privacybeleid</a>
+      <a href="#">Algemene Voorwaarden</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/combine/npm/gsap@3.12.5/dist/gsap.min.js,npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="script.js?v=3" defer></script>
+
+<!-- ══ PL ASSISTENT — CHATBOT WIDGET ══════════════════════════════ -->
+
+<div id="pl-chat-widget">
+  <button id="pl-chat-btn" aria-label="Open PL Assistent" aria-expanded="false" aria-controls="pl-chat-win">
+    <svg id="pl-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg id="pl-icon-xclose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div id="pl-chat-win" role="dialog" aria-label="PL Assistent chat" aria-modal="true">
+    <div id="pl-chat-head">
+      <div class="plcb-brand">
+        <div class="plcb-av">PL</div>
+        <div>
+          <span class="plcb-hname">PL Assistent</span>
+          <div class="plcb-status"><span class="plcb-dot"></span><span>Online &nbsp;·&nbsp; PL Web Solutions</span></div>
+        </div>
+      </div>
+      <button id="pl-chat-x" aria-label="Sluit chat">&times;</button>
+    </div>
+    <div id="pl-chat-msgs" aria-live="polite" aria-label="Chatberichten"></div>
+    <div id="pl-chat-foot">
+      <input id="pl-chat-inp" type="text" placeholder="Stel je vraag..." autocomplete="off" maxlength="500" aria-label="Chatbericht">
+      <button id="pl-chat-go" aria-label="Verstuur bericht">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div id="pl-chat-pw">Powered by Claude AI &nbsp;·&nbsp; PL Web Solutions</div>
+  </div>
+</div>
+
+</body>
+</html>

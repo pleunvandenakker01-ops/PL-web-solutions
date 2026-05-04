@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — PL Web Solutions</title>
+  <meta name="description" content="Bekijk ons portfolio van premium websites. Restaurant Bella Vista, De Gouden Boon, Voyage Luxe, LG Stucadoors en meer." />
+
+  <!-- Preconnect: fonts + CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+  <!-- Google Fonts — async laden (niet render-blocking) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
+
+  <!-- SEO canonical + OG -->
+  <link rel="canonical" href="https://plwebsolutions.nl/portfolio.html" />
+  <meta property="og:title" content="Portfolio — PL Web Solutions" />
+  <meta property="og:description" content="Bekijk ons portfolio van premium websites voor ambitieuze ondernemers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://plwebsolutions.nl/portfolio.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+
+<!-- ═══════════════ COOKIE CONSENT ═══════════════ -->
+<div id="cookie-banner" role="dialog" aria-label="Cookiemelding" aria-describedby="cookie-desc" style="
+  display:none;
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:99998;
+  background:rgba(8,8,8,.97);
+  border-top:1px solid rgba(201,168,76,.2);
+  padding:1.4rem 5vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+  flex-wrap:wrap;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+">
+  <p id="cookie-desc" style="margin:0;font-family:'Inter',sans-serif;font-size:.78rem;color:#aaa;line-height:1.65;max-width:720px;">
+    Wij gebruiken functionele en analytische cookies om de website goed te laten werken en het gebruik te verbeteren.
+    Door verder te gaan of op "Accepteren" te klikken, ga je akkoord met ons
+    <a href="privacybeleid.html" style="color:#C9A84C;text-decoration:underline;">privacybeleid</a>.
+  </p>
+  <div style="display:flex;gap:.8rem;flex-shrink:0;">
+    <button id="cookie-accept" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:600;
+      letter-spacing:.15em;text-transform:uppercase;cursor:pointer;
+      background:#C9A84C;color:#000;border:none;padding:.7rem 1.6rem;
+      transition:background .25s;
+    " onmouseover="this.style.background='#F0C060'" onmouseout="this.style.background='#C9A84C'">
+      Accepteren
+    </button>
+    <button id="cookie-decline" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;
+      letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+      background:transparent;color:#888;border:1px solid rgba(255,255,255,.15);
+      padding:.7rem 1.4rem;transition:color .25s,border-color .25s;
+    " onmouseover="this.style.color='#ccc';this.style.borderColor='rgba(255,255,255,.35)'"
+       onmouseout="this.style.color='#888';this.style.borderColor='rgba(255,255,255,.15)'">
+      Alleen functioneel
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  const banner = document.getElementById('cookie-banner');
+  if (!localStorage.getItem('pl-cookie-consent')) banner.style.display = 'flex';
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'all');
+    banner.style.display = 'none';
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'functional');
+    banner.style.display = 'none';
+  });
+})();
+</script>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">PL <b>Web</b> Solutions</a>
+  <ul class="nav-links">
+    <li><a href="index.html#over-ons">Over Ons</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="portfolio.html" class="nav-active">Portfolio</a></li>
+    <li><a href="werkwijze.html">Werkwijze</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mob-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mob-menu" role="navigation" aria-label="Mobiel navigatiemenu">
+  <button class="mob-close" id="mob-close" aria-label="Menu sluiten">✕</button>
+  <a href="index.html#over-ons">Over Ons</a>
+  <a href="diensten.html">Diensten</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="werkwijze.html">Werkwijze</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ═══════════════ PAGE HERO ═══════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow page-hero-eyebrow">Ons Portfolio</div>
+    <h1 class="page-hero-title">Ons<br><span class="g">Portfolio</span></h1>
+    <p class="page-hero-sub">Digitale meesterwerken voor ambitieuze ondernemers.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ PORTFOLIO 3D CARROUSEL ═══════════════ -->
+<section id="portfolio">
+  <div class="pf-head">
+    <div>
+      <div class="eyebrow" style="margin-bottom:1rem">Portfolio</div>
+      <h2 class="section-title">Ons Werk <span class="g shimmer-gold">Spreekt</span></h2>
+    </div>
+    <a href="contact.html" class="btn btn-ghost">Jouw Website</a>
+  </div>
+
+  <!-- 3D Carrousel Stage -->
+  <div class="pf-3d-scene" id="pf-3d-scene">
+    <div class="pf-3d-stage" id="pf-3d-stage">
+
+      <!-- Kaart 0: Restaurant Bella Vista -->
+      <div class="pf-3d-item" data-index="0">
+        <div class="pf-slide">
+          <div class="pf-mock pf-mock-live" style="display:flex;flex-direction:column;">
+            <div class="mock-chrome" style="justify-content:space-between;padding:0 .9rem;">
+              <div style="display:flex;align-items:center;gap:.35rem;">
+                <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
+              </div>
+              <div style="font-size:.48rem;color:#888;letter-spacing:.03em;font-family:var(--fb);">bellavista-amsterdam.nl</div>
+              <div style="font-size:.33rem;color:var(--gold);letter-spacing:.14em;font-weight:600;">● LIVE</div>
+            </div>
+            <div class="pf-iframe-outer">
+              <div class="pf-iframe-scaler">
+                <iframe data-src="../bella-vista/index.html" scrolling="no" frameborder="0" title="Restaurant Bella Vista — live website preview" tabindex="-1"></iframe>
+              </div>
+              <a href="../bella-vista/index.html" target="_blank" class="pf-iframe-overlay" aria-label="Bekijk Restaurant Bella Vista website" tabindex="-1"></a>
+            </div>
+          </div>
+          <div class="pf-info">
+            <div class="pf-tag">Fine Dining</div>
+            <div class="pf-name">Restaurant Bella Vista</div>
+            <div class="pf-desc">Fine Dining — Amsterdam</div>
+            <a href="../bella-vista/index.html" target="_blank" class="pf-bekijk-btn">
+              <span>Bekijk Website</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kaart 1: De Gouden Boon -->
+      <div class="pf-3d-item" data-index="1">
+        <div class="pf-slide">
+          <div class="pf-mock pf-mock-live" style="display:flex;flex-direction:column;">
+            <div class="mock-chrome" style="justify-content:space-between;padding:0 .9rem;">
+              <div style="display:flex;align-items:center;gap:.35rem;">
+                <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
+              </div>
+              <div style="font-size:.48rem;color:#888;letter-spacing:.03em;font-family:var(--fb);">grainandgrind-amsterdam.nl</div>
+              <div style="font-size:.33rem;color:var(--gold);letter-spacing:.14em;font-weight:600;">● LIVE</div>
+            </div>
+            <div class="pf-iframe-outer">
+              <div class="pf-iframe-scaler">
+                <iframe data-src="https://graceful-gingersnap-3c9c37.netlify.app/" scrolling="no" frameborder="0" title="Grain &amp; Grind — live website preview" tabindex="-1"></iframe>
+              </div>
+              <a href="https://graceful-gingersnap-3c9c37.netlify.app/" target="_blank" class="pf-iframe-overlay" aria-label="Bekijk Grain &amp; Grind website" tabindex="-1"></a>
+            </div>
+          </div>
+          <div class="pf-info">
+            <div class="pf-tag">Koffiezaak</div>
+            <div class="pf-name">De Gouden Boon</div>
+            <div class="pf-desc">Specialty coffee — Amsterdam</div>
+            <a href="https://graceful-gingersnap-3c9c37.netlify.app/" target="_blank" class="pf-bekijk-btn">
+              <span>Bekijk Website</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kaart 2: Voyage Luxe -->
+      <div class="pf-3d-item" data-index="2">
+        <div class="pf-slide">
+          <div class="pf-mock pf-mock-live" style="display:flex;flex-direction:column;">
+            <div class="mock-chrome" style="justify-content:space-between;padding:0 .9rem;">
+              <div style="display:flex;align-items:center;gap:.35rem;">
+                <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
+              </div>
+              <div style="font-size:.48rem;color:#888;letter-spacing:.03em;font-family:var(--fb);">voyageluxe.nl</div>
+              <div style="font-size:.33rem;color:var(--gold);letter-spacing:.14em;font-weight:600;">● LIVE</div>
+            </div>
+            <div class="pf-iframe-outer">
+              <div class="pf-iframe-scaler">
+                <iframe data-src="../voyage-luxe/index.html" scrolling="no" frameborder="0" title="Voyage Luxe — live website preview" tabindex="-1"></iframe>
+              </div>
+              <a href="../voyage-luxe/index.html" target="_blank" class="pf-iframe-overlay" aria-label="Bekijk Voyage Luxe website" tabindex="-1"></a>
+            </div>
+          </div>
+          <div class="pf-info">
+            <div class="pf-tag">Luxe Travel</div>
+            <div class="pf-name">Voyage Luxe</div>
+            <div class="pf-desc">Ultra-premium reiswebsite met cinematische scroll-animaties en video achtergrond</div>
+            <a href="../voyage-luxe/index.html" target="_blank" class="pf-bekijk-btn">
+              <span>Bekijk Website</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kaart 3: LG Stucadoors -->
+      <div class="pf-3d-item" data-index="3">
+        <div class="pf-slide">
+          <div class="pf-mock pf-mock-live" style="display:flex;flex-direction:column;">
+            <div class="mock-chrome" style="justify-content:space-between;padding:0 .9rem;">
+              <div style="display:flex;align-items:center;gap:.35rem;">
+                <div class="mc-dot"></div><div class="mc-dot"></div><div class="mc-dot"></div>
+              </div>
+              <div style="font-size:.48rem;color:#888;letter-spacing:.03em;font-family:var(--fb);">stucvakman-amsterdam.nl</div>
+              <div style="font-size:.33rem;color:var(--gold);letter-spacing:.14em;font-weight:600;">● LIVE</div>
+            </div>
+            <div class="pf-iframe-outer">
+              <div class="pf-iframe-scaler">
+                <iframe data-src="https://adorable-marshmallow-f5e353.netlify.app/" scrolling="no" frameborder="0" title="LG Stucadoors — live website preview" tabindex="-1"></iframe>
+              </div>
+              <a href="https://adorable-marshmallow-f5e353.netlify.app/" target="_blank" class="pf-iframe-overlay" aria-label="Bekijk LG Stucadoors website" tabindex="-1"></a>
+            </div>
+          </div>
+          <div class="pf-info">
+            <div class="pf-tag">Stukadoor</div>
+            <div class="pf-name">LG Stucadoors</div>
+            <div class="pf-desc">Stukadoor — Amsterdam</div>
+            <a href="https://adorable-marshmallow-f5e353.netlify.app/" target="_blank" class="pf-bekijk-btn">
+              <span>Bekijk Website</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.pf-3d-stage -->
+  </div><!-- /.pf-3d-scene -->
+
+  <!-- Navigatie: pijlen + stipjes -->
+  <div class="pf-3d-footer">
+    <button class="pf-nav pf-nav-prev" id="pf-nav-prev" aria-label="Vorige kaart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="pf-3d-dots" id="pf-3d-dots">
+      <span class="pf-3d-dot"></span>
+      <span class="pf-3d-dot"></span>
+      <span class="pf-3d-dot"></span>
+      <span class="pf-3d-dot"></span>
+    </div>
+    <button class="pf-nav pf-nav-next" id="pf-nav-next" aria-label="Volgende kaart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+</section>
+
+<!-- ═══════════════ PROJECTEN GRID ═══════════════ -->
+<section class="page-section">
+  <div class="page-section-inner">
+    <div class="eyebrow" style="margin-bottom:1rem;text-align:center;">Alle Projecten</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:3.5rem;">Elk Project<br><span class="g">Een Verhaal</span></h2>
+    <div class="pf-grid">
+      <div class="pf-grid-card">
+        <div class="pf-grid-tag">Fine Dining</div>
+        <div class="pf-grid-name">Restaurant Bella Vista</div>
+        <div class="pf-grid-desc">Premium restaurant website met reserveringssysteem, sfeervolle fotografie en cinematische animaties.</div>
+        <div class="pf-grid-meta">Amsterdam · Fine Dining</div>
+        <a href="../bella-vista/index.html" target="_blank" class="btn btn-ghost" style="margin-top:1.5rem;">Bekijk Website →</a>
+      </div>
+      <div class="pf-grid-card">
+        <div class="pf-grid-tag">Koffiezaak</div>
+        <div class="pf-grid-name">De Gouden Boon</div>
+        <div class="pf-grid-desc">Specialty coffee website met online bestelmodule, merkidentiteit en warme sfeeruitstraling.</div>
+        <div class="pf-grid-meta">Amsterdam · Specialty Coffee</div>
+        <a href="https://graceful-gingersnap-3c9c37.netlify.app/" target="_blank" class="btn btn-ghost" style="margin-top:1.5rem;">Bekijk Website →</a>
+      </div>
+      <div class="pf-grid-card">
+        <div class="pf-grid-tag">Luxe Travel</div>
+        <div class="pf-grid-name">Voyage Luxe</div>
+        <div class="pf-grid-desc">Ultra-premium reiswebsite met cinematische scroll-animaties, video achtergrond en exclusieve uitstraling.</div>
+        <div class="pf-grid-meta">Nederland · Luxury Travel</div>
+        <a href="../voyage-luxe/index.html" target="_blank" class="btn btn-ghost" style="margin-top:1.5rem;">Bekijk Website →</a>
+      </div>
+      <div class="pf-grid-card">
+        <div class="pf-grid-tag">Stukadoor</div>
+        <div class="pf-grid-name">LG Stucadoors</div>
+        <div class="pf-grid-desc">Professionele bedrijfswebsite voor stukadoor met portfolio, referenties en leadgeneratie.</div>
+        <div class="pf-grid-meta">Amsterdam · Stukadoor</div>
+        <a href="https://adorable-marshmallow-f5e353.netlify.app/" target="_blank" class="btn btn-ghost" style="margin-top:1.5rem;">Bekijk Website →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="page-cta-section">
+  <div class="page-cta-inner">
+    <div class="eyebrow">Start Vandaag</div>
+    <h2 class="section-title">Klaar Om Te<br><span class="g shimmer-gold">Groeien?</span></h2>
+    <p class="body-text" style="max-width:520px;margin:0 auto 2.5rem;">Plan een gratis gesprek en ontdek welk pakket het beste bij jouw situatie past.</p>
+    <a href="contact.html" class="btn btn-primary"><span>Vraag Gratis Gesprek Aan →</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-brand">PL <span>Web</span> Solutions</div>
+      <p class="ft-tagline">Premium websites voor ambitieuze lokale ondernemers. Wij bouwen jouw digitale succes.</p>
+    </div>
+    <div>
+      <div class="ft-head">Navigatie</div>
+      <ul class="ft-links">
+        <li><a href="index.html#over-ons">Over Ons</a></li>
+        <li><a href="diensten.html">Diensten &amp; Prijzen</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="werkwijze.html">Werkwijze</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Pakketten</div>
+      <ul class="ft-links">
+        <li><a href="diensten.html">Starter — €349</a></li>
+        <li><a href="diensten.html">Business — €749</a></li>
+        <li><a href="diensten.html">Premium — €1.750</a></li>
+        <li><a href="diensten.html">Elite — €3.500</a></li>
+        <li><a href="diensten.html">Onderhoud — €79/mnd</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">&copy; 2026 <span>PL Web Solutions</span> — Alle rechten voorbehouden</p>
+    <div class="ft-legal">
+      <a href="privacybeleid.html">Privacybeleid</a>
+      <a href="#">Algemene Voorwaarden</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/combine/npm/gsap@3.12.5/dist/gsap.min.js,npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="script.js?v=3" defer></script>
+
+<!-- ══ PL ASSISTENT — CHATBOT WIDGET ══════════════════════════════ -->
+
+<div id="pl-chat-widget">
+  <button id="pl-chat-btn" aria-label="Open PL Assistent" aria-expanded="false" aria-controls="pl-chat-win">
+    <svg id="pl-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg id="pl-icon-xclose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div id="pl-chat-win" role="dialog" aria-label="PL Assistent chat" aria-modal="true">
+    <div id="pl-chat-head">
+      <div class="plcb-brand">
+        <div class="plcb-av">PL</div>
+        <div>
+          <span class="plcb-hname">PL Assistent</span>
+          <div class="plcb-status"><span class="plcb-dot"></span><span>Online &nbsp;·&nbsp; PL Web Solutions</span></div>
+        </div>
+      </div>
+      <button id="pl-chat-x" aria-label="Sluit chat">&times;</button>
+    </div>
+    <div id="pl-chat-msgs" aria-live="polite" aria-label="Chatberichten"></div>
+    <div id="pl-chat-foot">
+      <input id="pl-chat-inp" type="text" placeholder="Stel je vraag..." autocomplete="off" maxlength="500" aria-label="Chatbericht">
+      <button id="pl-chat-go" aria-label="Verstuur bericht">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div id="pl-chat-pw">Powered by Claude AI &nbsp;·&nbsp; PL Web Solutions</div>
+  </div>
+</div>
+
+</body>
+</html>

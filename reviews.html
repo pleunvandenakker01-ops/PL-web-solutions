@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reviews — PL Web Solutions</title>
+  <meta name="description" content="Lees wat onze klanten zeggen over PL Web Solutions. 5.0 sterren gebaseerd op 50+ reviews. Bekijk alle klantreviews." />
+
+  <!-- Preconnect: fonts + CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+  <!-- Google Fonts — async laden (niet render-blocking) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
+
+  <!-- SEO canonical + OG -->
+  <link rel="canonical" href="https://plwebsolutions.nl/reviews.html" />
+  <meta property="og:title" content="Reviews — PL Web Solutions" />
+  <meta property="og:description" content="5.0 sterren op 50+ reviews. Lees wat onze klanten zeggen over PL Web Solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://plwebsolutions.nl/reviews.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+
+<!-- ═══════════════ COOKIE CONSENT ═══════════════ -->
+<div id="cookie-banner" role="dialog" aria-label="Cookiemelding" aria-describedby="cookie-desc" style="
+  display:none;
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:99998;
+  background:rgba(8,8,8,.97);
+  border-top:1px solid rgba(201,168,76,.2);
+  padding:1.4rem 5vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+  flex-wrap:wrap;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+">
+  <p id="cookie-desc" style="margin:0;font-family:'Inter',sans-serif;font-size:.78rem;color:#aaa;line-height:1.65;max-width:720px;">
+    Wij gebruiken functionele en analytische cookies om de website goed te laten werken en het gebruik te verbeteren.
+    Door verder te gaan of op "Accepteren" te klikken, ga je akkoord met ons
+    <a href="privacybeleid.html" style="color:#C9A84C;text-decoration:underline;">privacybeleid</a>.
+  </p>
+  <div style="display:flex;gap:.8rem;flex-shrink:0;">
+    <button id="cookie-accept" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:600;
+      letter-spacing:.15em;text-transform:uppercase;cursor:pointer;
+      background:#C9A84C;color:#000;border:none;padding:.7rem 1.6rem;
+      transition:background .25s;
+    " onmouseover="this.style.background='#F0C060'" onmouseout="this.style.background='#C9A84C'">
+      Accepteren
+    </button>
+    <button id="cookie-decline" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;
+      letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+      background:transparent;color:#888;border:1px solid rgba(255,255,255,.15);
+      padding:.7rem 1.4rem;transition:color .25s,border-color .25s;
+    " onmouseover="this.style.color='#ccc';this.style.borderColor='rgba(255,255,255,.35)'"
+       onmouseout="this.style.color='#888';this.style.borderColor='rgba(255,255,255,.15)'">
+      Alleen functioneel
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  const banner = document.getElementById('cookie-banner');
+  if (!localStorage.getItem('pl-cookie-consent')) banner.style.display = 'flex';
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'all');
+    banner.style.display = 'none';
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'functional');
+    banner.style.display = 'none';
+  });
+})();
+</script>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">PL <b>Web</b> Solutions</a>
+  <ul class="nav-links">
+    <li><a href="index.html#over-ons">Over Ons</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="werkwijze.html">Werkwijze</a></li>
+    <li><a href="reviews.html" class="nav-active">Reviews</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mob-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mob-menu" role="navigation" aria-label="Mobiel navigatiemenu">
+  <button class="mob-close" id="mob-close" aria-label="Menu sluiten">✕</button>
+  <a href="index.html#over-ons">Over Ons</a>
+  <a href="diensten.html">Diensten</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="werkwijze.html">Werkwijze</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ═══════════════ PAGE HERO ═══════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow page-hero-eyebrow">Klantreviews</div>
+    <h1 class="page-hero-title">Wat Onze<br><span class="g">Klanten Zeggen</span></h1>
+    <p class="page-hero-sub">Onze klanten vertellen het beste verhaal. Lees hun eerlijke ervaringen.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ REVIEWS ═══════════════ -->
+<section class="page-section">
+  <div class="page-section-inner" style="max-width:900px;margin:0 auto;">
+    <div class="rev-summary">
+      <div class="rev-sum-score">5.0</div>
+      <div class="rev-sum-stars">★★★★★</div>
+      <div class="rev-sum-count">Gebaseerd op 50+ klantreviews</div>
+    </div>
+
+<!-- ═══════════════ REVIEWS CAROUSEL ═══════════════ -->
+<section id="reviews">
+  <div class="rev-head">
+    <div class="eyebrow">Klantreviews</div>
+    <h2 class="section-title">Wat Onze Klanten<br><span class="g shimmer-gold">Zeggen</span></h2>
+  </div>
+
+  <div class="rev-carousel" id="rev-carousel">
+    <div class="rev-track" id="rev-track">
+      <div class="rev-slide">
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Onze omzet is met 40% gestegen na de nieuwe website. Klanten zeggen dat ze ons via Google hebben gevonden. PL Web Solutions heeft echt meegedacht.</p>
+          <div class="rev-author">
+            <div class="rev-av">MK</div>
+            <div><div class="rev-name">Marco Karelse</div><div class="rev-role">Eigenaar Restaurant De Gouden Lepel</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-slide">
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Binnen een week had ik een website om trots op te zijn. De animaties zijn prachtig en mijn klanten vragen constant wie hem gemaakt heeft. Absolute aanrader!</p>
+          <div class="rev-author">
+            <div class="rev-av">SV</div>
+            <div><div class="rev-name">Sarah van Dijk</div><div class="rev-role">Eigenaar Salon Serenity</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-slide">
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Professioneel, snel en eerlijk geprijsd. Ze luisteren écht en komen altijd hun beloftes na. Het onderhoudspakket is ook geweldig — ik hoef nergens meer aan te denken.</p>
+          <div class="rev-author">
+            <div class="rev-av">RP</div>
+            <div><div class="rev-name">Rob Peters</div><div class="rev-role">Directeur Peters Techniek BV</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-slide">
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Als advocatenkantoor hadden we een website nodig die vertrouwen uitstraalt. PL Web Solutions begreep dat perfect. De site ziet er magistraal uit en converteert fantastisch.</p>
+          <div class="rev-author">
+            <div class="rev-av">AH</div>
+            <div><div class="rev-name">Anita Hoogenbosch</div><div class="rev-role">Partner Hoogenbosch Advocaten</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-slide">
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">De beste investering voor mijn salon. Ik krijg nu dagelijks online boekingen. De animaties laten precies zien waarom klanten bij mij moeten zijn.</p>
+          <div class="rev-author">
+            <div class="rev-av">LB</div>
+            <div><div class="rev-name">Lisa Bosman</div><div class="rev-role">Eigenaar Beauty Studio Lux</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rev-nav">
+      <button class="rev-btn rev-prev" aria-label="Vorige review">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="rev-dots" id="rev-dots" role="tablist" aria-label="Review navigatie"></div>
+      <button class="rev-btn rev-next" aria-label="Volgende review">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+    <div class="eyebrow" style="margin-bottom:1rem;text-align:center;margin-top:5rem;">Alle Reviews</div>
+    <div class="rev-full-grid">
+      <div class="rev-grid-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-quote">Onze omzet is met 40% gestegen na de nieuwe website. Klanten zeggen dat ze ons via Google hebben gevonden. PL Web Solutions heeft echt meegedacht.</p>
+        <div class="rev-author">
+          <div class="rev-av">MK</div>
+          <div><div class="rev-name">Marco Karelse</div><div class="rev-role">Eigenaar Restaurant De Gouden Lepel</div></div>
+        </div>
+      </div>
+      <div class="rev-grid-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-quote">Binnen een week had ik een website om trots op te zijn. De animaties zijn prachtig en mijn klanten vragen constant wie hem gemaakt heeft. Absolute aanrader!</p>
+        <div class="rev-author">
+          <div class="rev-av">SV</div>
+          <div><div class="rev-name">Sarah van Dijk</div><div class="rev-role">Eigenaar Salon Serenity</div></div>
+        </div>
+      </div>
+      <div class="rev-grid-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-quote">Professioneel, snel en eerlijk geprijsd. Ze luisteren écht en komen altijd hun beloftes na. Het onderhoudspakket is ook geweldig — ik hoef nergens meer aan te denken.</p>
+        <div class="rev-author">
+          <div class="rev-av">RP</div>
+          <div><div class="rev-name">Rob Peters</div><div class="rev-role">Directeur Peters Techniek BV</div></div>
+        </div>
+      </div>
+      <div class="rev-grid-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-quote">Als advocatenkantoor hadden we een website nodig die vertrouwen uitstraalt. PL Web Solutions begreep dat perfect. De site ziet er magistraal uit en converteert fantastisch.</p>
+        <div class="rev-author">
+          <div class="rev-av">AH</div>
+          <div><div class="rev-name">Anita Hoogenbosch</div><div class="rev-role">Partner Hoogenbosch Advocaten</div></div>
+        </div>
+      </div>
+      <div class="rev-grid-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-quote">De beste investering voor mijn salon. Ik krijg nu dagelijks online boekingen. De animaties laten precies zien waarom klanten bij mij moeten zijn.</p>
+        <div class="rev-author">
+          <div class="rev-av">LB</div>
+          <div><div class="rev-name">Lisa Bosman</div><div class="rev-role">Eigenaar Beauty Studio Lux</div></div>
+        </div>
+      </div>
+      <div class="rev-grid-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-quote">Geweldige samenwerking! Ze hebben onze website volledig getransformeerd. Moderne uitstraling, razendsnel en al onze klanten zijn er laaiend enthousiast over.</p>
+        <div class="rev-author">
+          <div class="rev-av">JK</div>
+          <div><div class="rev-name">Johan Kuijpers</div><div class="rev-role">Eigenaar Kuijpers Installatie</div></div>
+        </div>
+      </div>
+      <div class="rev-grid-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-quote">PL Web Solutions heeft onze online aanwezigheid compleet omgegooid. Binnen twee maanden zagen we een verdubbeling van onze online afspraken. Aanrader!</p>
+        <div class="rev-author">
+          <div class="rev-av">FM</div>
+          <div><div class="rev-name">Fatima Mansouri</div><div class="rev-role">Eigenaar Kapsalon Luxe</div></div>
+        </div>
+      </div>
+      <div class="rev-grid-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-quote">Top service van begin tot eind. Ze dachten mee over mijn merk en kwamen met ideeën die ik zelf nooit had bedacht. Resultaat: een website waar ik dagelijks trots op ben.</p>
+        <div class="rev-author">
+          <div class="rev-av">DV</div>
+          <div><div class="rev-name">David Vermeulen</div><div class="rev-role">Eigenaar DV Personal Training</div></div>
+        </div>
+      </div>
+      <div class="rev-grid-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-quote">Snel, professioneel en altijd bereikbaar. Ze hebben de website in 6 dagen opgeleverd — precies wat ze beloofden. Kwaliteit is echt top-notch.</p>
+        <div class="rev-author">
+          <div class="rev-av">NB</div>
+          <div><div class="rev-name">Nina Brouwer</div><div class="rev-role">Directeur Brouwer Makelaardij</div></div>
+        </div>
+      </div>
+      <div class="rev-grid-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-quote">Het onderhoudspakket is goud waard. Ik hoef me nooit zorgen te maken over updates of beveiliging. PL Web Solutions regelt alles — en dat merkt mijn bedrijf.</p>
+        <div class="rev-author">
+          <div class="rev-av">TH</div>
+          <div><div class="rev-name">Thomas Hendriks</div><div class="rev-role">Eigenaar Hendriks Groenvoorziening</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="page-cta-section">
+  <div class="page-cta-inner">
+    <div class="eyebrow">Start Vandaag</div>
+    <h2 class="section-title">Klaar Om Te<br><span class="g shimmer-gold">Groeien?</span></h2>
+    <p class="body-text" style="max-width:520px;margin:0 auto 2.5rem;">Plan een gratis gesprek en ontdek welk pakket het beste bij jouw situatie past.</p>
+    <a href="contact.html" class="btn btn-primary"><span>Vraag Gratis Gesprek Aan →</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-brand">PL <span>Web</span> Solutions</div>
+      <p class="ft-tagline">Premium websites voor ambitieuze lokale ondernemers. Wij bouwen jouw digitale succes.</p>
+    </div>
+    <div>
+      <div class="ft-head">Navigatie</div>
+      <ul class="ft-links">
+        <li><a href="index.html#over-ons">Over Ons</a></li>
+        <li><a href="diensten.html">Diensten &amp; Prijzen</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="werkwijze.html">Werkwijze</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Pakketten</div>
+      <ul class="ft-links">
+        <li><a href="diensten.html">Starter — €349</a></li>
+        <li><a href="diensten.html">Business — €749</a></li>
+        <li><a href="diensten.html">Premium — €1.750</a></li>
+        <li><a href="diensten.html">Elite — €3.500</a></li>
+        <li><a href="diensten.html">Onderhoud — €79/mnd</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">&copy; 2026 <span>PL Web Solutions</span> — Alle rechten voorbehouden</p>
+    <div class="ft-legal">
+      <a href="privacybeleid.html">Privacybeleid</a>
+      <a href="#">Algemene Voorwaarden</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/combine/npm/gsap@3.12.5/dist/gsap.min.js,npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="script.js?v=3" defer></script>
+
+<!-- ══ PL ASSISTENT — CHATBOT WIDGET ══════════════════════════════ -->
+
+<div id="pl-chat-widget">
+  <button id="pl-chat-btn" aria-label="Open PL Assistent" aria-expanded="false" aria-controls="pl-chat-win">
+    <svg id="pl-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg id="pl-icon-xclose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div id="pl-chat-win" role="dialog" aria-label="PL Assistent chat" aria-modal="true">
+    <div id="pl-chat-head">
+      <div class="plcb-brand">
+        <div class="plcb-av">PL</div>
+        <div>
+          <span class="plcb-hname">PL Assistent</span>
+          <div class="plcb-status"><span class="plcb-dot"></span><span>Online &nbsp;·&nbsp; PL Web Solutions</span></div>
+        </div>
+      </div>
+      <button id="pl-chat-x" aria-label="Sluit chat">&times;</button>
+    </div>
+    <div id="pl-chat-msgs" aria-live="polite" aria-label="Chatberichten"></div>
+    <div id="pl-chat-foot">
+      <input id="pl-chat-inp" type="text" placeholder="Stel je vraag..." autocomplete="off" maxlength="500" aria-label="Chatbericht">
+      <button id="pl-chat-go" aria-label="Verstuur bericht">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div id="pl-chat-pw">Powered by Claude AI &nbsp;·&nbsp; PL Web Solutions</div>
+  </div>
+</div>
+
+</body>
+</html>

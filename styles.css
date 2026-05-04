@@ -1204,6 +1204,42 @@
   }
   .ww-head .eyebrow { margin-bottom: 1.2rem; }
 
+  /* Werkwijze teaser steps */
+  .ww-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  .ww-step {
+    background: rgba(201,168,76,.04);
+    border: 1px solid rgba(201,168,76,.12);
+    padding: 2.5rem 2rem;
+    position: relative;
+  }
+  .ww-step-num {
+    font-family: var(--fh);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: rgba(201,168,76,.18);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .ww-step-title {
+    font-family: var(--fh);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: .8rem;
+  }
+  .ww-step-body {
+    font-size: .92rem;
+    color: #aaa;
+    line-height: 1.7;
+  }
+
   /* ═══════════════════════════════════════════════
      MACBOOK LAPTOP ANIMATIE — Werkwijze (Silver)
   ═══════════════════════════════════════════════ */
@@ -2333,4 +2369,222 @@
   .hero-headline .word { white-space: nowrap; }
   #pl-chat-widget{bottom:16px;right:16px}
   #pl-chat-win{width:calc(100vw - 32px);height:min(75vh,540px)}
+}
+
+/* ═══════════════ MULTI-PAGE STYLES ═══════════════ */
+
+/* Page hero (sub-pages) */
+.page-hero {
+  padding: 10rem 5vw 6rem;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,.09) 0%, transparent 65%),
+    var(--black);
+  position: relative;
+  text-align: center;
+  border-bottom: 1px solid rgba(201,168,76,.08);
+}
+.page-hero-inner { max-width: 800px; margin: 0 auto; }
+.page-hero-eyebrow { margin-bottom: 1.2rem; }
+.page-hero-title {
+  font-family: var(--fh);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 1.4rem;
+}
+.page-hero-sub {
+  font-size: clamp(.95rem, 1.5vw, 1.1rem);
+  color: #aaa;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Nav active link */
+nav .nav-active { color: var(--gold) !important; }
+
+/* Generic page sections */
+.page-section {
+  padding: 7rem 5vw;
+  position: relative;
+}
+.page-section.bg-alt {
+  background: rgba(201,168,76,.02);
+  border-top: 1px solid rgba(201,168,76,.06);
+  border-bottom: 1px solid rgba(201,168,76,.06);
+}
+.page-section-inner { max-width: 1200px; margin: 0 auto; }
+
+/* Features grid (diensten.html) */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+  text-align: left;
+}
+.feat-item {
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(201,168,76,.1);
+  background: rgba(201,168,76,.03);
+}
+.feat-icon { font-size: 2rem; margin-bottom: .8rem; }
+.feat-title {
+  font-family: var(--fh);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: .6rem;
+}
+.feat-body { font-size: .88rem; color: #999; line-height: 1.65; }
+
+/* Portfolio grid (portfolio.html) */
+.pf-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+.pf-grid-card {
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(201,168,76,.12);
+  background: rgba(201,168,76,.03);
+  position: relative;
+  transition: border-color .3s;
+}
+.pf-grid-card:hover { border-color: rgba(201,168,76,.35); }
+.pf-grid-tag {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .8rem;
+}
+.pf-grid-name {
+  font-family: var(--fh);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: .8rem;
+}
+.pf-grid-desc { font-size: .88rem; color: #999; line-height: 1.65; margin-bottom: .6rem; }
+.pf-grid-meta { font-size: .75rem; color: rgba(201,168,76,.6); letter-spacing: .08em; text-transform: uppercase; }
+
+/* Werkwijze detail steps (werkwijze.html) */
+.ww-detail-steps { display: flex; flex-direction: column; gap: 4rem; }
+.ww-detail-step {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 3rem;
+  align-items: start;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.ww-detail-step:last-child { border-bottom: none; padding-bottom: 0; }
+.ww-ds-num {
+  font-family: var(--fh);
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-weight: 700;
+  color: rgba(201,168,76,.15);
+  line-height: 1;
+}
+.ww-ds-title {
+  font-family: var(--fh);
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 1rem;
+}
+.ww-ds-body { font-size: .95rem; color: #aaa; line-height: 1.75; margin-bottom: 1.2rem; }
+.ww-ds-list { list-style: none; padding: 0; margin: 0; }
+.ww-ds-list li {
+  font-size: .85rem;
+  color: rgba(201,168,76,.8);
+  padding: .3rem 0 .3rem 1.2rem;
+  position: relative;
+}
+.ww-ds-list li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
+
+/* Reviews summary (reviews.html) */
+.rev-summary {
+  text-align: center;
+  padding: 3rem 0 4rem;
+}
+.rev-sum-score {
+  font-family: var(--fh);
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: .4rem;
+}
+.rev-sum-stars { font-size: 1.8rem; color: var(--gold); margin-bottom: .6rem; }
+.rev-sum-count { font-size: .85rem; color: #888; letter-spacing: .06em; }
+
+/* Reviews full grid */
+.rev-full-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.rev-grid-card {
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.07);
+  padding: 2rem 1.8rem;
+  transition: border-color .3s;
+}
+.rev-grid-card:hover { border-color: rgba(201,168,76,.25); }
+.rev-grid-card .rev-stars { font-size: 1rem; color: var(--gold); margin-bottom: 1rem; }
+.rev-grid-card .rev-quote {
+  font-size: .88rem;
+  color: #bbb;
+  line-height: 1.75;
+  margin-bottom: 1.4rem;
+  font-style: italic;
+}
+.rev-grid-card .rev-author { display: flex; align-items: center; gap: .9rem; }
+.rev-grid-card .rev-av {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(201,168,76,.15);
+  border: 1px solid rgba(201,168,76,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; font-weight: 700; color: var(--gold); flex-shrink: 0;
+}
+.rev-grid-card .rev-name { font-size: .85rem; font-weight: 600; color: var(--white); }
+.rev-grid-card .rev-role { font-size: .72rem; color: #777; margin-top: .15rem; }
+
+/* Page CTA section */
+.page-cta-section {
+  padding: 8rem 5vw;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 55% 50% at 50% 50%, rgba(201,168,76,.06) 0%, transparent 70%),
+    var(--black);
+}
+.page-cta-inner { max-width: 700px; margin: 0 auto; }
+
+/* Responsive: multi-page */
+@media (max-width: 900px) {
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .pf-grid { grid-template-columns: 1fr; }
+  .rev-full-grid { grid-template-columns: 1fr 1fr; }
+  .ww-detail-step { grid-template-columns: 80px 1fr; gap: 1.5rem; }
+  .ww-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .features-grid { grid-template-columns: 1fr; }
+  .rev-full-grid { grid-template-columns: 1fr; }
+  .ww-detail-step { grid-template-columns: 1fr; gap: .8rem; }
+  .ww-ds-num { font-size: 3rem; }
+  .ww-steps { grid-template-columns: 1fr; }
 }
