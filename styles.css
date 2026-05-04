@@ -2596,3 +2596,157 @@ nav .nav-active { color: var(--gold) !important; }
   .ww-ds-num { font-size: 3rem; }
   .ww-steps { grid-template-columns: 1fr; }
 }
+
+/* ═══════════════ AI AGENTS ═══════════════ */
+
+  /* 4-column grid for agent cards */
+  .agent-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+    margin-top: 3.5rem;
+  }
+
+  .agent-card { display: flex; flex-direction: column; }
+  .agent-card .btn { margin-top: auto; }
+
+  /* Icon at top of card */
+  .agent-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(201,168,76,.1);
+    border: 1px solid rgba(201,168,76,.2);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.1rem;
+  }
+  .agent-icon svg {
+    width: 22px; height: 22px;
+    stroke: var(--gold);
+  }
+
+  /* Dual-row pricing inside card */
+  .agent-pricing {
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    margin: .4rem 0 .2rem;
+  }
+  .agent-price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+  .agent-price-label {
+    font-size: .68rem;
+    color: #888;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .agent-price-val {
+    font-family: var(--fh);
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+  .agent-price-val sup {
+    font-size: .55em;
+    vertical-align: super;
+    color: var(--gold);
+  }
+  .agent-price-mo { color: var(--gold); font-size: clamp(1.1rem, 2vw, 1.4rem); }
+
+  .agent-desc {
+    font-size: .85rem;
+    color: #999;
+    line-height: 1.7;
+    margin: .8rem 0 1.4rem;
+    flex-grow: 1;
+  }
+
+  /* Bundle highlight */
+  .agent-bundle {
+    position: relative;
+    overflow: hidden;
+    margin-top: 3.5rem;
+    border: 1px solid rgba(201,168,76,.35);
+    background: linear-gradient(135deg, rgba(201,168,76,.06) 0%, rgba(0,0,0,0) 60%);
+    padding: 3rem 3.5rem;
+  }
+  .agent-bundle-shimmer {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 55% 70% at 80% 50%, rgba(201,168,76,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .agent-bundle-badge {
+    display: inline-block;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #000;
+    background: var(--gold);
+    padding: .3rem .85rem;
+    margin-bottom: 1.8rem;
+  }
+  .agent-bundle-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .agent-bundle-left { flex: 1 1 320px; }
+  .agent-bundle-title {
+    font-family: var(--fh);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    color: var(--white);
+    margin-bottom: .8rem;
+  }
+  .agent-bundle-sub { font-size: .9rem; color: #aaa; line-height: 1.65; }
+  .agent-bundle-right { flex: 0 1 auto; text-align: center; }
+  .agent-bundle-pricing {
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: .6rem;
+  }
+  .agent-bundle-price-row { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+  .agent-bundle-label {
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #888;
+  }
+  .agent-bundle-val {
+    font-family: var(--fh);
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .agent-bundle-val sup { font-size: .5em; vertical-align: super; }
+  .agent-bundle-saving {
+    font-size: .72rem;
+    color: rgba(201,168,76,.7);
+    letter-spacing: .06em;
+    margin-top: .2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .agent-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .agent-grid { grid-template-columns: 1fr; }
+    .agent-bundle { padding: 2rem 1.5rem; }
+    .agent-bundle-content { flex-direction: column; gap: 2rem; }
+    .agent-bundle-pricing { gap: 1.5rem; }
+  }
