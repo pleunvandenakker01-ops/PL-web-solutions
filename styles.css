@@ -530,8 +530,7 @@
 
   .oo-values {
     margin-top: 3.5rem;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(255,255,255,.06);
+    padding-top: 0;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 1.5rem;
