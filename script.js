@@ -943,20 +943,30 @@ mobMenu.querySelectorAll('a').forEach(a => {
     });
   }
 
+  /* Scrollt alleen de track horizontaal — geen effect op paginascroll */
+  function scrollTrackTo(slide) {
+    const trackRect   = track.getBoundingClientRect();
+    const slideRect   = slide.getBoundingClientRect();
+    const paddingLeft = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    track.scrollTo({
+      left: track.scrollLeft + slideRect.left - trackRect.left - paddingLeft,
+      behavior: 'smooth',
+    });
+  }
+
   function goTo(idx) {
     current = ((idx % total) + total) % total;
-    slides[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    scrollTrackTo(slides[current]);
     updateUI(current);
-    resetAutoplay();
   }
 
   function resetAutoplay() {
     clearInterval(autoTimer);
-    autoTimer = setInterval(() => goTo(current + 1), 4800);
+    autoTimer = setInterval(() => { goTo(current + 1); }, 4800);
   }
 
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
+  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoplay(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoplay(); });
 
   /* Sync dots bij handmatig scrollen (touch/muis) */
   let scrollTimer;
@@ -978,7 +988,8 @@ mobMenu.querySelectorAll('a').forEach(a => {
   track.addEventListener('mouseenter', () => clearInterval(autoTimer));
   track.addEventListener('mouseleave', resetAutoplay);
 
-  goTo(0);
+  /* Init: geen scroll (slide 0 staat al op positie 0), wel UI + timer starten */
+  updateUI(0);
   resetAutoplay();
 })();
 
