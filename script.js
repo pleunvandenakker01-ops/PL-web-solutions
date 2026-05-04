@@ -1,5 +1,5 @@
 /* ─── Plugin registratie ─── */
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, TextPlugin);
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 ScrollTrigger.defaults({ toggleActions: 'play none none none' });
 
