@@ -1062,7 +1062,7 @@ if (ctFormEl) ctFormEl.addEventListener('submit', function (e) {
   btn.textContent = 'Verzonden ✓';
   this.querySelectorAll('input, select, textarea').forEach(el => el.value = '');
   setTimeout(() => { btn.textContent = orig; }, 4000);
-}); }
+});
 
 /* Page visibility — pause Three.js via tab switch handled by rAF natively */
 
