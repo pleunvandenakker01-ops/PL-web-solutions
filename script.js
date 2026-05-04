@@ -1,5 +1,27 @@
 /* ─── Plugin registratie ─── */
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
+gsap.registerPlugin(ScrollTrigger);
+
+/* Vervangt GSAP TextPlugin — typt tekst karakter voor karakter */
+function typewriterTo(tl, el, text, duration, pos) {
+  const proxy = { n: 0 };
+  tl.to(proxy, {
+    n: text.length, duration, ease: 'none',
+    onUpdate()  { el.textContent = text.slice(0, Math.round(proxy.n)); },
+    onComplete() { el.textContent = text; },
+  }, pos);
+}
+
+/* Registreer GSAP-animaties pas als sectie 200px van viewport nadert */
+function whenNear(sel, fn) {
+  if (!('IntersectionObserver' in window)) { fn(); return; }
+  const el = document.querySelector(sel);
+  if (!el) { fn(); return; }
+  new IntersectionObserver(([entry], obs) => {
+    if (!entry.isIntersecting) return;
+    obs.disconnect();
+    fn();
+  }, { rootMargin: '0px 0px 200px 0px' }).observe(el);
+}
 
 ScrollTrigger.defaults({ toggleActions: 'play none none none' });
 
@@ -409,53 +431,60 @@ function splitChars(el) {
 }
 
 /* ══════════════════════════════════════════
-   SCROLL ANIMATIONS
+   SCROLL ANIMATIONS — lazy via IntersectionObserver
+   GSAP ScrollTriggers registreren pas als sectie
+   binnen 200px van viewport komt.
 ══════════════════════════════════════════ */
 
-/* Over Ons — letter-voor-letter animatie op de titel */
-revealClip('.oo-img-box');
-parallax('.oo-img-inner', { yPercent: 15 });
-fadeUp('.oo-eyebrow');
-
-/* Over Ons titel — nette regel-voor-regel reveal (geen char-split) */
-(function animateOoTitle() {
-  const titleEl = document.querySelector('.oo-title');
-  if (!titleEl) return;
-  /* Clip-path reveal per tekstregel met stagger */
-  const lines = [
-    { text: 'Wij Maken',     color: 'var(--white)' },
-    { text: 'Digitale',      color: 'var(--white)' },
-    { text: 'Meesterwerken', color: 'var(--gold)'  },
-  ];
-  titleEl.innerHTML = lines.map(l =>
-    `<span class="oo-line" style="display:block;overflow:hidden;padding-bottom:.06em;">` +
-    `<span class="oo-line-inner" style="display:block;color:${l.color}">${l.text}</span></span>`
-  ).join('');
-
-  if (prefersReducedMotion) return;
-  gsap.from('.oo-line-inner', {
-    scrollTrigger: { trigger: titleEl, start: 'top 84%' },
-    y: '110%',
-    opacity: 0,
-    duration: 0.85,
-    stagger: 0.14,
-    ease: 'power4.out',
+/* Stats bar (direct onder hero, kleine margin) */
+whenNear('#stats-bar', () => {
+  gsap.from('.stat-cell', {
+    scrollTrigger: { trigger: '#stats-bar', start: 'top 88%' },
+    y: 30, opacity: 0, duration: 0.75, stagger: 0.12, ease: 'power3.out',
   });
-})();
+});
 
-fadeUp('.oo-body',   { stagger: 0.12, delay: 0.15 });
-fadeUp('.oo-cta',    { delay: 0.2 });
-fadeUp('.oo-values > div', { stagger: 0.12, trigger: '.oo-values', delay: 0.1 });
+/* Over Ons */
+whenNear('#over-ons', () => {
+  revealClip('.oo-img-box');
+  parallax('.oo-img-inner', { yPercent: 15 });
+  fadeUp('.oo-eyebrow');
+
+  (function () {
+    const titleEl = document.querySelector('.oo-title');
+    if (!titleEl) return;
+    const lines = [
+      { text: 'Wij Maken',     color: 'var(--white)' },
+      { text: 'Digitale',      color: 'var(--white)' },
+      { text: 'Meesterwerken', color: 'var(--gold)'  },
+    ];
+    titleEl.innerHTML = lines.map(l =>
+      `<span class="oo-line" style="display:block;overflow:hidden;padding-bottom:.06em;">` +
+      `<span class="oo-line-inner" style="display:block;color:${l.color}">${l.text}</span></span>`
+    ).join('');
+    if (prefersReducedMotion) return;
+    gsap.from('.oo-line-inner', {
+      scrollTrigger: { trigger: titleEl, start: 'top 84%' },
+      y: '110%', opacity: 0, duration: 0.85, stagger: 0.14, ease: 'power4.out',
+    });
+  })();
+
+  fadeUp('.oo-body',   { stagger: 0.12, delay: 0.15 });
+  fadeUp('.oo-cta',    { delay: 0.2 });
+  fadeUp('.oo-values > div', { stagger: 0.12, trigger: '.oo-values', delay: 0.1 });
+});
 
 /* Diensten */
-fadeUp('#diensten .diensten-head', { y: 40, trigger: '#diensten .diensten-head' });
-gsap.from('.pricing-grid .pc', {
-  scrollTrigger: { trigger: '.pricing-grid', start: 'top 78%' },
-  y: 70, opacity: 0, duration: 0.85, stagger: 0.14, ease: 'power3.out',
+whenNear('#diensten', () => {
+  fadeUp('#diensten .diensten-head', { y: 40, trigger: '#diensten .diensten-head' });
+  gsap.from('.pricing-grid .pc', {
+    scrollTrigger: { trigger: '.pricing-grid', start: 'top 78%' },
+    y: 70, opacity: 0, duration: 0.85, stagger: 0.14, ease: 'power3.out',
+  });
+  fadeUp('.onderhoud', { y: 40, trigger: '.onderhoud' });
 });
-fadeUp('.onderhoud', { y: 40, trigger: '.onderhoud' });
 
-/* Chatbot pricing sectie */
+/* Chatbot pricing — toggle logica direct, animaties lazy */
 (function initChatbotPricing() {
   const toggle     = document.getElementById('cb-billing-toggle');
   const grid       = document.getElementById('cb-grid');
@@ -472,32 +501,26 @@ fadeUp('.onderhoud', { y: 40, trigger: '.onderhoud' });
   });
 
   if (!prefersReducedMotion) {
-    /* Heading en toggle animeren pas zodra de sectie zelf in beeld komt */
-    gsap.from('#chatbot-pricing .diensten-head', {
-      scrollTrigger: { trigger: '#chatbot-pricing', start: 'top 82%' },
-      y: 40, opacity: 0, duration: 0.9, ease: 'power3.out',
-    });
-    gsap.from('.cb-toggle-wrap', {
-      scrollTrigger: { trigger: '#chatbot-pricing', start: 'top 82%' },
-      y: 25, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power3.out',
-    });
-    /* Chatbot cards — eigen trigger, los van .pricing-grid */
-    gsap.from('.cb-card', {
-      scrollTrigger: { trigger: '#chatbot-pricing .cb-grid', start: 'top 80%' },
-      y: 60, opacity: 0, duration: 0.85, stagger: 0.14, ease: 'power3.out',
-    });
-    gsap.from('.cb-footnote', {
-      scrollTrigger: { trigger: '.cb-footnote', start: 'top 90%' },
-      y: 20, opacity: 0, duration: 0.7, ease: 'power3.out',
+    whenNear('#chatbot-pricing', () => {
+      gsap.from('#chatbot-pricing .diensten-head', {
+        scrollTrigger: { trigger: '#chatbot-pricing', start: 'top 82%' },
+        y: 40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      });
+      gsap.from('.cb-toggle-wrap', {
+        scrollTrigger: { trigger: '#chatbot-pricing', start: 'top 82%' },
+        y: 25, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power3.out',
+      });
+      gsap.from('.cb-card', {
+        scrollTrigger: { trigger: '#chatbot-pricing .cb-grid', start: 'top 80%' },
+        y: 60, opacity: 0, duration: 0.85, stagger: 0.14, ease: 'power3.out',
+      });
+      gsap.from('.cb-footnote', {
+        scrollTrigger: { trigger: '.cb-footnote', start: 'top 90%' },
+        y: 20, opacity: 0, duration: 0.7, ease: 'power3.out',
+      });
     });
   }
 })();
-
-/* Stats bar — staggered entrance per cel */
-gsap.from('.stat-cell', {
-  scrollTrigger: { trigger: '#stats-bar', start: 'top 88%' },
-  y: 30, opacity: 0, duration: 0.75, stagger: 0.12, ease: 'power3.out',
-});
 
 /* Laptop animatie — werkwijze sectie */
 (function initMacAnim() {
@@ -603,23 +626,11 @@ gsap.from('.stat-cell', {
       },
     }, offset);
 
-    /* Titel: typewriter via TextPlugin */
-    if (titleEl && titleEl.dataset.text) {
-      tl.to(titleEl, {
-        duration: titleEl.dataset.text.length * 0.032,
-        text: { value: titleEl.dataset.text, delimiter: '' },
-        ease: 'none',
-      }, `>-0.1`);
-    }
+    if (titleEl && titleEl.dataset.text)
+      typewriterTo(tl, titleEl, titleEl.dataset.text, titleEl.dataset.text.length * 0.032, `>-0.1`);
 
-    /* Body tekst: typewriter (sneller) */
-    if (bodyEl && bodyEl.dataset.text) {
-      tl.to(bodyEl, {
-        duration: bodyEl.dataset.text.length * 0.012,
-        text: { value: bodyEl.dataset.text, delimiter: '' },
-        ease: 'none',
-      }, `>-0.05`);
-    }
+    if (bodyEl && bodyEl.dataset.text)
+      typewriterTo(tl, bodyEl, bodyEl.dataset.text, bodyEl.dataset.text.length * 0.012, `>-0.05`);
   });
 
   /* 5. Activeer scherm-glow pulsering na reveal */
@@ -632,35 +643,38 @@ gsap.from('.stat-cell', {
 
   termLines.forEach((line, i) => {
     const txt = line.dataset.text || '';
-    /* Prefill zodat GSAP TextPlugin er iets op heeft */
     line.textContent = '';
     tl.to(line, { opacity: 1, duration: 0.15, ease: 'none' }, i === 0 ? '+=0.05' : '-=0.05');
-    tl.to(line, {
-      duration: txt.length * 0.028,
-      text: { value: txt, delimiter: '' },
-      ease: 'none',
-    }, '>');
+    typewriterTo(tl, line, txt, txt.length * 0.028, '>');
   });
 })();
 
 /* Portfolio */
-fadeUp('.pf-head', { y: 35 });
+whenNear('#portfolio', () => {
+  fadeUp('.pf-head', { y: 35 });
+});
 
 /* Reviews */
-fadeUp('.rev-head');
+whenNear('#reviews', () => {
+  fadeUp('.rev-head');
+});
 
 /* Contact */
-gsap.from('.ct-info', {
-  scrollTrigger: { trigger: '#contact', start: 'top 78%' },
-  x: -50, opacity: 0, duration: 1, ease: 'power3.out',
-});
-gsap.from('.ct-form', {
-  scrollTrigger: { trigger: '#contact', start: 'top 73%' },
-  x: 50, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.08,
+whenNear('#contact', () => {
+  gsap.from('.ct-info', {
+    scrollTrigger: { trigger: '#contact', start: 'top 78%' },
+    x: -50, opacity: 0, duration: 1, ease: 'power3.out',
+  });
+  gsap.from('.ct-form', {
+    scrollTrigger: { trigger: '#contact', start: 'top 73%' },
+    x: 50, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.08,
+  });
 });
 
 /* Footer */
-fadeUp('.ft-grid > div', { stagger: 0.12, trigger: 'footer' });
+whenNear('footer', () => {
+  fadeUp('.ft-grid > div', { stagger: 0.12, trigger: 'footer' });
+});
 
 /* ══════════════════════════════════════════
    PARALLAX — meerdere snelheden
