@@ -512,13 +512,9 @@
   .oo-photo-frame {
     position: relative;
     z-index: 1;
-    aspect-ratio: 2/3;
-    overflow: hidden;
   }
   .oo-photo-frame img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center center;
+    width: 100%; height: auto;
     display: block;
     transition: transform .6s ease;
   }
