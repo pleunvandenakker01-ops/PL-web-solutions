@@ -2029,19 +2029,16 @@
     overflow: hidden;
     -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
     mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
-    transform: translateZ(0); /* isolate mask on GPU compositor layer */
   }
 
-  /* Scrolling track — margin-right on cards for pixel-perfect -50% loop */
+  /* Scrolling track — starts paused, IntersectionObserver plays it when visible */
   .rev-marquee-track {
     display: flex;
     width: max-content;
     animation: rev-marquee 45s linear infinite;
-    will-change: transform;
-    backface-visibility: hidden; /* prevent sub-pixel flickering */
-    -webkit-backface-visibility: hidden;
+    animation-play-state: paused;
   }
-  .rev-marquee-track:hover { animation-play-state: paused; }
+  .rev-marquee-track.is-playing:hover { animation-play-state: paused; }
 
   /* 5 cards × (350px + 24px gap) = 1870px — hardcoded so browser never resolves a % on max-content */
   @keyframes rev-marquee {

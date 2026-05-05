@@ -913,14 +913,27 @@ mobMenu.querySelectorAll('a').forEach(a => {
 })();
 
 /* ══════════════════════════════════════════
-   REVIEWS — marquee: stop animatie bij prefers-reduced-motion
+   REVIEWS — marquee: play only when in viewport, respect reduced-motion
 ══════════════════════════════════════════ */
 (function () {
+  const wrap  = document.querySelector('.rev-marquee-wrap');
   const track = document.querySelector('.rev-marquee-track');
-  if (!track) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    track.style.animationPlayState = 'paused';
-  }
+  if (!wrap || !track) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) {
+        track.classList.add('is-playing');
+        track.style.animationPlayState = 'running';
+      } else {
+        track.classList.remove('is-playing');
+        track.style.animationPlayState = 'paused';
+      }
+    }),
+    { threshold: 0.1 }
+  );
+  io.observe(wrap);
 })();
 
 /* ══════════════════════════════════════════
