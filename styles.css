@@ -2520,55 +2520,105 @@ nav .nav-active { color: var(--gold) !important; }
 }
 .ww-ds-list li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
 
-/* Reviews summary (reviews.html) */
-.rev-summary {
+/* Reviews page (reviews.html) — redesigned */
+
+/* Centered rating hero */
+.rv-hero {
   text-align: center;
-  padding: 3rem 0 4rem;
+  padding: 1.5rem 0 3.5rem;
 }
-.rev-sum-score {
+.rv-hero-score {
   font-family: var(--fh);
-  font-size: clamp(4rem, 10vw, 7rem);
+  font-size: clamp(5rem, 12vw, 8rem);
   font-weight: 700;
   color: var(--gold);
   line-height: 1;
-  margin-bottom: .4rem;
+  margin-bottom: .5rem;
 }
+.rv-hero-stars {
+  font-size: 1.5rem;
+  color: var(--gold);
+  letter-spacing: .2em;
+  margin-bottom: .85rem;
+}
+.rv-hero-count {
+  font-size: .74rem;
+  color: #888;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* Keep for homepage carousel */
+.rev-summary { text-align: center; padding: 3rem 0 4rem; }
+.rev-sum-score { font-family: var(--fh); font-size: clamp(4rem,10vw,7rem); font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: .4rem; }
 .rev-sum-stars { font-size: 1.8rem; color: var(--gold); margin-bottom: .6rem; }
 .rev-sum-count { font-size: .85rem; color: #888; letter-spacing: .06em; }
 
-/* Reviews full grid */
-.rev-full-grid {
+/* 3-column reviews grid */
+.rv-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 2.5rem;
+  gap: 1.5rem;
 }
-.rev-grid-card {
-  background: rgba(255,255,255,.025);
+.rv-card {
+  background: rgba(255,255,255,.028);
   border: 1px solid rgba(255,255,255,.07);
-  padding: 2rem 1.8rem;
-  transition: border-color .3s;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  transition: border-color .3s, background .3s, transform .3s;
 }
-.rev-grid-card:hover { border-color: rgba(201,168,76,.25); }
-.rev-grid-card .rev-stars { font-size: 1rem; color: var(--gold); margin-bottom: 1rem; }
-.rev-grid-card .rev-quote {
+.rv-card:hover {
+  border-color: rgba(201,168,76,.35);
+  background: rgba(201,168,76,.04);
+  transform: translateY(-3px);
+}
+.rv-stars {
   font-size: .88rem;
-  color: #bbb;
-  line-height: 1.75;
-  margin-bottom: 1.4rem;
-  font-style: italic;
+  color: var(--gold);
+  letter-spacing: .1em;
 }
-.rev-grid-card .rev-author { display: flex; align-items: center; gap: .9rem; }
-.rev-grid-card .rev-av {
-  width: 38px; height: 38px;
+.rv-quote {
+  font-size: .88rem;
+  color: #ccc;
+  line-height: 1.65;
+  font-style: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+  margin: 0;
+}
+.rv-author {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding-top: .9rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+  margin-top: auto;
+}
+.rv-av {
+  width: 40px; height: 40px;
   border-radius: 50%;
-  background: rgba(201,168,76,.15);
+  background: rgba(201,168,76,.1);
   border: 1px solid rgba(201,168,76,.3);
   display: flex; align-items: center; justify-content: center;
-  font-size: .7rem; font-weight: 700; color: var(--gold); flex-shrink: 0;
+  font-size: .63rem; font-weight: 700; color: var(--gold); flex-shrink: 0;
+  letter-spacing: .04em;
 }
-.rev-grid-card .rev-name { font-size: .85rem; font-weight: 600; color: var(--white); }
-.rev-grid-card .rev-role { font-size: .72rem; color: #777; margin-top: .15rem; }
+.rv-name {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.2;
+}
+.rv-role {
+  font-size: .74rem;
+  color: #777;
+  margin-top: .15rem;
+}
 
 /* Page CTA section */
 .page-cta-section {
@@ -2584,13 +2634,13 @@ nav .nav-active { color: var(--gold) !important; }
 @media (max-width: 900px) {
   .features-grid { grid-template-columns: 1fr 1fr; }
   .pf-grid { grid-template-columns: 1fr; }
-  .rev-full-grid { grid-template-columns: 1fr 1fr; }
+  .rv-grid { grid-template-columns: 1fr 1fr; }
   .ww-detail-step { grid-template-columns: 80px 1fr; gap: 1.5rem; }
   .ww-steps { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 600px) {
+@media (max-width: 580px) {
   .features-grid { grid-template-columns: 1fr; }
-  .rev-full-grid { grid-template-columns: 1fr; }
+  .rv-grid { grid-template-columns: 1fr; }
   .ww-detail-step { grid-template-columns: 1fr; gap: .8rem; }
   .ww-ds-num { font-size: 3rem; }
   .ww-steps { grid-template-columns: 1fr; }
