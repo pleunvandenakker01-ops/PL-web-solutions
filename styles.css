@@ -2012,6 +2012,7 @@
   .ft-legal { display: flex; gap: 2rem; }
   .ft-legal a { font-size: .7rem; color: var(--grey-d); transition: color .3s; }
   .ft-legal a:hover { color: var(--gold); }
+  .ft-reg { font-size: .67rem; color: rgba(255,255,255,.25); letter-spacing: .04em; width: 100%; margin: 0; }
 
   /* ═══════════════════════════════════════════════
      CHAR SPLIT ANIMATION
