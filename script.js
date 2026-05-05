@@ -913,99 +913,14 @@ mobMenu.querySelectorAll('a').forEach(a => {
 })();
 
 /* ══════════════════════════════════════════
-   REVIEWS — eigen scroll-snap carrousel
-   Vervangt Swiper (151KB) — geen afhankelijkheid
+   REVIEWS — marquee: stop animatie bij prefers-reduced-motion
 ══════════════════════════════════════════ */
 (function () {
-  const track   = document.getElementById('rev-track');
-  const dotsEl  = document.getElementById('rev-dots');
-  const prevBtn = document.querySelector('.rev-prev');
-  const nextBtn = document.querySelector('.rev-next');
+  const track = document.querySelector('.rev-marquee-track');
   if (!track) return;
-
-  const slides = Array.from(track.querySelectorAll('.rev-slide'));
-  const total  = slides.length;
-  let current  = 0;
-  let autoTimer;
-
-  /* Dots aanmaken */
-  slides.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'rev-dot';
-    d.setAttribute('role', 'tab');
-    d.setAttribute('aria-label', `Review ${i + 1}`);
-    d.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-    d.addEventListener('click', () => goTo(i));
-    dotsEl.appendChild(d);
-  });
-  const dots = Array.from(dotsEl.children);
-
-  function updateUI(idx) {
-    dots.forEach((d, i) => {
-      d.classList.toggle('active', i === idx);
-      d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
-    });
-    slides.forEach((sl, i) => {
-      const card = sl.querySelector('.rev-card');
-      if (!card) return;
-      card.classList.toggle('is-active', i === idx);
-      gsap.to(card, {
-        scale:    i === idx ? 1.03 : 0.97,
-        opacity:  i === idx ? 1    : 0.65,
-        duration: 0.55,
-        ease:     'power2.out',
-      });
-    });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    track.style.animationPlayState = 'paused';
   }
-
-  /* Scrollt alleen de track horizontaal — geen effect op paginascroll */
-  function scrollTrackTo(slide) {
-    const trackRect   = track.getBoundingClientRect();
-    const slideRect   = slide.getBoundingClientRect();
-    const paddingLeft = parseFloat(getComputedStyle(track).paddingLeft) || 0;
-    track.scrollTo({
-      left: track.scrollLeft + slideRect.left - trackRect.left - paddingLeft,
-      behavior: 'smooth',
-    });
-  }
-
-  function goTo(idx) {
-    current = ((idx % total) + total) % total;
-    scrollTrackTo(slides[current]);
-    updateUI(current);
-  }
-
-  function resetAutoplay() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(() => { goTo(current + 1); }, 4800);
-  }
-
-  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoplay(); });
-  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoplay(); });
-
-  /* Sync dots bij handmatig scrollen (touch/muis) */
-  let scrollTimer;
-  track.addEventListener('scroll', () => {
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(() => {
-      const trackMid = track.getBoundingClientRect().left + track.clientWidth / 2;
-      let closest = 0, minDist = Infinity;
-      slides.forEach((sl, i) => {
-        const rect = sl.getBoundingClientRect();
-        const dist = Math.abs(rect.left + rect.width / 2 - trackMid);
-        if (dist < minDist) { minDist = dist; closest = i; }
-      });
-      if (closest !== current) { current = closest; updateUI(current); }
-    }, 80);
-  }, { passive: true });
-
-  /* Pauzeer autoplay bij hover */
-  track.addEventListener('mouseenter', () => clearInterval(autoTimer));
-  track.addEventListener('mouseleave', resetAutoplay);
-
-  /* Init: geen scroll (slide 0 staat al op positie 0), wel UI + timer starten */
-  updateUI(0);
-  resetAutoplay();
 })();
 
 /* ══════════════════════════════════════════

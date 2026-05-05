@@ -1799,59 +1799,41 @@
   .rev-head .eyebrow { justify-content: center; margin-bottom: 1.2rem; }
   .rev-head .eyebrow::before { display: none; }
 
-  .rev-card {
-    background: var(--black-c);
-    border: 1px solid rgba(255,255,255,.07);
-    padding: 2.8rem 2.5rem;
-    height: 100%;
-    transition: border-color .4s;
-  }
-  .rev-slide {
-    display: flex;
-    align-items: stretch;
-    box-sizing: border-box;
-  }
-  .rev-slide .rev-card {
-    height: 100%;
-    box-sizing: border-box;
-  }
-  .rev-card:hover { border-color: var(--gold-25); }
-
   .rev-stars {
     display: flex;
     gap: .25rem;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1rem;
   }
   .rev-star { color: var(--gold); font-size: .9rem; }
 
   .rev-quote {
     font-family: var(--fh);
-    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    font-size: 1.05rem;
     font-weight: 400;
     font-style: italic;
     color: var(--white);
-    line-height: 1.65;
-    margin-bottom: 2rem;
+    line-height: 1.6;
+    margin-bottom: 1.4rem;
   }
   .rev-quote::before {
     content: '\201C';
-    font-size: 3rem;
+    font-size: 2.6rem;
     color: var(--gold);
     line-height: 0;
-    vertical-align: -1.1rem;
+    vertical-align: -1rem;
     font-family: var(--fh);
-    margin-right: .15rem;
+    margin-right: .12rem;
   }
 
   .rev-author {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding-top: 1.4rem;
+    gap: .85rem;
+    padding-top: 1rem;
     border-top: 1px solid rgba(255,255,255,.06);
   }
   .rev-av {
-    width: 44px; height: 44px;
+    width: 40px; height: 40px;
     border-radius: 50%;
     border: 1px solid var(--gold-25);
     background: var(--gold-10);
@@ -1860,7 +1842,7 @@
     justify-content: center;
     font-family: var(--fh);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: .85rem;
     color: var(--gold);
     flex-shrink: 0;
   }
@@ -2042,76 +2024,46 @@
   /* ═══════════════════════════════════════════════
      REVIEWS CAROUSEL
   ═══════════════════════════════════════════════ */
-  .rev-carousel { position: relative; }
-  #reviews { overflow: hidden; }
+  /* Marquee wrapper — clips overflow + fades edges */
+  .rev-marquee-wrap {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  }
 
-  .rev-track {
+  /* Scrolling track — margin-right on cards for pixel-perfect -50% loop */
+  .rev-marquee-track {
     display: flex;
-    gap: 28px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 1rem 5vw 2.5rem;
-    scroll-padding-inline: 5vw;
+    width: max-content;
+    animation: rev-marquee 45s linear infinite;
+    will-change: transform;
   }
-  .rev-track::-webkit-scrollbar { display: none; }
+  .rev-marquee-track:hover { animation-play-state: paused; }
 
-  .rev-slide {
-    flex: 0 0 min(90%, 480px);
-    scroll-snap-align: start;
+  @keyframes rev-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
-  @media (min-width: 600px)  { .rev-slide { flex: 0 0 min(72%, 520px); } }
-  @media (min-width: 900px)  { .rev-slide { flex: 0 0 min(44%, 540px); } }
-  @media (min-width: 1200px) { .rev-slide { flex: 0 0 min(35%, 560px); } }
 
+  /* Card sizing */
+  .rev-marquee-track .rev-card {
+    flex: 0 0 350px;
+    width: 350px;
+    margin-right: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  /* Card base */
   .rev-card {
-    transform-origin: center center;
+    background: var(--black-c);
+    border: 1px solid rgba(255,255,255,.07);
+    padding: 2rem 2rem 1.8rem;
     transition: border-color .4s, box-shadow .4s;
   }
-  .rev-card:hover { box-shadow: 0 0 40px rgba(201,168,76,.08); }
-  .rev-card.is-active { border-color: rgba(201,168,76,.2) !important; }
-
-  .rev-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    padding-bottom: 1rem;
+  .rev-card:hover {
+    border-color: rgba(201,168,76,.3);
+    box-shadow: 0 0 32px rgba(201,168,76,.07);
   }
-  .rev-btn {
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,.35);
-    background: rgba(0,0,0,.65);
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background .25s, border-color .25s, color .25s, box-shadow .25s;
-    flex-shrink: 0;
-  }
-  .rev-btn:hover {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: #000;
-    box-shadow: 0 0 24px rgba(201,168,76,.35);
-  }
-  .rev-btn:active { transform: scale(.93); }
-
-  .rev-dots { display: flex; gap: .65rem; align-items: center; }
-  .rev-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--grey-dd);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: background .3s, transform .3s;
-  }
-  .rev-dot.active { background: var(--gold); transform: scale(1.5); }
 
   /* ═══════════════════════════════════════════════
      RESPONSIVE
