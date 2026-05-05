@@ -2043,9 +2043,10 @@
   }
   .rev-marquee-track:hover { animation-play-state: paused; }
 
+  /* 5 cards × (350px + 24px gap) = 1870px — hardcoded so browser never resolves a % on max-content */
   @keyframes rev-marquee {
     0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-1870px); }
   }
 
   /* Card sizing — fixed px gap so -50% loop math stays on whole pixels (5 × 374px = 1870px) */
