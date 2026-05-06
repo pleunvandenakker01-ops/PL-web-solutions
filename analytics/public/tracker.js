@@ -6,8 +6,13 @@
   'use strict';
 
   // ── Bootstrap ──────────────────────────────────────────────────────────────
+  // document.currentScript is null for scripts loaded with the `async`
+  // attribute — fall back to finding the tag by its unique data-client-id.
 
-  var script = document.currentScript;
+  var script =
+    document.currentScript ||
+    document.querySelector('script[data-client-id]');
+
   var clientId = script && script.getAttribute('data-client-id');
 
   if (!clientId) {
