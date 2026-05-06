@@ -11,9 +11,13 @@ export async function getGeo(ip: string): Promise<GeoResult> {
   if (cached) return cached
 
   try {
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 3000)
     const res = await fetch(`https://ipapi.co/${ip}/json/`, {
       headers: { 'User-Agent': 'PLAnalytics/1.0' },
+      signal: controller.signal,
     })
+    clearTimeout(timer)
     const data = await res.json()
     const result: GeoResult = {
       country: data.country_name ?? null,
