@@ -13,6 +13,7 @@ function init(): SupabaseClient {
     process.env.NEXT_PUBLIC_SUPABASE_URL
 
   const key =
+    process.env.SUPABASE_SERVICE_ROLE_KEY ??
     process.env.SUPABASE_ANON_KEY ??
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
@@ -20,7 +21,7 @@ function init(): SupabaseClient {
     throw new Error(
       `[supabase] env vars missing — ` +
         `SUPABASE_URL=${url ? 'ok' : 'MISSING'}, ` +
-        `SUPABASE_ANON_KEY=${key ? 'ok' : 'MISSING'}`
+        `SUPABASE_SERVICE_ROLE_KEY/ANON_KEY=${key ? 'ok' : 'MISSING'}`
     )
   }
 
