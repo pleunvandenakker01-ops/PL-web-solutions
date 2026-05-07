@@ -130,6 +130,7 @@
     <li><a href="diensten.html">Diensten</a></li>
     <li><a href="#over-ons">Over Ons</a></li>
     <li><a href="werkwijze.html">Werkwijze</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mob-menu">
@@ -146,6 +147,7 @@
   <a href="diensten.html">Diensten</a>
   <a href="#over-ons">Over Ons</a>
   <a href="werkwijze.html">Werkwijze</a>
+  <a href="#faq">FAQ</a>
   <a href="contact.html">Contact</a>
 </div>
 
@@ -615,6 +617,121 @@
   <div style="text-align:center;margin-top:3.5rem;">
     <a href="werkwijze.html" class="btn btn-ghost">Bekijk Onze Werkwijze →</a>
   </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section id="faq">
+  <style>
+    #faq{padding:6rem 5vw;}
+    .faq-head{text-align:center;margin-bottom:3.5rem;}
+    .faq-list{max-width:780px;margin:0 auto;}
+    .faq-item{border-bottom:1px solid var(--gold-15);}
+    .faq-item:first-child{border-top:1px solid var(--gold-15);}
+    .faq-q{width:100%;background:none;border:none;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;cursor:pointer;font-family:var(--fb);font-size:clamp(.9rem,1.8vw,1.05rem);font-weight:500;color:var(--white);letter-spacing:.02em;text-align:left;gap:1rem;transition:color .25s;}
+    .faq-q:hover{color:var(--gold);}
+    .faq-icon{flex-shrink:0;width:1.6rem;height:1.6rem;border:1px solid var(--gold-25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;line-height:1;color:var(--gold);transition:transform .35s ease,background .35s ease;}
+    .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--gold-10);}
+    .faq-item.open .faq-q{color:var(--gold);}
+    .faq-a{overflow:hidden;height:0;}
+    .faq-a-inner{padding:0 0 1.4rem;color:var(--grey);font-size:clamp(.85rem,1.6vw,.95rem);line-height:1.8;}
+  </style>
+
+  <div class="faq-head">
+    <div class="eyebrow">Veelgestelde Vragen</div>
+    <h2 class="section-title">Alles Wat Je<br><span class="g shimmer-gold">Wilt Weten</span></h2>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Wat heb ik nodig om te starten?</span>
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Alleen jouw idee en wat input over jouw bedrijf. Wij regelen de rest — teksten, design en techniek. Een gratis gesprek van 30 minuten is genoeg om te beginnen.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Kan ik de website later nog aanpassen?</span>
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Ja. Met ons onderhoudspakket (€49/maand) verwerken wij kleine aanpassingen voor je. Grotere uitbreidingen bespreken we altijd persoonlijk en eerlijk geprijsd.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Zijn er maandelijkse kosten als ik geen onderhoud afneem?</span>
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Nee. De pakketten zijn eenmalige investeringen. Hosting en onderhoud zijn optioneel via ons pakket van €49/maand, maar niet verplicht.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Hoe snel is mijn website live?</span>
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Het Starter pakket staat binnen 5 werkdagen live, Business binnen 7 en Premium binnen 14 dagen. We houden ons altijd aan deze termijnen.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Bouwen jullie ook webshops of boekingssystemen?</span>
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Ja. Boekingssystemen zitten standaard in het Premium en Elite pakket. Webshops bespreken we op maat — neem contact op voor een vrijblijvend advies.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Wat als ik niet tevreden ben?</span>
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Wij stoppen pas als jij 100% tevreden bent. Dat is geen marketingpraatje — wij doen maximaal 3 revisierondes totdat het perfect is.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Werken jullie door heel Nederland?</span>
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a" role="region">
+        <div class="faq-a-inner">Ja, wij werken volledig remote en bedienen klanten door heel Nederland. Een gesprek doen we via telefoon, videocall of indien gewenst in persoon.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    document.querySelectorAll('.faq-q').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var item  = btn.closest('.faq-item');
+        var panel = item.querySelector('.faq-a');
+        var isOpen = item.classList.contains('open');
+
+        // Sluit alle open items
+        document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-q').setAttribute('aria-expanded','false');
+          gsap.to(openItem.querySelector('.faq-a'), {height:0, duration:.35, ease:'power2.inOut'});
+        });
+
+        // Open het geklikte item als het dicht was
+        if(!isOpen){
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+          gsap.fromTo(panel, {height:0}, {height:'auto', duration:.4, ease:'power2.out'});
+        }
+      });
+    });
+  })();
+  </script>
 </section>
 
 <!-- ═══════════════ CONTACT ═══════════════ -->
