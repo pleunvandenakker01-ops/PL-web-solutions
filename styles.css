@@ -2774,7 +2774,7 @@ nav .nav-active { color: var(--gold) !important; }
 /* ── VASTE CONTACTBALK ─────────────────────────────────────── */
 @keyframes cb-pulse {
   0%, 100% { transform: scale(1);    box-shadow: 0 4px 18px rgba(0,0,0,.35); }
-  50%       { transform: scale(1.05); box-shadow: 0 6px 28px rgba(201,168,76,.45); }
+  50%       { transform: scale(1.05); box-shadow: 0 6px 28px rgba(201,168,76,.5); }
 }
 .contact-bar {
   position: fixed;
@@ -2782,55 +2782,58 @@ nav .nav-active { color: var(--gold) !important; }
   right: 30px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   z-index: 9900;
 }
 .contact-bar-btn {
-  display: inline-flex;
+  position: relative;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: .82rem;
-  letter-spacing: .05em;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
   text-decoration: none;
   box-shadow: 0 4px 18px rgba(0,0,0,.35);
   animation: cb-pulse 2s ease-in-out infinite;
   transition: transform .2s ease, box-shadow .2s ease;
-  white-space: nowrap;
-}
-.contact-bar-btn:hover {
-  animation-play-state: paused;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0,0,0,.45);
 }
 .contact-bar-btn svg {
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
 }
-.contact-bar-wa {
-  background: var(--gold);
-  color: #000;
-  animation-delay: 0s;
+.contact-bar-btn::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,.82);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .18s ease;
 }
-.contact-bar-call {
-  background: var(--gold);
-  color: #000;
-  animation-delay: .5s;
+.contact-bar-btn:hover::before { opacity: 1; }
+.contact-bar-btn:hover {
+  animation-play-state: paused;
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(201,168,76,.55);
 }
+.contact-bar-call { animation-delay: 0s; }
+.contact-bar-wa   { animation-delay: .5s; }
 @media (max-width: 640px) {
-  .contact-bar {
-    bottom: 20px;
-    right: 16px;
-    gap: 8px;
-  }
-  .contact-bar-btn {
-    padding: 11px;
-    border-radius: 50%;
-  }
-  .contact-bar-btn .cb-label { display: none; }
+  .contact-bar { bottom: 20px; right: 16px; gap: 10px; }
+  .contact-bar-btn::before { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .contact-bar-btn { animation: none; }
