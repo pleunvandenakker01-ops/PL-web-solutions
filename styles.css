@@ -2772,6 +2772,10 @@ nav .nav-active { color: var(--gold) !important; }
   }
 
 /* ── VASTE CONTACTBALK ─────────────────────────────────────── */
+@keyframes cb-pulse {
+  0%, 100% { transform: scale(1);    box-shadow: 0 4px 18px rgba(0,0,0,.35); }
+  50%       { transform: scale(1.05); box-shadow: 0 6px 28px rgba(201,168,76,.45); }
+}
 .contact-bar {
   position: fixed;
   bottom: 30px;
@@ -2792,10 +2796,12 @@ nav .nav-active { color: var(--gold) !important; }
   letter-spacing: .05em;
   text-decoration: none;
   box-shadow: 0 4px 18px rgba(0,0,0,.35);
+  animation: cb-pulse 2s ease-in-out infinite;
   transition: transform .2s ease, box-shadow .2s ease;
   white-space: nowrap;
 }
 .contact-bar-btn:hover {
+  animation-play-state: paused;
   transform: translateY(-2px);
   box-shadow: 0 6px 24px rgba(0,0,0,.45);
 }
@@ -2805,12 +2811,14 @@ nav .nav-active { color: var(--gold) !important; }
   height: 18px;
 }
 .contact-bar-wa {
-  background: #25D366;
-  color: #fff;
+  background: var(--gold);
+  color: #000;
+  animation-delay: 0s;
 }
 .contact-bar-call {
   background: var(--gold);
   color: #000;
+  animation-delay: .5s;
 }
 @media (max-width: 640px) {
   .contact-bar {
@@ -2823,4 +2831,7 @@ nav .nav-active { color: var(--gold) !important; }
     border-radius: 50%;
   }
   .contact-bar-btn .cb-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-bar-btn { animation: none; }
 }
