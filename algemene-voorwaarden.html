@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algemene Voorwaarden — PL Web Solutions</title>
+  <meta name="description" content="Algemene voorwaarden van PL Web Solutions. Lees hier onze afspraken over offertes, betaling, levertijd, intellectueel eigendom en aansprakelijkheid." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
+
+  <link rel="canonical" href="https://plwebsolutions.nl/algemene-voorwaarden.html" />
+  <meta property="og:title" content="Algemene Voorwaarden — PL Web Solutions" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://plwebsolutions.nl/algemene-voorwaarden.html" />
+
+  <link rel="stylesheet" href="styles.css?v=4" />
+  <script src="https://analytics-orcin-delta.vercel.app/tracker.js" data-client-id="4d9dc303-7e37-4d5c-97c6-de2865362615" async></script>
+
+  <style>
+    .av-body {
+      max-width: 780px;
+      margin: 0 auto;
+      color: #ccc;
+      font-size: clamp(.9rem, 1.3vw, 1rem);
+      line-height: 1.8;
+    }
+    .av-article {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(201,168,76,.08);
+    }
+    .av-article:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .av-article h2 {
+      font-family: var(--fh);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
+    .av-article p {
+      margin-bottom: .9rem;
+    }
+    .av-article p:last-child { margin-bottom: 0; }
+    .av-article ol, .av-article ul {
+      padding-left: 1.4rem;
+      margin-bottom: .9rem;
+    }
+    .av-article li { margin-bottom: .45rem; }
+    .av-meta {
+      max-width: 780px;
+      margin: 0 auto 3.5rem;
+      padding: 1.4rem 1.8rem;
+      background: rgba(201,168,76,.05);
+      border: 1px solid rgba(201,168,76,.12);
+      border-radius: 8px;
+      font-size: .82rem;
+      color: #999;
+      line-height: 1.7;
+    }
+    .av-meta strong { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ COOKIE CONSENT ═══════════════ -->
+<div id="cookie-banner" role="dialog" aria-label="Cookiemelding" aria-describedby="cookie-desc" style="
+  display:none;
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:99998;
+  background:rgba(8,8,8,.97);
+  border-top:1px solid rgba(201,168,76,.2);
+  padding:1.4rem 5vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+  flex-wrap:wrap;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+">
+  <p id="cookie-desc" style="margin:0;font-family:'Inter',sans-serif;font-size:.78rem;color:#aaa;line-height:1.65;max-width:720px;">
+    Wij gebruiken functionele en analytische cookies om de website goed te laten werken en het gebruik te verbeteren.
+    Door verder te gaan of op "Accepteren" te klikken, ga je akkoord met ons
+    <a href="privacybeleid.html" style="color:#C9A84C;text-decoration:underline;">privacybeleid</a>.
+  </p>
+  <div style="display:flex;gap:.8rem;flex-shrink:0;">
+    <button id="cookie-accept" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:600;
+      letter-spacing:.15em;text-transform:uppercase;cursor:pointer;
+      background:#C9A84C;color:#000;border:none;padding:.7rem 1.6rem;
+      transition:background .25s;
+    " onmouseover="this.style.background='#F0C060'" onmouseout="this.style.background='#C9A84C'">
+      Accepteren
+    </button>
+    <button id="cookie-decline" style="
+      font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;
+      letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+      background:transparent;color:#888;border:1px solid rgba(255,255,255,.15);
+      padding:.7rem 1.4rem;transition:color .25s,border-color .25s;
+    " onmouseover="this.style.color='#ccc';this.style.borderColor='rgba(255,255,255,.35)'"
+       onmouseout="this.style.color='#888';this.style.borderColor='rgba(255,255,255,.15)'">
+      Alleen functioneel
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  const banner = document.getElementById('cookie-banner');
+  if (!localStorage.getItem('pl-cookie-consent')) banner.style.display = 'flex';
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'all');
+    banner.style.display = 'none';
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function(){
+    localStorage.setItem('pl-cookie-consent', 'functional');
+    banner.style.display = 'none';
+  });
+})();
+</script>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">PL <b>Web</b> Solutions</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#over-ons">Over Ons</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="werkwijze.html">Werkwijze</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mob-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mob-menu" role="navigation" aria-label="Mobiel navigatiemenu">
+  <button class="mob-close" id="mob-close" aria-label="Menu sluiten">✕</button>
+  <a href="index.html">Home</a>
+  <a href="index.html#over-ons">Over Ons</a>
+  <a href="diensten.html">Diensten</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="werkwijze.html">Werkwijze</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow page-hero-eyebrow">PL Web Solutions</div>
+    <h1 class="page-hero-title">Algemene<br><span class="g">Voorwaarden</span></h1>
+    <p class="page-hero-sub">Van toepassing op alle diensten en overeenkomsten van PL Web Solutions.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ INHOUD ═══════════════ -->
+<section class="page-section">
+  <div class="av-body">
+
+    <div class="av-meta">
+      <strong>PL Web Solutions</strong><br>
+      KVK-nummer: 42048476<br>
+      BTW-nummer: NL869470395B01<br>
+      Gevestigd in Nederland<br>
+      E-mail: <a href="mailto:plwebsolutions@outlook.com" style="color:#C9A84C;">plwebsolutions@outlook.com</a><br>
+      <br>
+      Versie: mei 2026 &nbsp;·&nbsp; Deze voorwaarden zijn van toepassing op alle overeenkomsten die PL Web Solutions sluit met opdrachtgevers.
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 1 — Definities</h2>
+      <p>In deze algemene voorwaarden wordt verstaan onder:</p>
+      <ul>
+        <li><strong style="color:#ddd;">PL Web Solutions:</strong> de eenmanszaak geregistreerd onder KVK 42048476, hierna ook aangeduid als "opdrachtnemer".</li>
+        <li><strong style="color:#ddd;">Opdrachtgever:</strong> de natuurlijke persoon of rechtspersoon die een overeenkomst aangaat met PL Web Solutions.</li>
+        <li><strong style="color:#ddd;">Overeenkomst:</strong> de afspraken tussen opdrachtgever en PL Web Solutions over te leveren diensten, vastgelegd in een offerte of opdrachtbevestiging.</li>
+        <li><strong style="color:#ddd;">Diensten:</strong> alle werkzaamheden die PL Web Solutions verricht, waaronder het ontwerpen, ontwikkelen en onderhouden van websites en aanverwante digitale producten.</li>
+        <li><strong style="color:#ddd;">Revisie:</strong> een aanpassing aan eerder opgeleverd werk binnen de afgesproken scope.</li>
+      </ul>
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 2 — Toepasselijkheid</h2>
+      <p>Deze algemene voorwaarden zijn van toepassing op alle offertes, overeenkomsten en dienstverlening van PL Web Solutions, tenzij schriftelijk anders is overeengekomen.</p>
+      <p>Afwijkingen van deze voorwaarden zijn alleen geldig als zij uitdrukkelijk en schriftelijk zijn bevestigd door PL Web Solutions. Algemene voorwaarden van de opdrachtgever worden uitdrukkelijk van de hand gewezen.</p>
+      <p>PL Web Solutions behoudt zich het recht voor deze voorwaarden te wijzigen. De meest actuele versie is altijd te vinden op de website.</p>
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 3 — Offertes en Overeenkomsten</h2>
+      <p>Alle offertes van PL Web Solutions zijn vrijblijvend en geldig gedurende 30 dagen na dagtekening, tenzij anders vermeld.</p>
+      <p>Een overeenkomst komt tot stand op het moment dat de opdrachtgever de offerte schriftelijk of per e-mail accepteert, of op het moment dat PL Web Solutions begint met de uitvoering van de werkzaamheden na akkoord van de opdrachtgever.</p>
+      <p>Wijzigingen in de opdracht na totstandkoming van de overeenkomst kunnen leiden tot meerkosten. PL Web Solutions informeert de opdrachtgever hierover tijdig en schriftelijk.</p>
+      <p>Mondelinge afspraken zijn pas bindend nadat deze schriftelijk zijn bevestigd door PL Web Solutions.</p>
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 4 — Betaling</h2>
+      <p>PL Web Solutions hanteert de volgende betalingsstructuur, tenzij schriftelijk anders overeengekomen:</p>
+      <ul>
+        <li>50% aanbetaling bij akkoord op de offerte, vóór aanvang van de werkzaamheden.</li>
+        <li>50% restbetaling bij oplevering, vóór publicatie van de website.</li>
+      </ul>
+      <p>Facturen dienen te worden voldaan binnen 14 dagen na factuurdatum via de op de factuur vermelde betalingsmethode. Bij overschrijding van de betalingstermijn is de opdrachtgever van rechtswege in verzuim en heeft PL Web Solutions het recht de werkzaamheden op te schorten totdat volledige betaling is ontvangen.</p>
+      <p>Bij uitblijven van betaling na herinnering is PL Web Solutions gerechtigd de wettelijke rente en buitengerechtelijke incassokosten in rekening te brengen conform de Wet Normering Buitengerechtelijke Incassokosten.</p>
+      <p>Alle genoemde prijzen zijn exclusief BTW, tenzij anders aangegeven.</p>
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 5 — Levertijd</h2>
+      <p>De door PL Web Solutions opgegeven levertijden zijn indicatief en geen fatale termijnen, tenzij schriftelijk uitdrukkelijk anders is overeengekomen.</p>
+      <p>De levertijd gaat in op het moment dat de overeenkomst tot stand is gekomen én de aanbetaling is ontvangen én alle door de opdrachtgever aan te leveren materialen (teksten, afbeeldingen, logo's, huisstijl) volledig zijn aangeleverd.</p>
+      <p>Vertraging door het niet of niet tijdig aanleveren van benodigde informatie of materialen door de opdrachtgever kan niet aan PL Web Solutions worden toegerekend. De levertijd wordt in dat geval dienovereenkomstig verlengd.</p>
+      <p>Overschrijding van de levertijd geeft de opdrachtgever geen recht op schadevergoeding of ontbinding van de overeenkomst, tenzij de overschrijding het gevolg is van opzet of bewuste roekeloosheid van PL Web Solutions.</p>
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 6 — Revisies</h2>
+      <p>PL Web Solutions hanteert per project een vastgesteld aantal revisierondes zoals vermeld in de offerte. Een revisieronde omvat een redelijk aantal samenhangende aanpassingen binnen de oorspronkelijke projectscope.</p>
+      <p>Extra revisies buiten de overeengekomen rondes worden in rekening gebracht op basis van een uurtarief van €75 per uur, tenzij anders overeengekomen.</p>
+      <p>Aanpassingen die buiten de oorspronkelijke projectscope vallen, worden beschouwd als nieuwe opdrachten en worden apart geoffreerd.</p>
+      <p>Revisies dienen door de opdrachtgever gebundeld en gestructureerd aangeleverd te worden. Losse, gefragmenteerde verzoeken per bericht worden samengevoegd en als één revisieronde beschouwd.</p>
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 7 — Intellectueel Eigendom</h2>
+      <p>Alle door PL Web Solutions ontwikkelde ontwerpen, code, grafische elementen en overige creatieve werken zijn en blijven eigendom van PL Web Solutions totdat de opdrachtgever alle verschuldigde bedragen volledig heeft voldaan.</p>
+      <p>Na volledige betaling draagt PL Web Solutions de gebruiksrechten over aan de opdrachtgever voor het gebruik van de opgeleverde website. PL Web Solutions behoudt te allen tijde het recht om het project te tonen in zijn portfolio en andere marketinguitingen, tenzij schriftelijk anders overeengekomen.</p>
+      <p>Door de opdrachtgever aangeleverde materialen (teksten, afbeeldingen, logo's) blijven eigendom van de opdrachtgever of de rechthebbende. De opdrachtgever garandeert dat hij gerechtigd is deze materialen te gebruiken en vrijwaart PL Web Solutions voor aanspraken van derden.</p>
+      <p>Het is de opdrachtgever niet toegestaan de website of onderdelen daarvan te verkopen, te verhuren of onder te licentieren aan derden zonder schriftelijke toestemming van PL Web Solutions.</p>
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 8 — Aansprakelijkheid</h2>
+      <p>PL Web Solutions is uitsluitend aansprakelijk voor directe schade die het gevolg is van opzet of bewuste roekeloosheid van PL Web Solutions.</p>
+      <p>PL Web Solutions is in geen geval aansprakelijk voor:</p>
+      <ul>
+        <li>Indirecte schade, gevolgschade, gederfde winst of omzetderving.</li>
+        <li>Schade als gevolg van onjuiste of onvolledige informatie verstrekt door de opdrachtgever.</li>
+        <li>Storingen bij hosting-, domein- of andere externe dienstverleners.</li>
+        <li>Schade als gevolg van het gebruik van de website door de opdrachtgever of derden na oplevering.</li>
+        <li>Dataverlies of beveiligingsincidenten die plaatsvinden na oplevering.</li>
+      </ul>
+      <p>De aansprakelijkheid van PL Web Solutions is te allen tijde beperkt tot het bedrag dat in het kader van de betreffende overeenkomst door de opdrachtgever is betaald, met een maximum van €2.500.</p>
+      <p>PL Web Solutions is niet verantwoordelijk voor de beschikbaarheid of werking van diensten van derden, zoals hostingpartijen, betaalproviders of externe API-koppelingen.</p>
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 9 — Onderhoud en Hosting</h2>
+      <p>Na oplevering van de website valt technisch onderhoud, updates en hosting buiten de opdracht, tenzij een onderhoudsovereenkomst is afgesloten.</p>
+      <p>PL Web Solutions biedt onderhoudsabonnementen aan die maandelijks worden gefactureerd. De inhoud en prijs van het abonnement worden vastgelegd in een aparte overeenkomst.</p>
+      <p>Een onderhoudsovereenkomst kan door beide partijen worden opgezegd met een opzegtermijn van één kalendermaand, ingaande op de eerste dag van de volgende maand.</p>
+      <p>Bij het ontbreken van een onderhoudsovereenkomst is PL Web Solutions niet aansprakelijk voor problemen, verouderde software, beveiligingslekken of uitval van de website na oplevering.</p>
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 10 — Privacy en Gegevensverwerking</h2>
+      <p>PL Web Solutions verwerkt persoonsgegevens van de opdrachtgever uitsluitend voor zover noodzakelijk voor de uitvoering van de overeenkomst en in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG).</p>
+      <p>PL Web Solutions deelt persoonsgegevens niet met derden, tenzij dit noodzakelijk is voor de uitvoering van de overeenkomst of indien PL Web Solutions hiertoe wettelijk verplicht is.</p>
+      <p>Voor meer informatie over de verwerking van persoonsgegevens verwijzen wij naar ons <a href="privacybeleid.html" style="color:#C9A84C;text-decoration:underline;">privacybeleid</a>.</p>
+      <p>Indien PL Web Solutions in het kader van de dienstverlening toegang heeft tot persoonsgegevens van klanten van de opdrachtgever, treedt PL Web Solutions op als verwerker. Op verzoek kan een verwerkersovereenkomst worden opgesteld.</p>
+    </div>
+
+    <div class="av-article">
+      <h2>Artikel 11 — Toepasselijk Recht en Geschillen</h2>
+      <p>Op alle overeenkomsten en rechtsverhoudingen tussen PL Web Solutions en de opdrachtgever is uitsluitend Nederlands recht van toepassing.</p>
+      <p>Geschillen worden in eerste instantie geprobeerd op te lossen door middel van overleg. Indien partijen er niet in slagen het geschil in onderling overleg te beslechten, wordt het geschil voorgelegd aan de bevoegde rechter.</p>
+      <p>De bevoegde rechter is de rechtbank in het arrondissement waar PL Web Solutions is gevestigd, tenzij een andere rechter dwingendrechtelijk bevoegd is.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-brand">PL <span>Web</span> Solutions</div>
+      <p class="ft-tagline">Wij bouwen websites voor lokale ondernemers die online meer willen bereiken. Persoonlijk contact, eerlijke prijzen.</p>
+    </div>
+    <div>
+      <div class="ft-head">Navigatie</div>
+      <ul class="ft-links">
+        <li><a href="index.html#over-ons">Over Ons</a></li>
+        <li><a href="diensten.html">Diensten &amp; Prijzen</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="werkwijze.html">Werkwijze</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Pakketten</div>
+      <ul class="ft-links">
+        <li><a href="diensten.html">Starter — €499</a></li>
+        <li><a href="diensten.html">Business — €799</a></li>
+        <li><a href="diensten.html">Premium — €1.750</a></li>
+        <li><a href="diensten.html">Elite — €3.500</a></li>
+        <li><a href="diensten.html">Onderhoud — €49/mnd</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">&copy; 2026 <span>PL Web Solutions</span> — Alle rechten voorbehouden</p>
+    <div class="ft-legal">
+      <a href="privacybeleid.html">Privacybeleid</a>
+      <a href="algemene-voorwaarden.html" class="nav-active">Algemene Voorwaarden</a>
+    </div>
+    <p class="ft-reg">KVK 42048476 &nbsp;·&nbsp; BTW-nr. NL869470395B01</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/combine/npm/gsap@3.12.5/dist/gsap.min.js,npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="script.js?v=3" defer></script>
+
+<!-- Vaste contactbalk -->
+<div class="contact-bar">
+  <a href="tel:+31630937447" class="contact-bar-btn contact-bar-call" aria-label="Bel ons" data-tooltip="Bel ons">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+  <a href="https://wa.me/31630937447" class="contact-bar-btn contact-bar-wa" target="_blank" rel="noopener" aria-label="WhatsApp ons" data-tooltip="WhatsApp ons">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.524 5.837L.057 23.714a.5.5 0 0 0 .636.61l5.928-1.557A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.809 9.809 0 0 1-5.027-1.384l-.36-.214-3.73.978.997-3.63-.235-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+  </a>
+</div>
+
+</body>
+</html>
