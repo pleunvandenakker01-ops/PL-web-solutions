@@ -270,7 +270,27 @@
   .nav-links a:hover { color: var(--gold-l); }
   .nav-links a:hover::after { transform: scaleX(1); }
 
-  .nav-cta { display: none; }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: .52rem 1.3rem;
+    background: var(--gold);
+    color: #000 !important;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
+  }
+  .nav-cta:hover {
+    background: #f0c060;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(201,168,76,.35);
+  }
 
   /* Hamburger */
   .hamburger {
@@ -2153,6 +2173,7 @@
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .hamburger { display: flex; }
+    .nav-cta { padding: .42rem .9rem; font-size: .58rem; letter-spacing: .12em; }
 
     .stats-inner { grid-template-columns: 1fr 1fr; }
     .stat-cell:nth-child(2) { border-right: none; }
