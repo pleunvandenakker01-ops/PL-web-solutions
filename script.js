@@ -283,7 +283,7 @@ const heroChars = document.querySelectorAll('.hero-headline .hchar');
 
 /* Begin-staat: alles verborgen */
 gsap.set(heroChars, { y: 70, opacity: 0, transformOrigin: 'bottom center' });
-gsap.set(['.hero-eyebrow', '.hero-actions'], { opacity: 0, y: 22 });
+gsap.set(['.hero-eyebrow', '.hero-sub', '.hero-actions'], { opacity: 0, y: 22 });
 
 
 /* Entrance timeline — gestart door preloader */
@@ -299,7 +299,9 @@ heroTl
     stagger: { amount: 0.8, from: 'start' },
     ease: 'power3.out',
   }, 0.25)
-  /* 3. CTA knop */
+  /* 3. Subtitel */
+  .to('.hero-sub', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.85)
+  /* 4. CTA knoppen */
   .to('.hero-actions', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 1.0);
 
 /* ══════════════════════════════════════════

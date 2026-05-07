@@ -408,12 +408,24 @@
   .hero-headline .word       { display: inline-block; }
   .hero-headline .accent     { color: var(--gold); }
 
-  /* CTA knop onder de titel */
+  /* Subtitel onder de h1 */
+  .hero-sub {
+    opacity: 0;
+    margin-top: 1.8rem;
+    font-size: clamp(.8rem, 1.4vw, .95rem);
+    color: rgba(204,204,204,.7);
+    letter-spacing: .06em;
+    line-height: 1.7;
+  }
+
+  /* CTA knoppen onder de subtitel */
   .hero-actions {
     opacity: 0;
-    margin-top: 3.4rem;
+    margin-top: 2.2rem;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
   .hero-cta {
     padding: 1.15rem 3.4rem !important;
