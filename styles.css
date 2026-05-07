@@ -2772,6 +2772,38 @@ nav .nav-active { color: var(--gold) !important; }
     .agent-bundle-pricing { gap: 1.5rem; }
   }
 
+/* ── REVIEWS CTA-BALK ─────────────────────────────────────── */
+.reviews-cta-bar {
+  background: rgba(201,168,76,.05);
+  border-top: 1px solid rgba(201,168,76,.13);
+  border-bottom: 1px solid rgba(201,168,76,.13);
+  padding: 2.8rem 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.reviews-cta-bar-text { flex: 1; min-width: 260px; }
+.reviews-cta-bar-heading {
+  font-family: var(--fh);
+  font-size: clamp(1.3rem, 3vw, 1.85rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -.01em;
+  line-height: 1.25;
+  margin-bottom: .45rem;
+}
+.reviews-cta-bar-sub {
+  font-size: clamp(.8rem, 1.2vw, .9rem);
+  color: #888;
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .reviews-cta-bar { flex-direction: column; align-items: flex-start; }
+  .reviews-cta-bar .btn { width: 100%; justify-content: center; }
+}
+
 /* ── VASTE CONTACTBALK ─────────────────────────────────────── */
 @keyframes cb-pulse {
   0%, 100% { transform: scale(1);    box-shadow: 0 4px 18px rgba(0,0,0,.35); }
