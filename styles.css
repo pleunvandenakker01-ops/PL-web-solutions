@@ -133,11 +133,7 @@
     color: var(--gold);
   }
   .eyebrow::before {
-    content: '';
-    display: block;
-    width: 36px; height: 1px;
-    background: var(--gold);
-    flex-shrink: 0;
+    display: none;
   }
 
   .section-title {
@@ -390,7 +386,6 @@
     align-items: center;
   }
 
-  .hero-eyebrow::before, .hero-eyebrow::after { display: none; }
   .hero-eyebrow {
     margin-bottom: 2.2rem;
     opacity: 0;
@@ -578,7 +573,6 @@
     text-align: center;
   }
   .diensten-head .eyebrow  { margin-bottom: 1.2rem; justify-content: center; }
-  .diensten-head .eyebrow::before { display: none; }
   .diensten-head .section-title { margin-bottom: 1.2rem; }
   .diensten-head p { color: var(--grey-d); }
 
@@ -1797,7 +1791,6 @@
     text-align: center;
   }
   .rev-head .eyebrow { justify-content: center; margin-bottom: 1.2rem; }
-  .rev-head .eyebrow::before { display: none; }
 
   .rev-card {
     background: var(--black-c);
