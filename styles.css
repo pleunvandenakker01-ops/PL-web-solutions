@@ -2325,13 +2325,14 @@
     background: linear-gradient(90deg, transparent, var(--grey-dd), transparent);
     margin-bottom: 1.2rem;
   }
-  .pricing-btw-note {
-    text-align: center;
-    font-size: .7rem;
+  .pc-btw {
+    font-size: .65rem;
     color: var(--grey-d);
-    letter-spacing: .06em;
-    margin: 2rem auto 0;
-    opacity: .7;
+    letter-spacing: .05em;
+    opacity: .6;
+    text-align: center;
+    margin-top: -.25rem;
+    margin-bottom: .55rem;
   }
 
   /* Responsive chatbot grid */
