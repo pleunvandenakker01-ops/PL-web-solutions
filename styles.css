@@ -767,6 +767,23 @@
     margin-top: .38rem;
     flex-shrink: 0;
   }
+  .pc-target {
+    font-size: 13px;
+    font-style: italic;
+    color: #888;
+    margin-bottom: .9rem;
+    line-height: 1.45;
+  }
+  .pc-features li.pc-not {
+    color: #4a4a4a;
+    opacity: .7;
+  }
+  .pc-features li.pc-not::before {
+    content: '✗';
+    color: #555;
+    font-size: .7rem;
+    margin-top: .22rem;
+  }
   .pc .btn { width: 100%; justify-content: center; }
 
   /* Shimmer sweep — 21st.dev-stijl interactief hover effect */
