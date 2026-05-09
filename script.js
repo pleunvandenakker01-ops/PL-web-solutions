@@ -214,14 +214,13 @@ function initHeroShader() {
   const uMouse = gl.getUniformLocation(prog, 'uMouse');
   const uRes   = gl.getUniformLocation(prog, 'uRes');
 
-  /* Pixel buffer: 50% resolutie op desktop, 15% op mobiel (30% van desktop kwaliteit) */
+  /* Pixel buffer op halve resolutie — zelfde kwaliteit op mobiel en desktop */
   let W = 0, H = 0;
   function resize() {
     const cw = heroEl.offsetWidth  || window.innerWidth;
     const ch = heroEl.offsetHeight || window.innerHeight;
-    const resMul = isMobile ? 0.15 : 0.5;
-    W = Math.round(cw * resMul);
-    H = Math.round(ch * resMul);
+    W = Math.round(cw * 0.5);
+    H = Math.round(ch * 0.5);
     canvas.width  = W; canvas.height = H;
     /* CSS width/height blijven 100%/100% — browser stretcht de buffer */
     gl.viewport(0, 0, W, H);

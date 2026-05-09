@@ -324,6 +324,9 @@
     align-items: center;
     justify-content: center;
     gap: 2.2rem;
+    padding: 5rem 2rem 2.5rem;
+    box-sizing: border-box;
+    overflow-y: auto;
   }
   .mob-menu.open { display: flex; }
   .mob-menu a {
