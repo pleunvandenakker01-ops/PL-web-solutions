@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
@@ -44,9 +44,9 @@
   </style>
 
   <!-- styles.css: preload for high-priority download, then apply non-blocking -->
-  <link rel="preload" href="styles.css?v=5" as="style" />
-  <link rel="stylesheet" href="styles.css?v=5" media="print" onload="this.onload=null;this.media='all'" />
-  <noscript><link rel="stylesheet" href="styles.css?v=5" /></noscript>
+  <link rel="preload" href="styles.css?v=6" as="style" />
+  <link rel="stylesheet" href="styles.css?v=6" media="print" onload="this.onload=null;this.media='all'" />
+  <noscript><link rel="stylesheet" href="styles.css?v=6" /></noscript>
   <!-- PL Analytics -->
   <script src="https://analytics-orcin-delta.vercel.app/tracker.js" data-client-id="4d9dc303-7e37-4d5c-97c6-de2865362615" async></script>
 </head>
@@ -141,8 +141,10 @@
 
 <!-- Mobile menu -->
 <div class="mob-menu" id="mob-menu" role="navigation" aria-label="Mobiel navigatiemenu">
-  <button class="mob-close" id="mob-close" aria-label="Menu sluiten">✕</button>
-  <a href="index.html">Home</a>
+  <div style="display:flex; align-items:center; justify-content:center; position:relative; width:100%">
+    <a href="index.html">Home</a>
+    <button class="mob-close" id="mob-close" aria-label="Menu sluiten">✕</button>
+  </div>
   <a href="portfolio.html">Portfolio</a>
   <a href="reviews.html">Reviews</a>
   <a href="diensten.html">Diensten</a>

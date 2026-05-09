@@ -770,6 +770,7 @@ const mobMenu   = document.getElementById('mob-menu');
 const mobClose  = document.getElementById('mob-close');
 hamburger.addEventListener('click', () => {
   mobMenu.classList.add('open');
+  mobMenu.scrollTop = 0;
   hamburger.setAttribute('aria-expanded', 'true');
 });
 mobClose.addEventListener('click', () => {

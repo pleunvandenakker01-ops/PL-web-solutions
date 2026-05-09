@@ -344,7 +344,8 @@
   .mob-menu a:hover { color: var(--gold); }
   .mob-close {
     position: absolute;
-    top: 80px;
+    top: 50%;
+    transform: translateY(-50%);
     right: 20px;
     background: none;
     border: none;

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
@@ -24,7 +24,7 @@
   <meta property="og:url" content="https://www.pl-websolutions.nl/portfolio.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=6" />
   <!-- PL Analytics -->
   <script src="https://analytics-orcin-delta.vercel.app/tracker.js" data-client-id="4d9dc303-7e37-4d5c-97c6-de2865362615" async></script>
 </head>
@@ -107,8 +107,10 @@
 
 <!-- Mobile menu -->
 <div class="mob-menu" id="mob-menu" role="navigation" aria-label="Mobiel navigatiemenu">
-  <button class="mob-close" id="mob-close" aria-label="Menu sluiten">✕</button>
-  <a href="index.html">Home</a>
+  <div style="display:flex; align-items:center; justify-content:center; position:relative; width:100%">
+    <a href="index.html">Home</a>
+    <button class="mob-close" id="mob-close" aria-label="Menu sluiten">✕</button>
+  </div>
   <a href="index.html#over-ons">Over Ons</a>
   <a href="diensten.html">Diensten</a>
   <a href="portfolio.html">Portfolio</a>
