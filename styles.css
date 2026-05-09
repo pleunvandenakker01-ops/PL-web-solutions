@@ -313,25 +313,32 @@
     transition: all .3s;
   }
 
-  /* Mobile menu */
+  /* Mobile menu — begint direct onder de navbar, nooit eroverheen */
   .mob-menu {
     display: none;
     position: fixed;
-    inset: 0;
+    top: 77px;   /* navbar hoogte: padding 1.6rem×2 + logo (~26px) */
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 800;
     background: var(--black-s);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2.2rem;
-    padding: 5rem 2rem 2.5rem;
+    gap: 1.8rem;
+    padding: 3rem 2rem 150px; /* top: ruimte onder sluitkruisje; bottom: boven contact-bar knoppen */
     box-sizing: border-box;
     overflow-y: auto;
+  }
+  /* Navbar is smaller wanneer gescrolled (solid state) */
+  #nav.solid ~ .mob-menu {
+    top: 58px;   /* padding 1rem×2 + logo (~26px) */
   }
   .mob-menu.open { display: flex; }
   .mob-menu a {
     font-family: var(--fh);
-    font-size: clamp(2rem, 7vw, 3.5rem);
+    font-size: clamp(1.7rem, 6.5vw, 3rem);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .06em;
@@ -341,7 +348,7 @@
   .mob-menu a:hover { color: var(--gold); }
   .mob-close {
     position: absolute;
-    top: 1.5rem; right: 5vw;
+    top: 1rem; right: 5vw;
     background: none; border: none;
     color: var(--gold);
     font-size: 1.8rem;
