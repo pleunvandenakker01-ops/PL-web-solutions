@@ -372,7 +372,6 @@
   }
 
   /* Canvas (particles/shader) — vult volledige hero sectie */
-  @media (max-width: 767px) { #hero-particles { display: none !important; } }
   #hero-particles {
     position: absolute;
     inset: 0;
@@ -984,6 +983,8 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    position: relative;
+    z-index: 20;
   }
   /* Navigatie pijlen (nu in flex-footer, niet absoluut) */
   .pf-nav {
@@ -1036,10 +1037,15 @@
     .pf-3d-item  { width: 380px; margin-left: -190px; }
     .pf-3d-item .pf-mock { height: 230px; }
   }
-  @media (max-width: 600px) {
-    .pf-3d-scene { height: 360px; }
+  @media (max-width: 768px) {
+    .pf-3d-scene { height: 420px; padding-bottom: 80px; }
     .pf-3d-item  { width: 300px; margin-left: -150px; }
-    .pf-3d-item .pf-mock { height: 180px; }
+    .pf-3d-item .pf-mock { height: 175px; }
+  }
+  @media (max-width: 600px) {
+    .pf-3d-scene { height: 400px; padding-bottom: 80px; }
+    .pf-3d-item  { width: 280px; margin-left: -140px; }
+    .pf-3d-item .pf-mock { height: 155px; }
     .pf-nav { width: 44px; height: 44px; }
   }
 

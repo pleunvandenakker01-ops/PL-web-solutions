@@ -214,13 +214,14 @@ function initHeroShader() {
   const uMouse = gl.getUniformLocation(prog, 'uMouse');
   const uRes   = gl.getUniformLocation(prog, 'uRes');
 
-  /* Pixel buffer op halve resolutie — CSS stretcht naar 100%×100% (sneller + organisch) */
+  /* Pixel buffer: 50% resolutie op desktop, 15% op mobiel (30% van desktop kwaliteit) */
   let W = 0, H = 0;
   function resize() {
     const cw = heroEl.offsetWidth  || window.innerWidth;
     const ch = heroEl.offsetHeight || window.innerHeight;
-    W = Math.round(cw * 0.5);
-    H = Math.round(ch * 0.5);
+    const resMul = isMobile ? 0.15 : 0.5;
+    W = Math.round(cw * resMul);
+    H = Math.round(ch * resMul);
     canvas.width  = W; canvas.height = H;
     /* CSS width/height blijven 100%/100% — browser stretcht de buffer */
     gl.viewport(0, 0, W, H);
@@ -248,14 +249,11 @@ function initHeroShader() {
   requestAnimationFrame(tick);
 }
 
-/* Mobiel: overslaan — CSS gradient achtergrond blijft zichtbaar
-   Desktop: uitstellen tot browser idle na eerste render          */
-if (!isMobile) {
-  if (typeof requestIdleCallback === 'function') {
-    requestIdleCallback(initHeroShader, { timeout: 2000 });
-  } else {
-    setTimeout(initHeroShader, 200);
-  }
+/* Altijd initialiseren — mobiel gebruikt lagere resolutie voor performance */
+if (typeof requestIdleCallback === 'function') {
+  requestIdleCallback(initHeroShader, { timeout: 2000 });
+} else {
+  setTimeout(initHeroShader, 200);
 }
 
 
@@ -803,7 +801,8 @@ mobMenu.querySelectorAll('a').forEach(a => {
 
   /* ── Responsieve kaartbreedte ── */
   function cardW() {
-    return window.innerWidth < 600 ? 300
+    return window.innerWidth < 600 ? 280
+         : window.innerWidth < 768 ? 300
          : window.innerWidth < 900 ? 380
          : 500;
   }
