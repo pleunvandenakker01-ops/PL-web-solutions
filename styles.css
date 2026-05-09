@@ -313,27 +313,27 @@
     transition: all .3s;
   }
 
-  /* Mobile menu — begint direct onder de navbar, nooit eroverheen */
+  /* Mobile menu — begint exact onder de navbar onderkant */
   .mob-menu {
     display: none;
     position: fixed;
-    top: 77px;   /* navbar hoogte: padding 1.6rem×2 + logo (~26px) */
+    top: 100px;  /* navbarhoogte: padding 1.6rem×2 (51px) + hamburger min-height 48px + border 1px */
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 800;
+    z-index: 800; /* lager dan #nav (900) zodat logo + Gratis Gesprek altijd zichtbaar zijn */
     background: var(--black-s);
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1.8rem;
-    padding: 3rem 2rem 150px; /* top: ruimte onder sluitkruisje; bottom: boven contact-bar knoppen */
+    padding: 2rem 2rem 120px; /* bottom: FAQ/Contact boven floating bel+WhatsApp knoppen */
     box-sizing: border-box;
     overflow-y: auto;
   }
-  /* Navbar is smaller wanneer gescrolled (solid state) */
+  /* Solid state navbar: padding 1rem×2 (32px) + hamburger 48px + border 1px = 81px */
   #nav.solid ~ .mob-menu {
-    top: 58px;   /* padding 1rem×2 + logo (~26px) */
+    top: 81px;
   }
   .mob-menu.open { display: flex; }
   .mob-menu a {
