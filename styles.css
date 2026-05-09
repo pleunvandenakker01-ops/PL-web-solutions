@@ -211,7 +211,7 @@
   #nav {
     position: fixed;
     inset: 0 0 auto;
-    z-index: 900;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -313,32 +313,28 @@
     transition: all .3s;
   }
 
-  /* Mobile menu — begint exact onder de navbar onderkant */
+  /* Mobile menu — fullscreen overlay, navbar ligt er BOVENOP via hogere z-index */
   .mob-menu {
     display: none;
     position: fixed;
-    top: 100px;  /* navbarhoogte: padding 1.6rem×2 (51px) + hamburger min-height 48px + border 1px */
+    top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 800; /* lager dan #nav (900) zodat logo + Gratis Gesprek altijd zichtbaar zijn */
+    width: 100%;
+    height: 100%;
+    z-index: 999; /* onder #nav (1000) zodat logo + Gratis Gesprek altijd zichtbaar zijn */
     background: var(--black-s);
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1.8rem;
-    padding: 2rem 2rem 120px; /* bottom: FAQ/Contact boven floating bel+WhatsApp knoppen */
+    padding: 120px 2rem 150px; /* top: items beginnen onder navbar; bottom: boven floating knoppen */
     box-sizing: border-box;
     overflow-y: auto;
-  }
-  /* Solid state navbar: padding 1rem×2 (32px) + hamburger 48px + border 1px = 81px */
-  #nav.solid ~ .mob-menu {
-    top: 81px;
   }
   .mob-menu.open { display: flex; }
   .mob-menu a {
     font-family: var(--fh);
-    font-size: clamp(1.7rem, 6.5vw, 3rem);
+    font-size: 1.6rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .06em;
@@ -348,8 +344,10 @@
   .mob-menu a:hover { color: var(--gold); }
   .mob-close {
     position: absolute;
-    top: 1rem; right: 5vw;
-    background: none; border: none;
+    top: 80px;
+    right: 20px;
+    background: none;
+    border: none;
     color: var(--gold);
     font-size: 1.8rem;
     cursor: pointer;
