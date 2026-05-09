@@ -2209,8 +2209,7 @@
     .hamburger { display: flex; }
     .nav-cta { padding: .42rem .9rem; font-size: .58rem; letter-spacing: .12em; }
 
-    .stats-inner { grid-template-columns: 1fr 1fr; }
-    .stat-cell:nth-child(2) { border-right: none; }
+    .stats-inner { grid-template-columns: repeat(3, 1fr); }
 
     .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
     .pricing-grid > .pc,
@@ -2223,7 +2222,9 @@
   }
   @media (max-width: 520px) {
     .ft-grid { grid-template-columns: 1fr; }
-    .stats-inner { grid-template-columns: 1fr 1fr; }
+    .stats-inner { grid-template-columns: repeat(3, 1fr); }
+    .stat-num { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+    .stat-lbl { font-size: .55rem; letter-spacing: .12em; }
   }
 
   /* ═══════════════════════════════════════════════
