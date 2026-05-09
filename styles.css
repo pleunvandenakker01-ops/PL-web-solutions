@@ -327,9 +327,10 @@
     align-items: center;
     justify-content: center;
     gap: 1.8rem;
-    padding: 120px 2rem 150px; /* top: items beginnen onder navbar; bottom: boven floating knoppen */
+    padding: 130px 2rem 150px; /* top: items beginnen onder navbar; bottom: boven floating knoppen */
     box-sizing: border-box;
     overflow-y: auto;
+    justify-content: flex-start; /* center veroorzaakt negatieve offset bij overflow → HOME boven navbar */
   }
   .mob-menu.open { display: flex; }
   .mob-menu a {
