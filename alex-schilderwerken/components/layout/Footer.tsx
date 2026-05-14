@@ -8,16 +8,26 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-5 md:col-span-1">
             <Link href="/" className="flex items-center group w-fit" aria-label="Alex Schilderwerken">
-              <div style={{ height: 38, overflow: "hidden", flexShrink: 0 }}>
+              <div
+                style={{
+                  position: "relative",
+                  height: 36,
+                  overflow: "hidden",
+                  flexShrink: 0,
+                  mixBlendMode: "screen",
+                }}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/logo-alex.jpg"
                   alt="Alex Schilderwerken"
                   style={{
-                    height: 63,
+                    position: "absolute",
+                    top: "-2px",
+                    left: 0,
+                    height: 62,
                     width: "auto",
                     filter: "invert(1)",
-                    mixBlendMode: "screen",
                     display: "block",
                   }}
                 />

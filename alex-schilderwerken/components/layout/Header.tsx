@@ -56,16 +56,26 @@ export default function Header() {
           <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center group" aria-label="Alex Schilderwerken - home">
-              <div style={{ height: 46, overflow: "hidden", flexShrink: 0 }}>
+              <div
+                style={{
+                  position: "relative",
+                  height: 44,
+                  overflow: "hidden",
+                  flexShrink: 0,
+                  mixBlendMode: "screen",
+                }}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/logo-alex.jpg"
                   alt="Alex Schilderwerken"
                   style={{
+                    position: "absolute",
+                    top: "-3px",
+                    left: 0,
                     height: 76,
                     width: "auto",
                     filter: "invert(1)",
-                    mixBlendMode: "screen",
                     display: "block",
                   }}
                 />
