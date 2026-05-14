@@ -149,7 +149,7 @@
       </div>
     </div>
 
-    <form class="ct-form" id="ct-form" novalidate>
+    <form class="ct-form" id="ct-form" novalidate data-plaq-ignore>
       <div class="form-row">
         <div class="fg">
           <label class="fl" for="f-naam">Naam</label>
@@ -257,9 +257,11 @@
   var form = document.getElementById('ct-form');
   if (!form) return;
   form.dataset.contactHandled = '1';
+  console.log('[contact] handler registered, form:', form.id);
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    console.log('[contact] submit fired');
 
     var naam   = document.getElementById('f-naam');
     var email  = document.getElementById('f-email');
@@ -307,6 +309,7 @@
 
     btn.textContent = 'Versturen…';
     form.querySelectorAll('input, select, textarea, button').forEach(function (el) { el.disabled = true; });
+    console.log('[contact] fetching /api/contact with payload:', payload);
 
     fetch('/api/contact', {
       method: 'POST',
