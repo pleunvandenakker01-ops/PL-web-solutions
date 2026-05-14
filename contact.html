@@ -165,6 +165,10 @@
         <input class="fi" type="email" id="f-email" placeholder="jan@mijnbedrijf.nl" required />
       </div>
       <div class="fg">
+        <label class="fl" for="f-telefoon">Telefoonnummer</label>
+        <input class="fi" type="tel" id="f-telefoon" placeholder="06-12345678" />
+      </div>
+      <div class="fg">
         <label class="fl" for="f-pakket">Gewenst Pakket</label>
         <select class="fsel" id="f-pakket">
           <option value="">Selecteer een pakket...</option>
@@ -301,6 +305,7 @@
     var payload = {
       naam:     naam.value.trim(),
       email:    email.value.trim(),
+      telefoon: document.getElementById('f-telefoon').value.trim(),
       bedrijf:  document.getElementById('f-bedrijf').value.trim(),
       pakket:   document.getElementById('f-pakket').value,
       bericht:  document.getElementById('f-bericht').value.trim(),
