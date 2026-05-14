@@ -154,7 +154,7 @@ const projects: Project[] = [
   },
   {
     id: 16,
-    cat: "buiten",
+    cat: "binnen",
     label: "Deuren",
     description: "Deuren geschilderd",
     type: "compare",
