@@ -859,17 +859,17 @@ mobMenu.querySelectorAll('a').forEach(a => {
     const iframe = items[idx] && items[idx].querySelector('iframe[data-src]');
     if (iframe) { iframe.src = iframe.dataset.src; iframe.removeAttribute('data-src'); }
   }
-  function goTo(idx) {
+  function goTo(idx, loadFrame) {
     cur = ((idx % total) + total) % total;
-    loadIframe(cur);
+    if (loadFrame !== false) loadIframe(cur);
     place(true);
     scaleIframes();
   }
-  function next() { goTo(cur + 1); }
-  function prev() { goTo(cur - 1); }
+  function next(loadFrame) { goTo(cur + 1, loadFrame); }
+  function prev()          { goTo(cur - 1); }
 
-  /* ── Autoplay ── */
-  function startAuto() { stopAuto(); autoTimer = setInterval(next, 5000); }
+  /* ── Autoplay — roteert visueel, laadt geen iframes ── */
+  function startAuto() { stopAuto(); autoTimer = setInterval(() => next(false), 5000); }
   function stopAuto()  { clearInterval(autoTimer); autoTimer = null; }
 
   /* ── Klik op zijkaart → navigeer ── */
@@ -904,7 +904,7 @@ mobMenu.querySelectorAll('a').forEach(a => {
   if (pfSection && 'IntersectionObserver' in window) {
     const pfObserver = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) { loadIframe(0); pfObserver.disconnect(); }
-    }, { rootMargin: '200px' });
+    }, { rootMargin: '0px' });
     pfObserver.observe(pfSection);
   } else {
     loadIframe(0);
