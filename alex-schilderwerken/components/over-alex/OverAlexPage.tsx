@@ -146,7 +146,7 @@ export default function OverAlexPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/alex-schilderwerken/Huis 3 bezig met schilderen.jpeg"
-                    alt="Pand in uitvoering"
+                    alt="Alex Lanotte bezig met schilderwerk aan een woning"
                     className="w-full h-full object-cover block"
                   />
                 </div>

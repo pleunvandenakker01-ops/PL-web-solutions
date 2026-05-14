@@ -243,8 +243,8 @@ export default function Hero() {
           style={{ color: "#ffffff", fontWeight: 300, fontSize: "1.1rem", lineHeight: 1.85, letterSpacing: "0.02em", maxWidth: 460, textShadow: "0 1px 12px rgba(0,0,0,0.4)" }}
           className="mb-14"
         >
-          Perfectie zit in de details. Met 8 jaar vakervaring lever ik elk
-          project af zoals ik het zelf zou willen: netjes, duurzaam en op maat.
+          Gediplomeerd schilder met 8 jaar vakervaring in binnenschilderwerk,
+          buitenschilderwerk en houtrotreparaties. Elk project netjes, duurzaam en op maat afgewerkt.
         </motion.p>
 
         {/* Magnetic buttons */}

@@ -34,7 +34,7 @@ const projects: TeaserProject[] = [
     id: 2,
     label: "Trap",
     category: "Binnen",
-    description: "Trap geschilderd",
+    description: "Binnenschilderwerk trap",
     before: "/alex-schilderwerken/Trap before.jpeg",
     after: "/alex-schilderwerken/Trap after.jpeg",
   },
@@ -42,7 +42,7 @@ const projects: TeaserProject[] = [
     id: 3,
     label: "Raam",
     category: "Houtrot",
-    description: "Houtrot behandeld en afgelakt",
+    description: "Houtrotreparatie kozijn",
     before: "/alex-schilderwerken/Houtrot raam before.jpeg",
     after: "/alex-schilderwerken/Houtrot raam after.jpeg",
   },
@@ -52,12 +52,14 @@ function AnimatedCompareCard({
   before,
   after,
   label,
+  altText,
   objectFit = "cover",
   objectPosition = "center",
 }: {
   before: string;
   after: string;
   label: string;
+  altText?: string;
   objectFit?: "cover" | "contain";
   objectPosition?: string;
 }) {
@@ -134,7 +136,7 @@ function AnimatedCompareCard({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={before}
-        alt={`${label} — voor`}
+        alt={`${altText ?? label}, voor`}
         className="absolute inset-0 w-full h-full"
         style={{ objectFit, objectPosition }}
       />
@@ -146,7 +148,7 @@ function AnimatedCompareCard({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={after}
-          alt={`${label} — na`}
+          alt={`${altText ?? label}, na`}
           className="absolute inset-0 w-full h-full"
           style={{ objectFit, objectPosition }}
         />
@@ -204,6 +206,7 @@ export default function PortfolioTeaser() {
               before={projects[0].before}
               after={projects[0].after}
               label={projects[0].label}
+              altText={projects[0].description}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -228,6 +231,7 @@ export default function PortfolioTeaser() {
               before={projects[1].before}
               after={projects[1].after}
               label={projects[1].label}
+              altText={projects[1].description}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -252,6 +256,7 @@ export default function PortfolioTeaser() {
               before={projects[2].before}
               after={projects[2].after}
               label={projects[2].label}
+              altText={projects[2].description}
               objectFit="cover"
               objectPosition="center"
             />
@@ -298,14 +303,14 @@ export default function PortfolioTeaser() {
                   itemOne={
                     <ReactCompareSliderImage
                       src={lightboxProject.before}
-                      alt={`${lightboxProject.label} — voor`}
+                      alt={`${lightboxProject.description}, voor`}
                       style={{ width: "100%", height: "80vh", objectFit: "contain" }}
                     />
                   }
                   itemTwo={
                     <ReactCompareSliderImage
                       src={lightboxProject.after}
-                      alt={`${lightboxProject.label} — na`}
+                      alt={`${lightboxProject.description}, na`}
                       style={{ width: "100%", height: "80vh", objectFit: "contain" }}
                     />
                   }

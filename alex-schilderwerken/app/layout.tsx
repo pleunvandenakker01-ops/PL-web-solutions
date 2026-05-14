@@ -20,15 +20,17 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://alex-schilderwerken.vercel.app"),
   title: {
-    default: "Alex Schilderwerken | Vakmanschap dat je ziet",
+    default: "Alex Schilderwerken | Professioneel Schildersbedrijf in Nederland",
     template: "%s | Alex Schilderwerken",
   },
   description:
-    "Premium schildersbedrijf met 8 jaar ervaring. Binnenschilderwerk, buitenschilderwerk, tex spuiten, houtrotreparaties en meer. BA-verzekerd, officieel gediplomeerd.",
+    "Alex Schilderwerken: gediplomeerd schilder met 8 jaar ervaring. Binnenschilderwerk, buitenschilderwerk, houtrotreparaties, tex spuiten en pleisterwerk door heel Nederland. Vrijblijvende offerte aan huis.",
   keywords: [
     "schildersbedrijf",
     "schilder",
+    "schilder inhuren",
     "binnenschilderwerk",
     "buitenschilderwerk",
     "tex spuiten",
@@ -37,19 +39,26 @@ export const metadata: Metadata = {
     "BA-verzekerd",
     "gediplomeerd schilder",
     "Sigma verf",
+    "kozijnen schilderen",
+    "gevel schilderen",
+    "vrijblijvende offerte schilder",
+    "schilder nederland",
+    "Alex Schilderwerken",
+    "Alex Lanotte",
   ],
-  authors: [{ name: "Alex Schilderwerken" }],
+  authors: [{ name: "Alex Lanotte" }],
   openGraph: {
     type: "website",
     locale: "nl_NL",
     siteName: "Alex Schilderwerken",
-    title: "Alex Schilderwerken | Vakmanschap dat je ziet",
+    title: "Alex Schilderwerken | Professioneel Schildersbedrijf in Nederland",
     description:
-      "Premium schildersbedrijf met 8 jaar ervaring. BA-verzekerd, officieel gediplomeerd.",
+      "Gediplomeerd schilder met 8 jaar ervaring. Binnenschilderwerk, buitenschilderwerk, houtrotreparaties en meer. BA-verzekerd, vrijblijvende offerte.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true },
   },
 };
 
@@ -63,6 +72,39 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} bg-background text-foreground antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "@id": "https://alex-schilderwerken.vercel.app",
+              "name": "Alex Schilderwerken",
+              "description": "Professioneel schildersbedrijf met 8 jaar ervaring. Binnenschilderwerk, buitenschilderwerk, houtrotreparaties, tex spuiten en pleisterwerk door heel Nederland.",
+              "url": "https://alex-schilderwerken.vercel.app",
+              "telephone": "+31618269798",
+              "email": "schildersbedrijf.lanotte@gmail.com",
+              "founder": {
+                "@type": "Person",
+                "name": "Alex Lanotte",
+                "jobTitle": "Gediplomeerd Schilder"
+              },
+              "areaServed": { "@type": "Country", "name": "NL" },
+              "hasCredential": {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "Officieel gediplomeerd schilder"
+              },
+              "knowsAbout": [
+                "Binnenschilderwerk",
+                "Buitenschilderwerk",
+                "Tex spuiten",
+                "Houtrotreparaties",
+                "Pleisterwerk"
+              ],
+              "priceRange": "$$"
+            })
+          }}
+        />
         <SmoothScroll>
           <Header />
           <main>{children}</main>
