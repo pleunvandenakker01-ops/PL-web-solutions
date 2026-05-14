@@ -66,7 +66,7 @@ export default function ContactPage() {
               Contact
             </h1>
             <p className="text-muted text-lg max-w-xl leading-relaxed">
-              Ik kom altijd persoonlijk langs om alles te bekijken en op te meten. De
+              Ik kom graag persoonlijk langs om alles te bekijken en op te meten. De
               offerte is altijd volledig vrijblijvend.
             </p>
           </AnimatedSection>

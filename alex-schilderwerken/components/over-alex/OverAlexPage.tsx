@@ -102,7 +102,7 @@ export default function OverAlexPage() {
                   nauwkeurig, en ga pas weg als ik tevreden ben met het resultaat.
                 </p>
                 <p className="text-foreground font-medium">
-                  Ik kom altijd persoonlijk langs voor een inspectie en opmeting. De offerte
+                  Ik kom graag persoonlijk langs voor een inspectie en opmeting. De offerte
                   die u ontvangt is volledig vrijblijvend — u zit nergens aan vast.
                 </p>
               </div>
