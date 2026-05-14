@@ -101,7 +101,8 @@ export default function RootLayout({
                 "Houtrotreparaties",
                 "Pleisterwerk"
               ],
-              "priceRange": "$$"
+              "priceRange": "$$",
+              "sameAs": ["https://www.instagram.com/alexschilderwerken"]
             })
           }}
         />
