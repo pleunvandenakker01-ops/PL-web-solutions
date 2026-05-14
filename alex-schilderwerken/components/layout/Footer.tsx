@@ -7,27 +7,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-border/60">
           {/* Brand */}
           <div className="space-y-5 md:col-span-1">
-            <Link href="/" className="flex items-center gap-3 group w-fit" aria-label="Alex Schilderwerken">
-              <img
-                src="/logo.svg"
-                alt=""
-                width={34}
-                height={34}
-                style={{ width: 34, height: 34, flexShrink: 0 }}
-              />
-              <div className="flex flex-col leading-none">
-                <span
-                  className="font-display text-foreground group-hover:text-accent transition-colors duration-300"
-                  style={{ fontSize: 18, fontWeight: 600, letterSpacing: "-0.02em" }}
-                >
-                  Alex
-                </span>
-                <span
-                  className="text-muted uppercase"
-                  style={{ fontSize: 8, fontWeight: 400, letterSpacing: "0.15em", marginTop: 3 }}
-                >
-                  Schilderwerken
-                </span>
+            <Link href="/" className="flex items-center group w-fit" aria-label="Alex Schilderwerken">
+              <div style={{ height: 38, overflow: "hidden", flexShrink: 0 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logo-alex.jpg"
+                  alt="Alex Schilderwerken"
+                  style={{
+                    height: 63,
+                    width: "auto",
+                    filter: "invert(1)",
+                    mixBlendMode: "screen",
+                    display: "block",
+                  }}
+                />
               </div>
             </Link>
             <p className="text-muted text-sm leading-relaxed max-w-xs">

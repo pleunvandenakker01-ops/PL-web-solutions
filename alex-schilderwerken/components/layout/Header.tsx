@@ -55,27 +55,20 @@ export default function Header() {
         >
           <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group" aria-label="Alex Schilderwerken - home">
-              <img
-                src="/logo.svg"
-                alt=""
-                width={40}
-                height={40}
-                style={{ width: 40, height: 40, flexShrink: 0 }}
-              />
-              <div className="flex flex-col leading-none">
-                <span
-                  className="font-display text-foreground group-hover:text-accent transition-colors duration-300"
-                  style={{ fontSize: 22, fontWeight: 600, letterSpacing: "-0.02em" }}
-                >
-                  Alex
-                </span>
-                <span
-                  className="text-muted uppercase"
-                  style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.15em", marginTop: 4 }}
-                >
-                  Schilderwerken
-                </span>
+            <Link href="/" className="flex items-center group" aria-label="Alex Schilderwerken - home">
+              <div style={{ height: 46, overflow: "hidden", flexShrink: 0 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logo-alex.jpg"
+                  alt="Alex Schilderwerken"
+                  style={{
+                    height: 76,
+                    width: "auto",
+                    filter: "invert(1)",
+                    mixBlendMode: "screen",
+                    display: "block",
+                  }}
+                />
               </div>
             </Link>
 
