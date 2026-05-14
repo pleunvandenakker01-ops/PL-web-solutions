@@ -58,24 +58,18 @@ export default function Header() {
             <Link href="/" className="flex items-center group" aria-label="Alex Schilderwerken - home">
               <div
                 style={{
-                  position: "relative",
                   height: 44,
                   overflow: "hidden",
                   flexShrink: 0,
-                  mixBlendMode: "screen",
                 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/logo-alex.jpg"
+                  src="/logo-alex-white.png"
                   alt="Alex Schilderwerken"
                   style={{
-                    position: "absolute",
-                    top: "-3px",
-                    left: 0,
-                    height: 76,
+                    height: 44,
                     width: "auto",
-                    filter: "invert(1)",
                     display: "block",
                   }}
                 />

@@ -10,24 +10,18 @@ export default function Footer() {
             <Link href="/" className="flex items-center group w-fit" aria-label="Alex Schilderwerken">
               <div
                 style={{
-                  position: "relative",
                   height: 36,
                   overflow: "hidden",
                   flexShrink: 0,
-                  mixBlendMode: "screen",
                 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/logo-alex.jpg"
+                  src="/logo-alex-white.png"
                   alt="Alex Schilderwerken"
                   style={{
-                    position: "absolute",
-                    top: "-2px",
-                    left: 0,
-                    height: 62,
+                    height: 36,
                     width: "auto",
-                    filter: "invert(1)",
                     display: "block",
                   }}
                 />
