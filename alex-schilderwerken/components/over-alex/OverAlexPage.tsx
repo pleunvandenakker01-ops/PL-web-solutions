@@ -40,16 +40,16 @@ const trustBadges = [
       </svg>
     ),
     title: "Persoonlijke aanpak",
-    desc: "Ik werk alleen — u heeft altijd met Alex zelf te maken",
+    desc: "Ik werk alleen, zodat u altijd met Alex zelf te maken heeft.",
   },
 ];
 
 const timeline = [
-  { year: "2016", title: "Start vakopleiding", desc: "Begon met de officiële schildersopleiding — twee jaar intensief leren." },
+  { year: "2016", title: "Start vakopleiding", desc: "Begon met de officiële schildersopleiding, twee jaar intensief leren." },
   { year: "2018", title: "Diploma behaald", desc: "Afgestudeerd als officieel gediplomeerd schilder." },
-  { year: "2018–2022", title: "In loondienst", desc: "Jaren praktijkervaring opgedaan als schilder bij een bedrijf — van woningen tot grote projecten." },
+  { year: "2018–2022", title: "In loondienst", desc: "Jaren praktijkervaring opgedaan als schilder bij een bedrijf, van woningen tot grote projecten." },
   { year: "2022", title: "Eigen bedrijf gestart", desc: "Alex Schilderwerken opgericht. Zelfstandig verder gegaan met dezelfde vakkennis en toewijding." },
-  { year: "Nu", title: "~3 jaar zelfstandig", desc: "Elk project — groot of klein — met dezelfde nauwkeurigheid en persoonlijke aanpak." },
+  { year: "Nu", title: "~3 jaar zelfstandig", desc: "Elk project, groot of klein, met dezelfde nauwkeurigheid en persoonlijke aanpak." },
 ];
 
 export default function OverAlexPage() {
@@ -81,7 +81,7 @@ export default function OverAlexPage() {
               <div className="space-y-6 text-muted text-base leading-[1.85]">
                 <p>
                   Mijn naam is Alex Lanotte. Na een gedegen 2-jarige vakopleiding en meer dan
-                  8 jaar praktijkervaring weet ik wat kwalitatief schilderwerk vraagt — en wat
+                  8 jaar praktijkervaring weet ik wat kwalitatief schilderwerk vraagt, en wat
                   nodig is om het consequent goed te leveren.
                 </p>
                 <p>
@@ -103,7 +103,7 @@ export default function OverAlexPage() {
                 </p>
                 <p className="text-foreground font-medium">
                   Ik kom graag persoonlijk langs voor een inspectie en opmeting. De offerte
-                  die u ontvangt is volledig vrijblijvend — u zit nergens aan vast.
+                  die u ontvangt is volledig vrijblijvend. U zit nergens aan vast.
                 </p>
               </div>
 

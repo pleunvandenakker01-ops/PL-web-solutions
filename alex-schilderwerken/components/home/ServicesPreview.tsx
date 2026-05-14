@@ -7,7 +7,7 @@ import Image from "next/image";
 const services = [
   {
     title: "Binnenschilderwerk",
-    desc: "Muren, plafonds, kozijnen en deuren — afgewerkt met precisie.",
+    desc: "Muren, plafonds, kozijnen en deuren, afgewerkt met precisie.",
     href: "/diensten#binnenschilderwerk",
     img: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800",
     icon: (
@@ -40,7 +40,7 @@ const services = [
   },
   {
     title: "Houtrotreparaties",
-    desc: "Aangetast hout vakkundig hersteld — van kozijnen tot dakranden.",
+    desc: "Aangetast hout vakkundig hersteld, van kozijnen tot dakranden.",
     href: "/diensten#houtrot",
     img: "https://images.pexels.com/photos/13159228/pexels-photo-13159228.jpeg",
     icon: (
@@ -121,7 +121,7 @@ export default function ServicesPreview() {
               Diensten
             </h2>
             <p className="text-muted text-lg max-w-xl mx-auto leading-relaxed">
-              Van voorbereiding tot afwerking — elk detail telt.
+              Van voorbereiding tot afwerking, elk detail telt.
             </p>
           </div>
 

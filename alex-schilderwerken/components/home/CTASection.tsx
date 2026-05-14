@@ -81,7 +81,7 @@ export default function CTASection() {
               {/* Subtext */}
               <p className="text-muted text-base lg:text-lg leading-relaxed mb-10 max-w-lg mx-auto">
                 Ik kom altijd langs om alles te bekijken en op te meten. De offerte is altijd
-                volledig vrijblijvend — u zit nergens aan vast.
+                volledig vrijblijvend. U zit nergens aan vast.
               </p>
 
               {/* Form */}

@@ -140,7 +140,7 @@ export default function ContactPage() {
                 </p>
                 <p className="text-foreground/80 text-sm leading-relaxed">
                   Ik kom altijd langs om alles te bekijken en op te meten. De offerte is
-                  altijd volledig vrijblijvend — u zit nergens aan vast.
+                  altijd volledig vrijblijvend. U zit nergens aan vast.
                 </p>
               </div>
 
@@ -288,7 +288,7 @@ export default function ContactPage() {
                       )}
                     </button>
                     <p className="text-muted text-xs text-center">
-                      Vrijblijvend — ik reageer altijd binnen 24 uur
+                      Vrijblijvend, ik reageer altijd binnen 24 uur
                     </p>
                   </form>
                 )}

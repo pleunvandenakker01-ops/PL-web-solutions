@@ -52,7 +52,7 @@ const diensten = [
     image: { src: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800", position: "center" },
     title: "Binnenschilderwerk",
     shortDesc: "Vakkundig afgewerkte muren, plafonds en kozijnen",
-    desc: `Van voorbereiding tot eindresultaat — ik zorg dat elke vierkante meter er perfect uitziet. Muren worden grondig voorbereid: plamuren waar nodig, schuren en ontstoffen voordat het schilderwerk begint.\n\nDe eindlaag wordt aangebracht met de verfspuit of roller, afhankelijk van het oppervlak. Altijd met Sigma-verf — want kwaliteit begint met het juiste materiaal.`,
+    desc: `Van voorbereiding tot eindresultaat zorg ik dat elke vierkante meter er perfect uitziet. Muren worden grondig voorbereid: plamuren waar nodig, schuren en ontstoffen voordat het schilderwerk begint.\n\nDe eindlaag wordt aangebracht met de verfspuit of roller, afhankelijk van het oppervlak. Altijd met Sigma-verf, want kwaliteit begint met het juiste materiaal.`,
     included: ["Muren en plafonds", "Kozijnen en deuren", "Radiatoren en plinten", "Voorbereiding en afdekking"],
   },
   {
@@ -61,7 +61,7 @@ const diensten = [
     image: { src: "/alex-schilderwerken/Huis 3 bezig met schilderen.jpeg", position: "center" },
     title: "Buitenschilderwerk",
     shortDesc: "Bescherming en uitstraling voor uw gevel",
-    desc: `Buitenwerk vraagt om een andere aanpak dan binnenwerk. Hout moet grondig ontvet en geschuurd worden, oude verf die loslaat wordt verwijderd, en daarna volgt een grondlaag voor maximale hechting.\n\nKozijnen, boeidelen, dakgoten en gevelpanelen — alles wordt vakkundig behandeld met weerbestendige verf van Sigma. Het resultaat is jarenlange bescherming én een perfecte uitstraling.`,
+    desc: `Buitenwerk vraagt om een andere aanpak dan binnenwerk. Hout moet grondig ontvet en geschuurd worden, oude verf die loslaat wordt verwijderd, en daarna volgt een grondlaag voor maximale hechting.\n\nKozijnen, boeidelen, dakgoten en gevelpanelen worden vakkundig behandeld met weerbestendige verf van Sigma. Het resultaat is jarenlange bescherming én een perfecte uitstraling.`,
     included: ["Gevels en kozijnen", "Dakgoten en boeidelen", "Schuren en gronden", "Weerbestendige afwerking"],
   },
   {
@@ -79,7 +79,7 @@ const diensten = [
     image: { src: "https://images.pexels.com/photos/13159228/pexels-photo-13159228.jpeg", position: "center" },
     title: "Houtrotreparaties",
     shortDesc: "Aangetast hout vakkundig hersteld",
-    desc: `Houtrot is een sluipend probleem. Wordt het niet tijdig aangepakt, dan kan schade aan kozijnen, raamkozijnen of dakranden snel uitbreiden.\n\nIk snij het aangetaste hout weg, behandel de ondergrond met een consolidant, en vul daarna op met reparatiemortel. Na uitharden wordt alles geschuurd en geschilderd — u ziet het verschil niet meer.`,
+    desc: `Houtrot is een sluipend probleem. Wordt het niet tijdig aangepakt, dan kan schade aan kozijnen, raamkozijnen of dakranden snel uitbreiden.\n\nIk snij het aangetaste hout weg, behandel de ondergrond met een consolidant, en vul daarna op met reparatiemortel. Na uitharden wordt alles geschuurd en geschilderd. U ziet het verschil niet meer.`,
     included: ["Diagnose en reparatie", "Kozijnen en raamkozijnen", "Dakranden en boeidelen", "Afwerking en schilderen"],
   },
   {
@@ -88,7 +88,7 @@ const diensten = [
     image: { src: "https://images.pexels.com/photos/5691596/pexels-photo-5691596.jpeg", position: "center" },
     title: "Pleisterwerk",
     shortDesc: "Gladde, vloeiende wandoppervlakken",
-    desc: `Een goede schilderlaag staat of valt met de ondergrond. Ik voer pleisterwerk uit op muren en plafonds om oneffenheden weg te werken en een gladde, spuitklare ondergrond te creëren.\n\nOf het nu gaat om kleine reparaties of volledige wanden — ik zorg voor een naadloos resultaat dat als basis dient voor een perfecte verflaag.`,
+    desc: `Een goede schilderlaag staat of valt met de ondergrond. Ik voer pleisterwerk uit op muren en plafonds om oneffenheden weg te werken en een gladde, spuitklare ondergrond te creëren.\n\nOf het nu gaat om kleine reparaties of volledige wanden, ik zorg voor een naadloos resultaat dat als basis dient voor een perfecte verflaag.`,
     included: ["Muren en plafonds egaliseren", "Reparatie van beschadigingen", "Naden en scheuren opvullen", "Spuitklare ondergrond"],
   },
 ];
@@ -106,7 +106,7 @@ export default function DienstenPage() {
               Diensten
             </h1>
             <p className="text-muted text-lg max-w-2xl leading-relaxed">
-              Van binnenschilderwerk tot verzekeringsherstel — elk project pak ik aan met dezelfde
+              Van binnenschilderwerk tot verzekeringsherstel, elk project pak ik aan met dezelfde
               nauwkeurigheid en vakmanschap. Altijd met Sigma-verf, altijd BA-verzekerd.
             </p>
           </AnimatedSection>
