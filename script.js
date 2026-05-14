@@ -1060,9 +1060,49 @@ if (ctFormEl) ctFormEl.addEventListener('submit', function (e) {
 
   const btn  = this.querySelector('.btn span');
   const orig = btn.textContent;
-  btn.textContent = 'Verzonden ✓';
-  this.querySelectorAll('input, select, textarea').forEach(el => el.value = '');
-  setTimeout(() => { btn.textContent = orig; }, 4000);
+  const form = this;
+  const payload = {
+    naam:     document.getElementById('f-naam').value.trim(),
+    email:    document.getElementById('f-email').value.trim(),
+    bedrijf:  document.getElementById('f-bedrijf').value.trim(),
+    pakket:   document.getElementById('f-pakket').value,
+    bericht:  document.getElementById('f-bericht').value.trim(),
+    honeypot: document.getElementById('f-honeypot').value,
+  };
+
+  btn.textContent = 'Versturen…';
+  form.querySelectorAll('input, select, textarea, button').forEach(function(el) { el.disabled = true; });
+
+  fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.success) {
+      btn.textContent = 'Verzonden ✓';
+      form.querySelectorAll('input, select, textarea').forEach(function(el) { el.value = ''; });
+      setTimeout(function() {
+        btn.textContent = orig;
+        form.querySelectorAll('input, select, textarea, button').forEach(function(el) { el.disabled = false; });
+      }, 4000);
+    } else {
+      throw new Error(data.error || 'Onbekende fout');
+    }
+  })
+  .catch(function(err) {
+    var div = document.getElementById('ct-form-errors');
+    if (!div) {
+      div = document.createElement('div');
+      div.id = 'ct-form-errors';
+      div.style.cssText = 'color:#e06060;font-size:.78rem;margin-top:-.4rem;line-height:1.7;';
+      document.querySelector('.form-submit').before(div);
+    }
+    div.textContent = err.message || 'Versturen mislukt. Probeer het opnieuw of bel ons direct.';
+    btn.textContent = orig;
+    form.querySelectorAll('input, select, textarea, button').forEach(function(el) { el.disabled = false; });
+  });
 });
 
 /* Page visibility — pause Three.js via tab switch handled by rAF natively */
