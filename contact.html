@@ -252,5 +252,95 @@
   </a>
 </div>
 
+<script>
+(function () {
+  var form = document.getElementById('ct-form');
+  if (!form) return;
+  form.dataset.contactHandled = '1';
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var naam   = document.getElementById('f-naam');
+    var email  = document.getElementById('f-email');
+    var errors = [];
+
+    if (!naam.value.trim() || naam.value.trim().length < 2) {
+      errors.push('Vul een geldige naam in (minimaal 2 tekens).');
+      naam.style.borderColor = 'rgba(220,60,60,.7)';
+    } else { naam.style.borderColor = ''; }
+
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim() || !emailRe.test(email.value.trim())) {
+      errors.push('Vul een geldig e-mailadres in.');
+      email.style.borderColor = 'rgba(220,60,60,.7)';
+    } else { email.style.borderColor = ''; }
+
+    var hp = document.getElementById('f-honeypot');
+    if (hp && hp.value) return;
+
+    if (errors.length) {
+      var errDiv = document.getElementById('ct-form-errors');
+      if (!errDiv) {
+        errDiv = document.createElement('div');
+        errDiv.id = 'ct-form-errors';
+        errDiv.style.cssText = 'color:#e06060;font-size:.78rem;margin-top:-.4rem;line-height:1.7;';
+        document.querySelector('.form-submit').before(errDiv);
+      }
+      errDiv.textContent = errors.join(' ');
+      return;
+    }
+
+    var errDiv = document.getElementById('ct-form-errors');
+    if (errDiv) errDiv.remove();
+
+    var btn  = form.querySelector('.btn span');
+    var orig = btn.textContent;
+    var payload = {
+      naam:     naam.value.trim(),
+      email:    email.value.trim(),
+      bedrijf:  document.getElementById('f-bedrijf').value.trim(),
+      pakket:   document.getElementById('f-pakket').value,
+      bericht:  document.getElementById('f-bericht').value.trim(),
+      honeypot: hp ? hp.value : '',
+    };
+
+    btn.textContent = 'Versturen…';
+    form.querySelectorAll('input, select, textarea, button').forEach(function (el) { el.disabled = true; });
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (data.success) {
+        btn.textContent = 'Verzonden ✓';
+        form.querySelectorAll('input, select, textarea').forEach(function (el) { el.value = ''; });
+        setTimeout(function () {
+          btn.textContent = orig;
+          form.querySelectorAll('input, select, textarea, button').forEach(function (el) { el.disabled = false; });
+        }, 4000);
+      } else {
+        throw new Error(data.error || 'Onbekende fout');
+      }
+    })
+    .catch(function (err) {
+      var div = document.getElementById('ct-form-errors');
+      if (!div) {
+        div = document.createElement('div');
+        div.id = 'ct-form-errors';
+        div.style.cssText = 'color:#e06060;font-size:.78rem;margin-top:-.4rem;line-height:1.7;';
+        document.querySelector('.form-submit').before(div);
+      }
+      div.textContent = err.message || 'Versturen mislukt. Probeer het opnieuw of bel ons direct.';
+      btn.textContent = orig;
+      form.querySelectorAll('input, select, textarea, button').forEach(function (el) { el.disabled = false; });
+    });
+  });
+}());
+</script>
+
 </body>
 </html>

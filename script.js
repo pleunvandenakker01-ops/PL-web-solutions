@@ -1013,7 +1013,7 @@ mobMenu.querySelectorAll('a').forEach(a => {
    CONTACT FORM
 ══════════════════════════════════════════ */
 const ctFormEl = document.getElementById('ct-form');
-if (ctFormEl) ctFormEl.addEventListener('submit', function (e) {
+if (ctFormEl && !ctFormEl.dataset.contactHandled) ctFormEl.addEventListener('submit', function (e) {
   e.preventDefault();
 
   /* ── Validatie ── */
