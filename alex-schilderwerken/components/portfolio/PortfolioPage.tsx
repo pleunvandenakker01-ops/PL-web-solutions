@@ -152,6 +152,15 @@ const projects: Project[] = [
     before: "/alex-schilderwerken/Dakkapel before.jpeg",
     after: "/alex-schilderwerken/Dakkapel achter.jpeg",
   },
+  {
+    id: 16,
+    cat: "buiten",
+    label: "Deuren",
+    description: "Deuren geschilderd",
+    type: "compare",
+    before: "/alex-schilderwerken/Deuren before.jpeg",
+    after: "/alex-schilderwerken/Deuren after.jpeg",
+  },
 ];
 
 const easeInQuad = (t: number) => t * t;
