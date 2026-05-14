@@ -71,6 +71,7 @@ export default function Header() {
                     height: 44,
                     width: "auto",
                     display: "block",
+                    filter: "invert(1)",
                   }}
                 />
               </div>

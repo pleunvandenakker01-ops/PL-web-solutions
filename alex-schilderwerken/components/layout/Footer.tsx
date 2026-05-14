@@ -23,6 +23,7 @@ export default function Footer() {
                     height: 36,
                     width: "auto",
                     display: "block",
+                    filter: "invert(1)",
                   }}
                 />
               </div>
