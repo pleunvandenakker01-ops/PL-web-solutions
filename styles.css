@@ -731,10 +731,11 @@
 
   .pc-price {
     font-family: var(--fh);
-    font-size: clamp(3rem, 5vw, 4.2rem);
+    font-size: clamp(2.6rem, 4vw, 3.6rem);
     font-weight: 700;
     color: var(--white);
     line-height: 1;
+    white-space: nowrap;
   }
   .pc-price sup {
     font-family: var(--fb);
@@ -2387,7 +2388,7 @@
     letter-spacing: .05em;
     opacity: .6;
     text-align: center;
-    margin-top: -.25rem;
+    margin-top: .3rem;
     margin-bottom: .55rem;
   }
 
